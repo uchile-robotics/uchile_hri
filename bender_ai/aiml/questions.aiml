@@ -1,0 +1,1003 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+	<!-- GREETING -->
+    <category>
+        <pattern>MY NAME IS *</pattern>
+        <template> Nice to meet you <star/> </template>
+    </category>
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template> Hello, nice to meet you </template>
+    </category>
+
+    <category>
+        <pattern>HI</pattern>
+        <template><srai>HELLO</srai></template>
+    </category>
+
+    <category>
+        <pattern>HOLA</pattern>
+        <template><srai>HELLO</srai></template>
+    </category>
+
+    <!-- WHAT'S YOUR NAME -->
+
+    <category>
+        <pattern>WHAT IS YOUR NAME</pattern>
+        <template>
+            My name is <bot name="name"/>
+        </template>
+    </category>
+
+    <!-- THE CAPITAL OF ... -->
+
+    <category>
+        <pattern>GERMANY</pattern>
+        <template> 
+            the capital of Germany is <bot name="germany"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>BRAZIL</pattern>
+        <template> 
+            the capital of Brazil is <bot name="brazil"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>CHINA</pattern>
+        <template> 
+            the capital of China is <bot name="china"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>_ CAPITAL OF *</pattern>
+        <template><srai><star index="2"/></srai></template>
+    </category>
+
+    <!-- IN WHICH YEAR WAS THE ROBOCUP FOUNDED -->
+
+    <category>
+        <pattern>ROBOCUP</pattern>
+        <template>The robocup was founded in 1997</template>
+    </category>
+
+    <category>
+        <pattern>YEAR WAS *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>ROBOCUP *</pattern>
+        <template><srai>ROBOCUP</srai></template>
+    </category>
+
+    <!-- WHAT TIME IS IT -->
+
+    <category>
+        <pattern>WHAT TIME</pattern>
+        <template>time</template>
+    </category>
+
+    <category>
+        <pattern>* IS IT</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <!-- HOW MANY RINGS HAS THE OLYMPIC FLAG -->
+
+    <category>
+        <pattern>RINGS</pattern>
+        <template>The olympic flag has 5 rings</template>
+    </category>
+
+    <category>
+        <pattern>RINGS *</pattern>
+        <template><srai>RINGS</srai></template>
+    </category>
+
+    <category>
+        <pattern>HAS THE *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>FLAG *</pattern>
+        <template><srai>RINGS</srai></template>
+    </category>
+
+    <category>
+        <pattern>OLIMPYC FLAG</pattern>
+        <template><srai>RINGS</srai></template>
+    </category>
+
+    <!-- HOW MANY TENTACLES DOES A SQUID HAVE -->
+
+    <category>
+        <pattern>TENTACLES</pattern>
+        <template>A squid has ten tentacles</template>
+    </category>
+
+    <category>
+        <pattern>SQUID *</pattern>
+        <template><srai>TENTACLES</srai></template>
+    </category>
+
+    <category>
+        <pattern>TENTACLES *</pattern>
+        <template><srai>TENTACLES</srai></template>
+    </category>
+
+    <category>
+        <pattern>DOES A *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <!-- WHAT IS THE ANSWER TO THE ULTIMATE QUESTION ABOUT LIFE THE UNIVERSE AND EVERYTHING -->
+
+    <category>
+        <pattern>ANSWER</pattern>
+        <template>The answer to the ultimate question is 42</template>
+    </category>
+
+    <category>
+        <pattern>ANSWER *</pattern>
+        <template><srai>ANSWER</srai></template>
+    </category>
+
+    <category>
+        <pattern>ULTIMATE QUESTION *</pattern>
+        <template><srai>ANSWER</srai></template>
+    </category>
+
+    <category>
+        <pattern>UNIVERSE *</pattern>
+        <template><srai>ANSWER</srai></template>
+    </category>
+
+    <!-- WHAT IS THE WORLDS MOST POPULAR GREEN VEGETABLE -->
+
+    <category>
+        <pattern>GREEN VEGETABLE</pattern>
+        <template>The worlds most popular green vegetable is lettuce</template>
+    </category>
+
+    <category>
+        <pattern>* GREEN VEGETABLE</pattern>
+        <template><srai>GREEN VEGETABLE</srai></template>
+    </category>
+
+    <category>
+        <pattern>WORLDS MOST POPULAR *</pattern>
+        <template><srai>GREEN VEGETABLE</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>DRUG</pattern>
+        <template>The oldest drug is alcohol</template>
+    </category>
+
+    <category>
+        <pattern>OLDEST *</pattern>
+        <template><srai>DRUG</srai></template>
+    </category>
+
+    <category>
+        <pattern>USED *</pattern>
+        <template><srai>DRUG</srai></template>
+    </category>
+
+    <category>
+        <pattern>EARTH</pattern>
+        <template><srai>DRUG</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>ALCOHOL</pattern>
+        <template>Sugar is converted into alcohol during brewing</template>
+    </category>
+
+    <category>
+        <pattern>CONVERTED *</pattern>
+        <template><srai>ALCOHOL</srai></template>
+    </category>
+
+    <category>
+        <pattern>ALCOHOL *</pattern>
+        <template><srai>ALCOHOL</srai></template>
+    </category>
+
+    <category>
+        <pattern>BREWING *</pattern>
+        <template><srai>ALCOHOL</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>INFANT</pattern>
+        <template>An infant whale is called calf</template>
+    </category>
+
+    <category>
+        <pattern>INFANT *</pattern>
+        <template><srai>INFANT</srai></template>
+    </category>
+
+    <category>
+        <pattern>WHALE *</pattern>
+        <template><srai>INFANT</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>OTTERS</pattern>
+        <template>Otters homes are called Holt</template>
+    </category>
+
+    <category>
+        <pattern>OTTERS *</pattern>
+        <template><srai>OTTERS</srai></template>
+    </category>
+
+    <category>
+        <pattern>* OTTERS HOME CALLED</pattern>
+        <template><srai>OTTERS</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>CANADA</pattern>
+        <template>Canadas national animal is the beaver</template>
+    </category>
+
+    <category>
+        <pattern>CANADAS *</pattern>
+        <template><srai>CANADA</srai></template>
+    </category>
+
+    <category>
+        <pattern>* NATIONAL ANIMAL</pattern>
+        <template><srai>CANADA</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>BLACK LEOPARD</pattern>
+        <template>The black leopard is also known as panther</template>
+    </category>
+
+    <category>
+        <pattern>ALTERNATIVE COMMON *</pattern>
+        <template><srai>BLACK LEOPARD</srai></template>
+    </category>
+
+    <category>
+        <pattern>* BLACK LEOPARD</pattern>
+        <template><srai>BLACK LEOPARD</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>BIGGEST ISLAND</pattern>
+        <template>The worlds biggest island is Greenland</template>
+    </category>
+
+    <category>
+        <pattern>* BIGGEST ISLAND</pattern>
+        <template><srai>BIGGEST ISLAND</srai></template>
+    </category>
+
+    <category>
+        <pattern>* WORLDS BIGGEST *</pattern>
+        <template><srai>BIGGEST ISLAND</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>HEAVIEST</pattern>
+        <template>The heaviest animal is the blue whale</template>
+    </category>
+
+    <category>
+        <pattern>WORLDS HEAVIEST *</pattern>
+        <template><srai>HEAVIEST</srai></template>
+    </category>
+
+    <category>
+        <pattern>* HEAVIEST ANIMAL</pattern>
+        <template><srai>HEAVIEST</srai></template>
+    </category>
+
+    <category>
+        <pattern>HEAVIEST *</pattern>
+        <template><srai>HEAVIEST</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>MOUNTAIN</pattern>
+        <template>The tallest mountain is the everest</template>
+    </category>
+
+    <category>
+        <pattern>TALLEST MOUNTAIN *</pattern>
+        <template><srai>MOUNTAIN</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>SPONGEBOB</pattern>
+        <template>Spongebob squarepants. Absorbant and yellow and porous is he</template>
+    </category>
+
+    <category>
+        <pattern>LIVES IN A PINEAPPLE *</pattern>
+        <template><srai>SPONGEBOB</srai></template>
+    </category>
+
+    <category>
+        <pattern>PINEAPPLE *</pattern>
+        <template><srai>SPONGEBOB</srai></template>
+    </category>
+
+    <category>
+        <pattern>* UNDER THE SEA</pattern>
+        <template><srai>SPONGEBOB</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>FIRST ROBOCUP</pattern>
+        <template>The first robocup was in 1997 in Japan</template>
+    </category>
+
+    <category>
+        <pattern>* FIRST ROBOCUP</pattern>
+        <template><srai>FIRST ROBOCUP</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>BEST EYESIGHT</pattern>
+        <template>The insect that has the best eyesight is the dragonfly</template>
+    </category>
+
+    <category>
+        <pattern>INSECT *</pattern>
+        <template><srai>BEST EYESIGHT</srai></template>
+    </category>
+
+    <category>
+        <pattern>* EYESIGHT</pattern>
+        <template><srai>BEST EYESIGHT</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>SOVIET UNION</pattern>
+        <template>Alaska is the nearest american state to the former Soviet Union</template>
+    </category>
+
+    <category>
+        <pattern>* SOVIET UNION</pattern>
+        <template><srai>SOVIET UNION</srai></template>
+    </category>
+
+    <category>
+        <pattern>NEAREST TO *</pattern>
+        <template><srai>SOVIET UNION</srai></template>
+    </category>
+
+    <category>
+        <pattern>AMERICAN STATE *</pattern>
+        <template><srai>SOVIET UNION</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>RIVER</pattern>
+        <template>the river tweed forms a part of the border between England and Scotland</template>
+    </category>
+
+    <category>
+        <pattern>RIVER *</pattern>
+        <template><srai>RIVER</srai></template>
+    </category>
+
+    <category>
+        <pattern>EASTERN SECTION *</pattern>
+        <template><srai>RIVER</srai></template>
+    </category>
+
+    <category>
+        <pattern>BORDER *</pattern>
+        <template><srai>RIVER</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>PRINCE ANDREW</pattern>
+        <template>Prince Andrew was born in February 19th of 1960</template>
+    </category>
+
+    <category>
+        <pattern>PRINCE *</pattern>
+        <template><srai>PRINCE ANDREW</srai></template>
+    </category>
+
+    <category>
+        <pattern>* ANDREW BORN</pattern>
+        <template><srai>PRINCE ANDREW</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>ROMEO AND JULIET</pattern>
+        <template>The two families in Romeo and Juliet are Montague and Capulet</template>
+    </category>
+
+    <category>
+        <pattern>* ROMEO AND JULIET</pattern>
+        <template><srai>ROMEO AND JULIET</srai></template>
+    </category>
+
+    <category>
+        <pattern>TWO FAMILIES *</pattern>
+        <template><srai>ROMEO AND JULIET</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>SHEEP</pattern>
+        <template>According to that relation I have to say that sheeps are bovine</template>
+    </category>
+
+    <category>
+        <pattern>IF CATS *</pattern>
+        <template><srai>SHEEP</srai></template>
+    </category>
+
+    <category>
+        <pattern>FELINE *</pattern>
+        <template><srai>SHEEP</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>GEORGIA</pattern>
+        <template>Georgia is famous for its peaches</template>
+    </category>
+
+    <category>
+        <pattern>STATE OF *</pattern>
+        <template><srai>GEORGIA</srai></template>
+    </category>
+
+    <category>
+        <pattern>GEORGIA *</pattern>
+        <template><srai>GEORGIA</srai></template>
+    </category>
+
+    <category>
+        <pattern>FRUIT *</pattern>
+        <template><srai>GEORGIA</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>SWITZERLAND</pattern>
+        <template>The financial centre and main city of Switzerland is Zurich</template>
+    </category>
+
+    <category>
+        <pattern>FINANCIAL CENTRE *</pattern>
+        <template><srai>SWITZERLAND</srai></template>
+    </category>
+
+    <category>
+        <pattern>MAIN CITY *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>* SWITZERLAND</pattern>
+        <template><srai>SWITZERLAND</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>HIT AND MISS</pattern>
+        <template>The programme was called Juke Box Jury</template>
+    </category>
+
+    <category>
+        <pattern>* PROGRAMMES THEME *</pattern>
+        <template><srai>HIT AND MISS</srai></template>
+    </category>
+
+    <category>
+        <pattern>THEME TUNE *</pattern>
+        <template><srai>HIT AND MISS</srai></template>
+    </category>
+
+    <category>
+        <pattern>* HIT AND MISS</pattern>
+        <template><srai>HIT AND MISS</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>SLOWHAND</pattern>
+        <template>Eric Clapton is the famous Slowhand</template>
+    </category>
+
+    <category>
+        <pattern>* SLOWHAND</pattern>
+        <template><srai>SLOWHAND</srai></template>
+    </category>
+
+    <category>
+        <pattern>GUITARIST *</pattern>
+        <template><srai>SLOWHAND</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>ZUCCHINI</pattern>
+        <template>The british use the word Courgettes instead of Zucchini</template>
+    </category>
+
+    <category>
+        <pattern>BRITISH CALL *</pattern>
+        <template><srai>ZUCCHINI</srai></template>
+    </category>
+
+    <category>
+        <pattern>AMERICANS CALL *</pattern>
+        <template><srai>ZUCCHINI</srai></template>
+    </category>
+
+    <category>
+        <pattern>* ZUCCHINI</pattern>
+        <template><srai>ZUCCHINI</srai></template>
+    </category>
+
+    <!-- -->
+
+    <category>
+        <pattern>JULIENNE</pattern>
+        <template>Theyre cut in thin strips or shreds or sliced lengthways</template>
+    </category>
+
+    <category>
+        <pattern>* JULIENNE</pattern>
+        <template><srai>JULIENNE</srai></template>
+    </category>
+
+    <category>
+        <pattern>VEGETABLES BEEN CUT *</pattern>
+        <template><srai>JULIENNE</srai></template>
+    </category>
+
+    <category>
+        <pattern>SERVED *</pattern>
+        <template><srai>JULIENNE</srai></template>
+    </category>
+
+    <!-- -->
+
+    <category>
+        <pattern>NEPTUNE</pattern>
+        <template>Neptune is called Poseidon in Greece</template>
+    </category>
+
+    <category>
+        <pattern>* NEPTUNE *</pattern>
+        <template><srai>NEPTUNE</srai></template>
+    </category>
+
+    <category>
+        <pattern>ROMAN *</pattern>
+        <template><srai>NEPTUNE</srai></template>
+    </category>
+
+    <category>
+        <pattern>MYTHOLOGY *</pattern>
+        <template><srai>NEPTUNE</srai></template>
+    </category>
+
+    <category>
+        <pattern>GREEK GOD *</pattern>
+        <template><srai>NEPTUNE</srai></template>
+    </category>
+
+    <category>
+        <pattern>ROMAN MYTHOLOGY *</pattern>
+        <template><srai>NEPTUNE</srai></template>
+    </category>
+
+    <!-- -->
+
+    <category>
+        <pattern>TV CHARACTER</pattern>
+        <template>Mr. Spock from Star Trek said live long and prosper</template>
+    </category>
+
+    <category>
+        <pattern>* CHARACTER *</pattern>
+        <template><srai>TV CHARACTER</srai></template>
+    </category>
+
+    <category>
+        <pattern>* LIVE LONG AND PROSPER</pattern>
+        <template><srai>TV CHARACTER</srai></template>
+    </category>
+
+    <!-- -->
+
+    <category>
+        <pattern>BIRMINGHAM</pattern>
+        <template>The city of Birmingham is in the state of Alabama</template>
+    </category>
+
+    <category>
+        <pattern>* FIND THE CITY *</pattern>
+        <template><srai>BIRMINGHAM</srai></template>
+    </category>
+
+    <category>
+        <pattern>THE CITY OF BIRMINGHAM</pattern>
+        <template><srai>BIRMINGHAM</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>HILLS</pattern>
+        <template>The Cheviots hills divide England from Scotland</template>
+    </category>
+
+    <category>
+        <pattern>HILLS *</pattern>
+        <template><srai>HILLS</srai></template>
+    </category>
+
+    <category>
+        <pattern>DIVIDE *</pattern>
+        <template><srai>HILLS</srai></template>
+    </category>
+
+    <category>
+        <pattern>* ENGLAND FROM SCOTLAND</pattern>
+        <template><srai>HILLS</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>FLOWERING</pattern>
+        <template>The Antartica has the fewer flowering plants</template>
+    </category>
+
+    <category>
+        <pattern>* THE FEWEST *</pattern>
+        <template><srai>FLOWERING</srai></template>
+    </category>
+
+    <category>
+        <pattern>FLOWERING *</pattern>
+        <template><srai>FLOWERING</srai></template>
+    </category>
+
+    <category>
+        <pattern>* PLANTS</pattern>
+        <template><srai>FLOWERING</srai></template>
+    </category>
+
+    <category>
+        <pattern>CONTINENT HAS *</pattern>
+        <template><srai>FLOWERING</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>CORNWALL</pattern>
+        <template>Lizard Point is the most southerly point of mainland Britain</template>
+    </category>
+
+    <category>
+        <pattern>CORNWALL *</pattern>
+        <template><srai>CORNWALL</srai></template>
+    </category>
+
+    <category>
+        <pattern>* SOUTHERLY POINT *</pattern>
+        <template><srai>CORNWALL</srai></template>
+    </category>
+
+    <category>
+        <pattern>* MAINLAND BRITAIN</pattern>
+        <template><srai>CORNWALL</srai></template>
+    </category>
+
+    <!--  -->
+
+    <category>
+        <pattern>PIGS</pattern>
+        <template>Christopher Columbus introduced pigs in North America</template>
+    </category>
+
+    <category>
+        <pattern>* PIGS *</pattern>
+        <template><srai>PIGS</srai></template>
+    </category>
+
+    <category>
+        <pattern>EXPLORER *</pattern>
+        <template><srai>PIGS</srai></template>
+    </category>
+
+    <category>
+        <pattern>* NORTH AMERICA</pattern>
+        <template><srai>PIGS</srai></template>
+    </category>
+
+    <!-- WHEN IS THE NEXT SOLAR ECLIPSE -->
+
+    <category>
+        <pattern>ECLIPSE</pattern>
+        <template>The next solar eclipse will be in 2023</template>
+    </category>
+
+    <category>
+        <pattern>* SOLAR ECLIPSE</pattern>
+        <template><srai>ECLIPSE</srai></template>
+    </category>
+
+    <!-- WHICH IS THE COMMON NAME OF SODIUM CHLORIDE -->
+
+    <category>
+        <pattern>SODIUM CHLORIDE</pattern>
+        <template>The common name of Sodium Chloride is salt</template>
+    </category>
+
+    <category>
+        <pattern>* SODIUM CHLORIDE</pattern>
+        <template><srai>SODIUM CHLORIDE</srai></template>
+    </category>
+
+    <category>
+        <pattern>COMMON NAME OF *</pattern>
+        <template><srai>SODIUM CHLORIDE</srai></template>
+    </category>
+
+    <!-- IN WHICH COUNTRY YOU FIND -->
+
+    <category>
+        <pattern>VALPARAISO</pattern>
+        <template>In Chile of course</template>
+    </category>
+
+    <category>
+        <pattern>COUNTRY YOU FIND *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <!-- WHAT COLOUR IS THE SUN -->
+
+    <category>
+        <pattern>SUN</pattern>
+        <template>The sun is yellow</template>
+    </category>
+
+    <category>
+        <pattern>* SUN</pattern>
+        <template><srai>SUN</srai></template>
+    </category>
+
+    <category>
+        <pattern>COLOUR IS THE SUN</pattern>
+        <template><srai>SUN</srai></template>
+    </category>
+
+    <!-- WHO IS THE BEST FRIEND OF MEN  -->
+
+    <category>
+        <pattern>BEST FRIEND</pattern>
+        <template>The best friend of men is the dog</template>
+    </category>
+
+    <category>
+        <pattern>BEST FRIEND *</pattern>
+        <template><srai>BEST FRIEND</srai></template>
+    </category>
+
+    <category>
+        <pattern>* MEN</pattern>
+        <template><srai>BEST FRIEND</srai></template>
+    </category>
+
+    <!-- WHEN WERE YOU BORN -->
+
+    <category>
+        <pattern>BORN</pattern>
+        <template>I was born in <bot name="birth"/> in the University of Chile</template>
+    </category>
+
+    <category>
+        <pattern>* BORN</pattern>
+        <template><srai>BORN</srai></template>
+    </category>
+
+    <category>
+        <pattern>* WERE YOU BORN</pattern>
+        <template><srai>BORN</srai></template>
+    </category>
+
+    <!-- WHAT IS YOUR TEAMS NAME -->
+
+    <category>
+        <pattern>TEAM</pattern>
+        <template>My team is called Home Breakers Robotics Team</template>
+    </category>
+
+    <category>
+        <pattern>* TEAMS *</pattern>
+        <template><srai>TEAM</srai></template>
+    </category>
+
+    <!-- CONECTORES COMUNES -->
+
+    <category>
+        <pattern>IN *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>IS *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>ARE *</pattern>
+        <template><srai><star index="2"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>THE *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>TO THE *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>FOR *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>A *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>OF *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>WAS *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>HAS *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>AN *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>DURING *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>INTO *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>ON *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <!-- INICIO DE PREGUNTA COMUN -->
+
+    <category>
+        <pattern>WHO *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>WHAT *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>HOW MANY *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>WHEN *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>WHICH *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>IN WHICH *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>TO WHICH *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <!-- PALABRAS COMUNES -->
+
+    <category>
+        <pattern>NAME *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>KNOWN AS *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+    <category>
+        <pattern>CALLED *</pattern>
+        <template><srai><star index="1"/></srai></template>
+    </category>
+
+</aiml>

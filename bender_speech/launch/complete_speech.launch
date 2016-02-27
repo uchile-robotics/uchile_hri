@@ -1,0 +1,20 @@
+<launch>
+
+	<!-- available languages: { english , spanish } -->
+	<arg name="language" default="english"/>
+	<arg name="use_double_mic" default="false"/>
+	<arg name="show_subtitles" default="false" />
+
+	<!-- Speech -->
+	<include file="$(find bender_speech)/launch/speech.launch">
+		<arg name="use_double_mic" value="$(arg use_double_mic)"/>
+		<arg name="language"       value="$(arg language)"      />
+		<arg name="show_subtitles" value="$(arg show_subtitles)"/>
+	</include>
+
+	<!-- sound player -->
+	<include file="$(find bender_fun)/launch/sound_player.launch"/>
+
+	<!--include file="$(find bender_speech)/launch/macros_speech.launch"/-->
+
+</launch>

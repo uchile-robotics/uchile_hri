@@ -1,0 +1,23 @@
+<launch>
+
+	<!-- available languages: { english , spanish } -->
+	<arg name="language" default="spanish"/>
+	<arg name="show_subtitles" default="true"/>
+
+	<!-- Sound Play -->
+	<arg name="soundplay_name" value="sound_play"/>
+	<node name="$(arg soundplay_name)" pkg="sound_play" type="soundplay_node.py" ns="/bender/speech/">
+		<remap from="/diagnostics" to="$(arg soundplay_name)/diagnostics"/>
+	</node>
+
+	<!-- Synthesizer -->
+	<node name="synthesizer" pkg="bender_speech" type="synthesizer" ns="/bender/speech/">
+		<param name="language" value="$(arg language)"/>
+		<param name="sound_play_node_name" value="$(arg soundplay_name)"/>
+		<remap from="synthesizer/diagnostics" to="$(arg soundplay_name)/diagnostics"/>
+	</node>
+
+	<!-- subtitles -->
+	<include file="$(find bender_gui_subtitles)/launch/subtitles.launch" if="$(arg show_subtitles)"/>
+
+</launch>

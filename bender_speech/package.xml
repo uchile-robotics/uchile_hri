@@ -17,10 +17,10 @@
     <!-- PACKAGE INFORMATION -->
     <!-- - - - - - - - - - - -->
 
-    <name>bender_ai</name>
+    <name>bender_speech</name>
     <version>2.0.0</version>
     
-    <description>The bender_ai package</description>
+    <description>The bender_speech package</description>
 
     <!-- team -->
     <maintainer email="bender.devel@gmail.com">
@@ -29,8 +29,6 @@
       Bender Team - UChile Homebreakers</author>
 
     <!-- specific developers -->
-    <author email="gonzalo@todo.todo">Gonzalo Olave</author>
-    <maintainer email="gonzalo@todo.todo">Gonzalo Olave</maintainer>
 
 
     <!-- about bender and related repository -->
@@ -58,9 +56,11 @@
     <depend>roscpp</depend>
     <depend>roslib</depend>
     <depend>rospy</depend>
+    <depend>sound_play</depend>
     <depend>std_msgs</depend>
     <depend>std_srvs</depend>
     <depend>bender_utils</depend>
+    <!-- rosdep name="gstreamer_pocketsphinx"/ -->
 
 
     <!-- build dependencies -->
@@ -70,7 +70,6 @@
 
 
     <!-- excution dependencies -->
-    <!--exec_depend>python-aiml</exec_depend-->
 
 
     <!-- test dependencies -->
@@ -84,4 +83,3 @@
     </export>
 
 </package>
-

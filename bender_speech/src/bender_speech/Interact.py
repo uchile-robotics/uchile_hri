@@ -22,7 +22,7 @@ class Interact_server():
         self.bender_ai = AI.RobotAI()
         
         self.aiml_dir = roslib.packages.get_pkg_dir('bender_ai')+'/aiml'
-        #sxelf.bender_ai.initialize(self.aiml_dir)
+        #self.bender_ai.initialize(self.aiml_dir)
 
         # ROS communication
         self.s = rospy.Service('~/answer_request',TimerString,self.answer_request_server)

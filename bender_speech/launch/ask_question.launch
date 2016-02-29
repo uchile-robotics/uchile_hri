@@ -1,6 +1,0 @@
-<launch>
-
-	<!-- ask_question -->
-	<node name="ask_question" pkg="bender_speech" type="ask_question" ns="/bender/speech/"/>
-
-</launch>

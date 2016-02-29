@@ -32,7 +32,7 @@ class recognizer(object):
         self.dictionary_loaded = False        
         self.pipeline = ""
         self.merge_dict = dict()
-        self.available_dictionaries = ""
+        self.available_dictionaries = dict()
         self.mic = []
         self.pkg_dir = roslib.packages.get_pkg_dir('bender_speech')
 
@@ -101,6 +101,7 @@ class recognizer(object):
             lm_ = self.pkg_dir+'/Grammar/'+dictionary+'.lm'
             jsgf_ = self.pkg_dir+'/Grammar/'+dictionary+'.jsgf'
         else:
+            rospy.logerr("Dictionary not found")
             return load_dictionary_serviceResponse("Dictionary not found")
         
         if dictionary_found is True:

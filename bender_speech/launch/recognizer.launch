@@ -12,13 +12,13 @@
 
     <!-- Recognizer -->
     <node name="recognizer" pkg="bender_speech" type="recognizer.py" ns="/bender/speech/" respawn="true">
-        <rosparam file = "$(find bender_speech)/config/recognition_params.yaml" command="load"/>
+        <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
         <param name="mic_number"    value="$(arg mic_number_1)"/>
         <param name="hmm"           value="$(arg hmm)"/>
     </node>
 
     <node name="recognizer2" pkg="bender_speech" type="recognizer.py" ns="/bender/speech/" if="$(arg use_double_mic)" respawn="true">
-        <rosparam file = "$(find bender_speech)/config/recognition_params.yaml" command="load"/>
+        <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
         <param name="mic_number" value="$(arg mic_number_2)" />
     </node>
 

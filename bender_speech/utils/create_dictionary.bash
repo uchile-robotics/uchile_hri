@@ -88,32 +88,38 @@ _file_path=$(_bender_get_filepath "$_jsgf_file")
 _file_base=$(_bender_get_file_noextname "$_jsgf_file")
 _fullname_noext="$_file_path/$_file_base"
 _utils_path="$(rospack find bender_speech)"/utils
+unset _file_path
+unset _file_base
 
 # jsgf  -->   fsg
 sphinx_jsgf2fsg -jsgf "$_fullname_noext".jsgf -fsg "$_fullname_noext".fsg
 
 # fsg   -->   words
 perl "$_utils_path"/fsg2wlist.pl<"$_fullname_noext".fsg> "$_fullname_noext".words
-
 #text2wfreq < "$_fullname_noext".txt | wfreq2vocab > "$_fullname_noext".vocab
 #sed 's:#.*$::g' "$_fullname_noext".vocab > "$_fullname_noext".words
 
 # delete repeated words
 perl -ne 'print unless $seen{$_}++' "$_fullname_noext".words > "$_fullname_noext".word
 
-
 # convierte las palabras a minusculas
 perl -pe '$_= lc($_)' "$_fullname_noext".word > "$_fullname_noext".words
-rm -f "$_fullname_noext".word
 
 # words -->   dic
 perl "$_logios_tool" -tools "$BENDER_SPEECH_LOGIOS_DIR"/Tools/ -dictdir . -words "$_fullname_noext".words -dict "$_fullname_noext".dic
+
+
+##
+## ====================================================
+## Clean up
+## ====================================================
+##
+
+rm -f "$_fullname_noext".word
 rm -f logios.log
 rm -f pronunciation.log
 
-
-unset _file_path
-unset _file_base
 unset _fullname_noext
 unset _utils_path
+
 echo -e "Done :)"

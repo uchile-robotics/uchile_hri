@@ -13,7 +13,6 @@ install_files="$install_path"/files;
 # - - - - - - I N S T A L L - - - - - -
 # # # # # # # # # # # # # # # # # # # #
 
-roscd;
 
 
 ## Download and install dependences
@@ -61,21 +60,21 @@ sudo rm -rf pocketsphinx-0.8/;
 # LOGIOS & CMUCLMTK tools (for offline compiling of dictionaries
 
 # requerido
-sudo apt-get install subversion ;
+sudo apt-get install subversion
 
 # download source
 # TODO: fix this. when trying to install this from command line (using this install.sh script)
 # some svn refs are not properly downloaded.
-cd ;
-svn checkout --non-recursive http://svn.code.sf.net/p/cmusphinx/code/trunk cmusphinx-code ;
-svn update --set-depth infinity cmusphinx-code/logios ;
-svn update --set-depth infinity cmusphinx-code/cmuclmtk ;
+cd "$BENDER_WS"/install/soft/hri/speech/recognizer
+svn checkout --non-recursive http://svn.code.sf.net/p/cmusphinx/code/trunk cmusphinx-code
+svn update --set-depth infinity cmusphinx-code/logios
+svn update --set-depth infinity cmusphinx-code/cmuclmtk
 
 # make
-cd ~/cmusphinx-code/cmuclmtk/ ;
-./autogen.sh ;
-./configure ;
-sudo make install ;
+cd cmusphinx-code/cmuclmtk/
+./autogen.sh
+./configure
+sudo make install
 
 # OBS: Si se encuentran problemas de compilación revisar paquetes de PERL faltantes
 

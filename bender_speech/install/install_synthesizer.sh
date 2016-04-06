@@ -12,7 +12,6 @@ install_files="$install_path"/files;
 # - - - - - - I N S T A L L - - - - - -
 # # # # # # # # # # # # # # # # # # # #
 
-roscd;
 
 echo ""
 echo "Installing speech synthesizer";

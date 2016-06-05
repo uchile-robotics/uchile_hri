@@ -1,30 +1,34 @@
-#!/bin/sh
+#!/bin/bash
+#
+# prefer running: 
+# > cdb bender_speech
+# > bash install/install.sh
+#
 
 
 # - - - - - - S E T U P - - - - - - - -
 # # # # # # # # # # # # # # # # # # # #
 
 # Useful Variables
-pkg_name="bender_speech";
-install_path=$(rospack find $pkg_name)/install;
-install_files="$install_path"/files;
+install_space="$BENDER_WS"/install/soft/hri/speech
+mkdir -p "$install_space" && cd "$install_space"
 
 # - - - - - - I N S T A L L - - - - - -
 # # # # # # # # # # # # # # # # # # # #
 
 
 echo ""
-echo "Installing speech synthesizer";
-echo "-------------------------------";
+echo "Installing speech synthesizer"
+echo "-----------------------------"
 echo ""
 
 ## Download and install dependences
 
 # speech synthesizer (festival):
-sudo apt-get install festival festlex-cmu festlex-poslex festlex-oald libestools1.2;
+sudo apt-get install festival festlex-cmu festlex-poslex festlex-oald libestools1.2
 
 # other tools
-sudo apt-get install unzip;
+sudo apt-get install unzip
 
 
 # Installing voices for the speech synthesis system
@@ -71,25 +75,43 @@ sudo apt-get install festvox-ellpc11k
 # english voice : http://tcts.fpms.ac.be/synthesis/mbrola/dba/us2/us2-980812.zip
 # voice wrapper : http://www.festvox.org/packed/festival/latest/festvox_us2.tar.gz
 festvox_path="/usr/share/festival/voices"
-festvox_path_en=$festvox_path/english
+festvox_path_en="$festvox_path"/english
 
 
 # Install the mbrola parser
-cd "$install_files"/mbrola_voices;
-sudo dpkg -i mbrola3.0.1h_i386.deb;
+mbrola_folder="$install_space"/files/mbrola_voices
+if [ -d "$mbrola_folder" ]; then
 
-# Unzip/tar
-rm -rf us2; unzip -x us2-980812.zip;
-tar xvf festvox_us2.tar.gz;
+	install_token="$install_space"/INSTALLED_MBROLA_VOICES
+	if [ ! -e "$install_token" ]; then
+	
+		cd "$mbrola_folder"
+		sudo dpkg -i mbrola3.0.1h_i386.deb
 
-# Install voice and wrapper
-sudo rm -rf $festvox_path_en/us2_mbrola/*; sudo mkdir -p $festvox_path_en/us2_mbrola/;
-sudo mv us2 $festvox_path_en/us2_mbrola/;
-sudo mv -f festival/lib/voices/english/us2_mbrola/* $festvox_path_en/us2_mbrola/;
+		# Unzip/tar
+		rm -rf us2; unzip -x us2-980812.zip
+		tar xvf festvox_us2.tar.gz
 
-# clean
-rm -rf us2/;
-rm -rf festival/;
+		# Install voice and wrapper
+		sudo rm -rf $festvox_path_en/us2_mbrola/*; sudo mkdir -p $festvox_path_en/us2_mbrola/
+		sudo mv us2 $festvox_path_en/us2_mbrola/
+		sudo mv -f festival/lib/voices/english/us2_mbrola/* $festvox_path_en/us2_mbrola/
+
+		# clean
+		rm -rf us2/
+		rm -rf festival/
+
+		# mark as installed
+		touch "$install_token"
+	else
+		echo " - mbrola_voices is already installed"
+	fi
+else
+	echo " - mbrola folder not found!: $mbrola_folder"
+	echo "   please run install.sh"
+	exit 1
+fi
+
 
 ## C.- CMU Arctic voices
 ## - - - - - - - - - - - - - - - -

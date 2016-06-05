@@ -23,7 +23,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 
  # para la instalación de LOGIOS (compilación de diccionarios)
-export BENDER_SPEECH_LOGIOS_DIR="$BENDER_WS"/install/soft/hri/speech/recognizer/cmusphinx-code/logios
+export BENDER_SPEECH_LOGIOS_DIR="$BENDER_WS"/install/soft/hri/speech/cmusphinx-code/logios
 
     
 

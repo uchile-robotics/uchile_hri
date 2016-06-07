@@ -8,7 +8,7 @@ set -o errexit
 ## "Includes"
 ## ====================================================
 ##
-source "$BENDER_SYSTEM/bash/functions.bash"
+source "$BENDER_SYSTEM/bash/functions.sh"
 source "$(rospack find bender_speech)/utils/funciones.bash"
 
 

@@ -9,7 +9,7 @@
 ## "Includes"
 ## ====================================================
 ##
-source "$BENDER_SYSTEM/bash/functions.bash"
+source "$BENDER_SYSTEM/bash/functions.sh"
 
 
 ##

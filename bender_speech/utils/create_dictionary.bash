@@ -2,10 +2,10 @@
 # Compila diccionarios para reconocimiento de voz
 #
 # Uso:
-# ./create_dictionary.bash mi_diccionario.jsgf
+# bash create_dictionary.bash mi_diccionario.jsgf
 #
 # Lo que compilará el <mi_diccionario.jsgf> provisto
-# El path al .jsgf debe ser entreado en relación a la carpeta bender_speech/Grammar
+# El path al .jsgf debe ser entreado en relación a la carpeta bender_speech
 #
 # OBS 1: Es necesario instalar LOGIOS y CMUCLMTK (ver install/install.sh)
 # OBS 2: Es necesario que exista la variable de entorno: "BENDER_SPEECH_LOGIOS_DIR" (ver install/setup.sh)

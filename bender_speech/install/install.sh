@@ -66,9 +66,6 @@ else
 fi
 
 
-# install synthesizer
-bash "$pkg_path"/install/install_synthesizer.sh
-
 # install recognizer
 bash "$pkg_path"/install/install_recognizer.sh
 

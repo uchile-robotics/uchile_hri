@@ -45,7 +45,7 @@ class recognizer(object):
         rospy.Service("~start", Empty, self.start)
         rospy.Service("~stop", Empty, self.stop)
         rospy.Service("~load_dictionary", load_dictionary_service,self.load_dictionary)
-        self.sound = rospy.ServiceProxy('/bender/fun/sound_player/play',play_sound)
+        self.sound = rospy.ServiceProxy('/bender/hw/sound/play', play_sound)
         
         # register function fot shutdown signal
         rospy.on_shutdown(self.shutdown)
@@ -198,23 +198,35 @@ class recognizer(object):
     def start(self, msg):
 
         if self.dictionary_loaded:
-            self.sound( 1, 'start_recognize_sound')
-            rospy.sleep(0.3)
-            rospy.logwarn("Recognition Started. Listening...")
+            try:
+                sound_path = self.pkg_dir + "/config/start_recognize_sound.wav"
+                self.sound(True, sound_path)
+                rospy.sleep(0.3)
+            except Exception, e:
+                rospy.logwarn("... failed to play the start_recognize_sound.wav file")
+            
+            rospy.loginfo("Recognition Started. Listening...")
             self.pipeline.set_state(gst.STATE_PLAYING)
         else:
             rospy.logwarn("Please load dictionary first")
         return EmptyResponse()
 
+
     def stop(self, msg):
         
         if self.dictionary_loaded:
-            self.sound( 1, 'stop_recognize_sound')
-            rospy.sleep(0.3)
-            rospy.logwarn("Recognition stopped")
+            try:
+                sound_path = self.pkg_dir + "/config/stop_recognize_sound.wav"
+                self.sound(True, sound_path)
+                rospy.sleep(0.3)
+            except Exception, e:
+                rospy.logwarn("... failed to play the stop_recognize_sound.wav file")
+            
+            rospy.loginfo("Recognition stopped")
             self.pipeline.set_state(gst.STATE_NULL)
             self.vad.set_property('silent', True)
             return EmptyResponse()
+
         else:
             rospy.logwarn("I can't stop because I haven't started")
             

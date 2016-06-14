@@ -52,30 +52,13 @@
     <!-- build, export, and execution dependencies -->
     <depend>bender_msgs</depend>
     <depend>bender_srvs</depend>
-    <depend>diagnostic_msgs</depend>
     <depend>roscpp</depend>
     <depend>roslib</depend>
     <depend>rospy</depend>
-    <depend>sound_play</depend>
     <depend>std_msgs</depend>
     <depend>std_srvs</depend>
     <depend>bender_utils</depend>
     <!-- rosdep name="gstreamer_pocketsphinx"/ -->
-
-
-    <!-- build dependencies -->
-
-
-    <!-- export dependencies -->
-
-
-    <!-- excution dependencies -->
-
-
-    <!-- test dependencies -->
-
-
-    <!-- documentation dependencies -->
 
 
     <!-- export -->

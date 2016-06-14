@@ -22,7 +22,4 @@
         <param name="mic_number" value="$(arg mic_number_2)" />
     </node>
 
-    <!-- Microphone Launcher>
-    <include file="$(find bender_speech)/launch/launch_microphone.launch"/-->
-
 </launch>

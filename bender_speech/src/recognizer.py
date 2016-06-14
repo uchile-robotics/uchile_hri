@@ -15,7 +15,7 @@ import gst
 
 from std_msgs.msg import String as std_string
 from std_srvs.srv import Empty, EmptyResponse
-from bender_srvs.srv import load_dictionary_service, load_dictionary_serviceResponse, play_sound
+from bender_srvs.srv import String, StringResponse
 
 from threading import Thread
 import sys
@@ -44,9 +44,8 @@ class recognizer(object):
         # -- services --
         rospy.Service("~start", Empty, self.start)
         rospy.Service("~stop", Empty, self.stop)
-        rospy.Service("~load_dictionary", load_dictionary_service,self.load_dictionary)
-        self.sound = rospy.ServiceProxy('/bender/hw/sound/play', play_sound)
-        
+        rospy.Service("~load_dictionary", String,self.load_dictionary)
+
         # register function fot shutdown signal
         rospy.on_shutdown(self.shutdown)
         
@@ -82,7 +81,15 @@ class recognizer(object):
     def load_dictionary(self,req):
         """ Initialize the speech pipeline components. """
         
-        rospy.loginfo("Loading dictionary '" + req.dictionary + "'")
+        if rospy.has_param('~current_dictionary'):
+            current_dict = rospy.get_param('~current_dictionary')
+            if current_dict == req.data:
+                rospy.loginfo("Dictionary '" + req.data + "' already loaded, ready for speech recognition")
+                return StringResponse("Dictionary '" + req.data + "' already loaded, ready for recognition")
+
+        rospy.set_param('~current_dictionary',req.data)
+
+        rospy.loginfo("Loading dictionary '" + req.data + "'")
         dictionary_found = False
 
         dict_ = ""
@@ -91,18 +98,15 @@ class recognizer(object):
         jsgf_ = ""
         hmm_ = self.hmm
 
-        if req.dictionary in self.available_dictionaries.keys():
-            dict = self.available_dictionaries[req.dictionary]
-            dictionary = dict[0]
-            model = dict[1]
+        if req.data in self.available_dictionaries.keys():
+            dic = self.available_dictionaries[req.data]
+            dictionary = dic[0]
+            model = dic[1]
             dictionary_found = True
             dict_ = self.pkg_dir+'/Grammar/'+dictionary+'.dic'
             fsg_ = self.pkg_dir+'/Grammar/'+dictionary+'.fsg'
             lm_ = self.pkg_dir+'/Grammar/'+dictionary+'.lm'
             jsgf_ = self.pkg_dir+'/Grammar/'+dictionary+'.jsgf'
-        else:
-            rospy.logerr("Dictionary not found")
-            return load_dictionary_serviceResponse("Dictionary not found")
         
         if dictionary_found is True:
 
@@ -173,15 +177,15 @@ class recognizer(object):
 
             # parse dictionary for merge variables      
             if not self.parse_dictionary(jsgf_):
-                return load_dictionary_serviceResponse("Dictionary loaded, BUT found errors on merge definitions") 
+                return StringResponse("Dictionary loaded, BUT found errors on merge definitions") 
 
             #self.start(Empty)
-            rospy.loginfo("Dictionary '" + req.dictionary + "' loaded, ready for speech recognition")
-            return load_dictionary_serviceResponse("Dictionary loaded, ready for recognition")
+            rospy.loginfo("Dictionary '" + req.data + "' loaded, ready for speech recognition")
+            return StringResponse("Dictionary '" + req.data + "' loaded, ready for recognition")
 
         else:
-            rospy.logerr("Dictionary '" + req.dictionary + "' not found")
-            return load_dictionary_serviceResponse("Dictionary not found")
+            rospy.logerr("Dictionary '" + req.data + "' not found")
+            return StringResponse("Dictionary '" + req.data + "' not found")
 
         rospy.loginfo(self.launch_config)
     
@@ -198,14 +202,7 @@ class recognizer(object):
     def start(self, msg):
 
         if self.dictionary_loaded:
-            try:
-                sound_path = self.pkg_dir + "/config/start_recognize_sound.wav"
-                self.sound(True, sound_path)
-                rospy.sleep(0.3)
-            except Exception, e:
-                rospy.logwarn("... failed to play the start_recognize_sound.wav file")
-            
-            rospy.loginfo("Recognition Started. Listening...")
+            rospy.logwarn("Recognition started. Listening...")
             self.pipeline.set_state(gst.STATE_PLAYING)
         else:
             rospy.logwarn("Please load dictionary first")
@@ -215,21 +212,12 @@ class recognizer(object):
     def stop(self, msg):
         
         if self.dictionary_loaded:
-            try:
-                sound_path = self.pkg_dir + "/config/stop_recognize_sound.wav"
-                self.sound(True, sound_path)
-                rospy.sleep(0.3)
-            except Exception, e:
-                rospy.logwarn("... failed to play the stop_recognize_sound.wav file")
-            
-            rospy.loginfo("Recognition stopped")
+            rospy.logwarn("Recognition stopped")
             self.pipeline.set_state(gst.STATE_NULL)
             self.vad.set_property('silent', True)
             return EmptyResponse()
-
         else:
             rospy.logwarn("I can't stop because I haven't started")
-            
         return EmptyResponse()
 
     def asr_partial_result(self, asr, text, uttid):

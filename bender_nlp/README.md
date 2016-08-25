@@ -22,3 +22,20 @@ $ sudo python setup.py install
 
 ## Utilización
 
+Para ejecutar, basta con realizar un import de la clase, para luego ser utilizada desde el mismo iniciador de la clase:
+
+```
+$ python
+>>> import bender_nlp
+>>> orders = bender_nlp.GenerateOrder("go to the bedroom find a person and tell the time")
+>>> orders.verbs
+['go', 'find', 'tell']
+>>> orders.people
+['', u'person', '']
+>>> orders.objects
+['', '', '']
+>>> orders.information
+['', '', u'time']
+```
+
+También es posible realizar el comando `from bender_nlp import GenerateOrder` para llamar a la función directamente.

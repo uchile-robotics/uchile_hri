@@ -337,11 +337,12 @@ class GenerateOrder:
 
 #### Uncomment if you want to try
 if __name__=='__main__':
-
-	sin = "go to the kitchen grasp the coke and bring it to me"
-	s = GenerateOrder(sin)
-
-	print s.verbs
-	print s.people
-	print s.objects
-	print s.information
+        sens = "go to the kitchen grasp the coke and bring it to me"
+        s = GenerateOrder(sens)
+        print sens
+        print '==========================='
+        s.show()
+	#print s.verbs
+	#print s.people
+	#print s.objects
+	#print s.information

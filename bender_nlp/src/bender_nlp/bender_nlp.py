@@ -49,7 +49,7 @@ class GenerateOrder:
 				self.objects.append('')
 				self.places.append('')
 				self.information.append(s_info)
-				
+			print self.places
 
 
 
@@ -182,7 +182,7 @@ class GenerateOrder:
 			if v.string == 'go' or v.string=='move' or v.string == 'navigate': #Go #Move #Navigate
 				for name,value in self.cparser.items('go_1'):
 					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)                 
+					self.add_order(verb,oi[int(pos)],data1)			
 			elif v.string == 'leave': #Leave
 				for name,value in self.cparser.items('leave_1'):
 					verb,data1,pos = value.split(',')
@@ -333,16 +333,34 @@ class GenerateOrder:
 					self.add_order(verb,oi[int(pos)],data1)
 			else:
 				print 'Verb {} not found'.format(v.string)
+                self.replacePRP()
+                                
+        def replacePRP(self):
+                while u'it' in self.objects or u'them' in self.objects:
+                        if u'it' in self.objects:
+                                i = self.objects.index(u'it')
+                        elif u'them' in self.objects:
+                                i = self.objects.index(u'them')
+                        self.objects[i] = [item for item in self.objects[i-1::-1] if item!=''][0]
+                while u'her' in self.people or u'him' in self.people:
+                        if u'her' in self.people:
+                                i = self.people.index(u'her')
+                        elif u'him' in self.people:
+                                i = self.people.index(u'him')
+                        self.people[i] = [item for item in self.people[i-1::-1] if item!=''][0]
+                        
 
-
-#### Uncomment if you want to try
 if __name__=='__main__':
-        sens = "go to the kitchen grasp the coke and bring it to me"
+        # Sentence to analize
+        sens = "go to the bedroom find Mia and follow her"
+        # Analize sentence and obtain orders
         s = GenerateOrder(sens)
-        print sens
-        print '==========================='
-        s.show()
-	#print s.verbs
-	#print s.people
-	#print s.objects
-	#print s.information
+        
+        # Uncomment for view results
+	print sens
+	print '==========================='
+	print 'Verbs  : {}'.format(s.verbs)
+	print 'People : {}'.format(s.people)
+	print 'Objects: {}'.format(s.objects)
+        print 'Places : {}'.format(s.places)
+	print 'Info   : {}'.format(s.information)

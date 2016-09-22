@@ -49,8 +49,6 @@ class GenerateOrder:
 				self.objects.append('')
 				self.places.append('')
 				self.information.append(s_info)
-			print self.places
-
 
 
 	#parse_sentence
@@ -334,7 +332,8 @@ class GenerateOrder:
 			else:
 				print 'Verb {} not found'.format(v.string)
                 self.replacePRP()
-                                
+
+        # replacePRP
         def replacePRP(self):
                 while u'it' in self.objects or u'them' in self.objects:
                         if u'it' in self.objects:

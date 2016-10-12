@@ -92,6 +92,7 @@ class GenerateOrder:
 					ss_aux.append(ss[i])
 				else:
 					isJoin = False
+                print ss_aux;type(ss_aux)
 		return ss_aux
 
 	#obtain_information
@@ -161,7 +162,12 @@ class GenerateOrder:
 			if sv_aux[-2].tag == 'WP' and sv_aux[-1].tag == 'VBZ':
 				return (verb, sv_aux[:-2], sto_aux, sin_aux)
 		return (verb, sv_aux, sto_aux, sin_aux)
-		
+
+        #generate_list
+	def generate_list(self, verb, oi):
+                for name,value in self.cparser.items(verb):
+			verb,data1,pos = value.split(',')
+			self.add_order(verb,oi[int(pos)],data1)
 		
 	#filter_sentences
 	def filter_sentences(self,sentences):
@@ -175,32 +181,21 @@ class GenerateOrder:
 			sen = split(sen)
 			chunk = sen[0].chunk
 			oi = self.obtain_information(chunk)
+                        print 'oi: {}'.format(oi)
 			v = chunk[0]
 			aux = []
 			if v.string == 'go' or v.string=='move' or v.string == 'navigate': #Go #Move #Navigate
-				for name,value in self.cparser.items('go_1'):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)			
+                                self.generate_list('go_1',oi)
 			elif v.string == 'leave': #Leave
-				for name,value in self.cparser.items('leave_1'):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+				self.generate_list('leave_1',oi)
 			elif v.string == 'answer': #Answer
-				for name,value in self.cparser.items('answer_1'):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list('answer_1',oi)
 			elif v.string == 'carry': #Carry
-				for name,value in self.cparser.items('carry_1'):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list('carry_1',oi)
 			elif v.string == 'introduce': #Introduce
-				for name,value in self.cparser.items('introduce_1'):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list('introduce_1',oi)
 			elif v.string == 'ask': #Ask
-				for name,value in self.cparser.items('ask_1'):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+				self.generate_list('ask_1',oi)
 			elif v.string == 'tell' or v.string == 'say': #Tell #Say
 				if oi[2] == []:
 					tag = 'tell_1'
@@ -208,9 +203,7 @@ class GenerateOrder:
 					tag = 'tell_3'
 				else:
 					tag = 'tell_2'
-				for name, value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'find' or v.string == 'locate': #Find #Locate
 				aux = [w.string for w in oi[1]]
 				if ('me' in aux or aux[0] != aux[0].lower() or 'person' in aux) and oi[3] == []:
@@ -221,18 +214,14 @@ class GenerateOrder:
 					tag = 'find_3'
 				elif aux[0] == aux[0].lower() and oi[3] != []:
 					tag = 'find_4'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'follow': #Follow
 				if oi[3] == []:
 					tag = 'follow_1'
 				else:
 					tag = 'follow_2'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
-			elif v.string == 'look': #Look
+                                self.generate_list(tag,oi)
+ 			elif v.string == 'look': #Look
 				if oi[2] == []:
 					aux = [w.string for w in oi[3]]
 				else:
@@ -248,9 +237,7 @@ class GenerateOrder:
 						tag = 'look_3'
 					else:
 						tag = 'look_4'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'grasp' or v.string == 'take': #Grasp #Take
 				if oi[2] == [] and oi[3] == []:
 					tag = 'take_1'
@@ -261,9 +248,7 @@ class GenerateOrder:
 						tag = 'take_2'
 					else:
 						tag = 'take_4'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'bring': #Bring
 				if oi[3] != []:
 					if len(oi[1]) == 1 and oi[1][0].tag == 'PRP':
@@ -276,13 +261,9 @@ class GenerateOrder:
 						tag = 'bring_3'
 					else:
 						tag = 'bring_4'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'place': #Place 
-				for name,value in self.cparser.items('place_1'):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list('place_1',oi)
 			elif v.string == 'give': #Give
 				if oi[3] != []:
 					if len(oi[1]) == 1 and oi[1][0].tag == 'PRP':
@@ -294,41 +275,31 @@ class GenerateOrder:
 						tag = 'give_1'
 					else:
 						tag = 'give_3'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'guide': #Guide
 				if len(oi[1]) == 1 and oi[1][0].tag == 'PRP':
 					tag = 'guide_1'
 				else:
 					tag = 'guide_2'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'get' or v.string == 'pick': #Get #Pick
 				if oi[3] != []:
 					tag = 'get_2'
 				else:
 					tag = 'get_1'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.string == 'deliver': #Deliver
 				if oi[2] != [] and oi[3] == []:
 					tag = 'deliver_1'
 				elif oi[2] == [] and oi[3] != []:
 					tag = 'deliver_2'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			elif v.words[0].string == 'escort': #Escort
 				if oi[3] != []:
 					tag = 'escort_1'
 				else:
 					tag = 'escort_2'
-				for name,value in self.cparser.items(tag):
-					verb,data1,pos = value.split(',')
-					self.add_order(verb,oi[int(pos)],data1)
+                                self.generate_list(tag,oi)
 			else:
 				print 'Verb {} not found'.format(v.string)
                 self.replacePRP()

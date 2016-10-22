@@ -13,35 +13,26 @@ install_files="$install_path"/files;
 # - - - - - - I N S T A L L - - - - - -
 # # # # # # # # # # # # # # # # # # # #
 
-roscd ;
 
 
-## Download and install dependences
 
-# speech recognizer (pocketsphinx)
-
-sudo apt-get install bison;
-
-cd "$install_files";
-git clone https://github.com/cmusphinx/sphinxbase.git;
-git clone https://github.com/cmusphinx/pocketsphinx.git;
-
-
-# other tools
-sudo apt-get install unzip;
-sudo apt-get install autoconf automake
 
 
 # Installing the speech recognition system
 # ==========================================
-
+cd;
+cd "$install_files";
 cd sphinxbase/;
-./autoge.sh;
+./autogen.sh;
 ./configure;
 make;
 sudo make install;
 
+export LD_LIBRARY_PATH=/usr/local/lib;
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig;
+
 cd ../pocketsphinx
+./autogen.sh;
 ./configure;
 make;
 sudo make install;

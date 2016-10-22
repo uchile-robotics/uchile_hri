@@ -3,7 +3,7 @@
 
 RecognizerROS::RecognizerROS():
     nh_("~"),
-    actionServer_(nh_, "recognizer", boost::bind(&RecognizerROS::executeCB, this, _1), false),
+    actionServer_(nh_, "recognizer_action", boost::bind(&RecognizerROS::executeCB, this, _1), false),
     loop_rate_(100)
 {
     is_on_ = false;
@@ -111,8 +111,17 @@ void RecognizerROS::recognize()
     is_on_ = true;
     if (recognizer_->status() == false){return;}
 
-    recognizer_->initDevice(mic_name_);
-
+    try
+    {
+        recognizer_->initDevice(mic_name_);
+    }
+    catch(exception& e)
+    {
+        ROS_ERROR_STREAM(e.what());
+        result_.final_result = "";
+        actionServer_.setAborted();
+        return;
+    }
     recognizer_->startUtt();
     
     utt_started = FALSE;

@@ -5,12 +5,13 @@
     <arg name="packagedir" default="$(find bender_speech)"/>
 
     <!-- Recognizer -->
-    <node name="recognizer" pkg="$(arg package)" type="RecognizerROS"  respawn="false" output="screen">
-        <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
-        <param name="mic_name"    value="$(arg mic_name)"/>
-        <param name="hmmdir"           value="$(arg hmmdir)"/>
-        <param name="packagedir"    value="$(arg packagedir)"/>
-    </node>
-
+   <group ns="bender">
+        <node name="recognizer" pkg="$(arg package)" type="RecognizerROS"  respawn="false" output="screen">
+            <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
+            <param name="mic_name"    value="$(arg mic_name)"/>
+            <param name="hmmdir"           value="$(arg hmmdir)"/>
+            <param name="packagedir"    value="$(arg packagedir)"/>
+        </node>
+    </group>
 
 </launch>

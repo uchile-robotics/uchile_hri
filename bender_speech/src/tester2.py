@@ -13,7 +13,7 @@ import bender_speech.msg
 def tester_client():
     # Creates the SimpleActionClient, passing the type of the action
     # (FibonacciAction) to the constructor.
-    client = actionlib.SimpleActionClient('/recognizer/recognizer', bender_speech.msg.DoRecognitionAction)
+    client = actionlib.SimpleActionClient('/bender/recognizer/recognizer_action', bender_speech.msg.DoRecognitionAction)
 
     # Waits until the action server has started up and started
     # listening for goals.

@@ -33,6 +33,7 @@ public:
     bool status();
     void update();
     std::string getSearch();
+    int getProb();
      
 private:
     AudioSource *as_;

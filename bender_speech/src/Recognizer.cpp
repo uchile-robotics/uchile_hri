@@ -167,3 +167,10 @@ std::string Recognizer::getSearch()
      return std::string(search_name);
 
 }
+
+int Recognizer::getProb()
+{
+    int prob;
+    prob = ps_get_prob(ps_);
+    return prob;
+}

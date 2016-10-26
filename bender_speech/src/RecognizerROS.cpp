@@ -103,10 +103,13 @@ void RecognizerROS::updateDirectories(std::string dictionary)
 
 
 
-void RecognizerROS::recognize()
+void RecognizerROS::recognize(double timeout)
 {
     uint8 utt_started;
     std::string search_name;
+    ros::Time begin = ros::Time::now();
+
+
 
     is_on_ = true;
     if (recognizer_->status() == false){return;}
@@ -117,9 +120,10 @@ void RecognizerROS::recognize()
     }
     catch(exception& e)
     {
+        is_on_ = false;
         ROS_ERROR_STREAM(e.what());
         result_.final_result = "";
-        actionServer_.setAborted();
+        actionServer_.setAborted(result_);
         return;
     }
     recognizer_->startUtt();
@@ -134,7 +138,8 @@ void RecognizerROS::recognize()
 
 
     
-    while(ros::ok()){
+    while(ros::ok())
+    {
         
 
         recognizer_->readAudio();
@@ -166,6 +171,7 @@ void RecognizerROS::recognize()
             
             
             result_.final_result = recognizer_->getHyp();
+            
 
 
             break;
@@ -177,6 +183,18 @@ void RecognizerROS::recognize()
                 break ;
             }*/
         }
+
+        if ((ros::Time::now()-begin).toSec() > timeout)
+        {
+            if (utt_started){recognizer_->endUtt();}
+            recognizer_->terminateDevice();
+            ROS_INFO_STREAM("Timeout");
+            result_.final_result = "";
+            actionServer_.setAborted();
+            is_on_=false;
+            return;
+        }
+        
         loop_rate_.sleep();
     }
     

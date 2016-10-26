@@ -28,7 +28,7 @@ public:
     void dynamicCallback(bender_speech::SpeechRecognitionConfig &config,uint32_t level);
     void resetRecognizer();
     void updateDirectories(std::string dictionary);
-    void recognize();
+    void recognize(double timeout=15.0);
 
 private:
 

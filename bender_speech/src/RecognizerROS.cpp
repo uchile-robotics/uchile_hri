@@ -44,8 +44,10 @@ void RecognizerROS::executeCB(const bender_speech::DoRecognitionGoalConstPtr &go
     std::string dictionary_name;
     dictionary_name = goal->dictionary;
     updateDirectories(dictionary_name);
-    recognizer_->setGrammar(grammardir_);
-    recognizer_->setDict(dictdir_);
+    //recognizer_->setDict(dictdir_);
+    //recognizer_->setGrammar(grammardir_);
+    resetRecognizer();
+
     //recognizer_->update();
     recognize();
 
@@ -57,13 +59,16 @@ void RecognizerROS::dynamicCallback(bender_speech::SpeechRecognitionConfig &conf
     // pkg_dir_= ros::package::getPath("bender_speech");
 
     // updateDirectories("Stage1/Stage2gpsr");
-    while(is_on_ && ros::ok()){};
+    
     vad_thres_ = config.vad_threshold;
     vad_pre_ = config.vad_prespeech;
     vad_post_ = config.vad_postspeech;
     vad_start_ = config.vad_startspeech;
     //boost::thread thread_b(&RecognizerROS::resetRecognizer,this);
-    resetRecognizer();
+    if(!is_on_)
+    {
+        resetRecognizer();
+    }
     // recognizer_.reset(new Recognizer(&as_,
     // "/usr/local/share/pocketsphinx/model/en-us/en-us",
     // grammardir_,
@@ -171,7 +176,7 @@ void RecognizerROS::recognize(double timeout)
             
             
             result_.final_result = recognizer_->getHyp();
-            
+            ROS_INFO_STREAM(result_.final_result);
 
 
             break;

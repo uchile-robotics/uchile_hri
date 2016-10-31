@@ -4,7 +4,7 @@ grammar sentence;
 
 
 
-public <sentence> =  <complete_sentenceA> | <complete_sentenceB>  |<complete_sentenceC>|<complete_sentenceD>|<complete_sentenceD2>|<complete_sentenceE>| <complete_sentenceF> | <complete_sentenceG>  | <complete_sentenceH>  | <complete_sentenceH2> | <complete_sentenceJ> | <complete_sentenceI>| <orderwithme> |<noise>;
+public <sentence> =  <complete_sentenceA> | <complete_sentenceB>  |<complete_sentenceC>|<complete_sentenceD>|<complete_sentenceD2>|<complete_sentenceE>| <complete_sentenceF> | <complete_sentenceG>  | <complete_sentenceH>  | <complete_sentenceH2> | <complete_sentenceJ> | <complete_sentenceI>| <orderwithme> |<noise> | BENDER;
 
 <complete_sentenceA> = <sentence_location_place> [AND] <ordernoperson> [AND] <orderwithperson> ;
 <complete_sentenceB> = <sentence_location_location> [AND] <getobj> [AND] <deliber_obj>;

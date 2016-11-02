@@ -1,25 +1,17 @@
 <launch>
-
-    <arg name="mic_1_number"    default="1"/> <!-- Microfono de atras (m-audio)-->
-    <arg name="hmm"             default="en-us"/> <!-- en-us-adapt -->
-
-    <!-- especificar numero si se desea usar -->
-    <arg name="use_double_mic" default="false"/>
-    <arg name="mic_2_number"   default="2"/> <!-- Microfono de adelante (asus)-->
- 
-    <arg name="mic_number_1"   value="$(arg mic_1_number)"/>
-    <arg name="mic_number_2"   value="$(arg mic_2_number)"/>
+    <arg name="package" default="bender_speech"/>
+    <arg name="mic_name"    default="alsa_input.usb-M-Audio_Producer_USB-00-USB.analog-stereo"/> <!-- Microfono de atras (m-audio)-->
+    <arg name="hmmdir"             default="/usr/local/share/pocketsphinx/model/en-us/en-us"/> <!-- en-us-adapt -->
+    <arg name="packagedir" default="$(find bender_speech)"/>
 
     <!-- Recognizer -->
-    <node name="recognizer" pkg="bender_speech" type="recognizer.py" ns="/bender/speech/" respawn="true">
-        <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
-        <param name="mic_number"    value="$(arg mic_number_1)"/>
-        <param name="hmm"           value="$(arg hmm)"/>
-    </node>
-
-    <node name="recognizer2" pkg="bender_speech" type="recognizer.py" ns="/bender/speech/" if="$(arg use_double_mic)" respawn="true">
-        <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
-        <param name="mic_number" value="$(arg mic_number_2)" />
-    </node>
+   <group ns="bender">
+        <node name="recognizer" pkg="$(arg package)" type="RecognizerROS"  respawn="false" output="screen">
+            <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
+            <param name="mic_name"    value="$(arg mic_name)"/>
+            <param name="hmmdir"           value="$(arg hmmdir)"/>
+            <param name="packagedir"    value="$(arg packagedir)"/>
+        </node>
+    </group>
 
 </launch>

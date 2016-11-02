@@ -13,7 +13,6 @@ available_dictionaries:
     quest: ["Stage1/sradt/questions",'fsg']
     questlm: ["Stage1/sradt/questions",'lm']
     s2_wakeme: ["Stage2/WakeMeUp/wakemedicc",'fsg']
-    basic: ["basic/basic",'fsg']
 
 # Parámetros del microfono del PC si se quiere ocupar
 mic_0:

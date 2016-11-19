@@ -46,8 +46,6 @@ public <sentence> =  <complete_sentenceA> | <complete_sentenceB>  |<complete_sen
 <ordernoperson> = <find> [FOR] [A | THE] <person_name> ;
 <ordernopersonloc> = ( FIND | LOOKFOR ) [A | THE] <person_name> <preposition_place> <place>;
 
- speak tell the day of the week
-
 <orderwithperson> = (<say> [<person_belongs>] <themes> | <answer> [<person_belongs>] A QUESTION | <follow> (<person_belongs>) [[<to_the>] [<place>]]); 
 <orderwithme> = (<say> ME <themes> | <answer> ME A QUESTION | <follow> ME) ;
 

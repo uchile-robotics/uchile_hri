@@ -1,13 +1,12 @@
-#jsgf v1.0;
-
+#JSGF V1.0;
 
 grammar sentence;
 
 
-public <sentence> =
+public <sentence> = <fetch_object_from_place> | <noise> [<noise>] [<noise>];
 
 
-<fetch_object_from_place> = <go> to the <place>
+<fetch_object_from_place> = <go> to the <place> <grasp> the <object> and bring it to me ;
 
 
 
@@ -16,10 +15,9 @@ public <sentence> =
 
 
 
-#***********informacion
-<place> = hallway | bedroom | kitchen | livingroom | door ;
 
-<location> = kitchentable | kitchencounter | cupboard | bar | couchtable | dinnertable | sofa | left-bedside-table | right-bedside-table | desk | bed | bookcase ;
+
+<place> = kitchen table | kitchen counter | cupboard | bar | couchtable | dinnertable | sofa | (left|right) bedside table | desk | bed | bookcase ;
 
 
 <object> = greentea |  papayamilk |  puremilk |  water | orangejuice | beer | biscuits | bubblegum | chocolates | tomatochips | barbecuechips | honeychip | coconutcereals | cocoballs | eggstars | gramsoup | beansauce | apple | lemon | pear | sponge | toiletpaper | soap | lotion | toothpaste | cloth | bowl | plate | tray;
@@ -33,7 +31,7 @@ public <sentence> =
 
 <go> = (go | navigate | reach | arrive | move | drive | enter | get into | visit | acces | approach) ;
 
-<grasp> = (grasp | get | grab | grip | catch | grapple | hold | hook ) ;
+<grasp> = (grasp | get | grab | grip | catch | grapple | hold | hook | take) ;
 
 <bring> = (bring | carry | deliver | return | transport | give | fetch) ;
 
@@ -50,15 +48,9 @@ public <sentence> =
 //-->> key="<grasp>"  value="grasp"
 //-->> key="<bring>" value="bring"
 //-->> key="<find>"  value="find"
-//-->> key="<offer>" value="offer"
-//-->> key="<count>"  value="count"
-//-->> key="<report>" value="report"
-//-->> key="<introduce>"  value="introduce"
 
-//-->> key="<answer>" value="answer"
-//-->> key="<guide>"  value="guide"
+
 //-->> key="<put>" value="put"
 //-->> key="<say>"  value="say"
 //-->> key="<ask>" value="ask"
-//-->> key="<follow>"  value="follow"
-//-->> key="<return>"  value="return"
+

@@ -20,3 +20,4 @@ while True:
 	print 'Objects: {}'.format(s.objects)
 	print 'Places : {}'.format(s.places)
 	print 'Info   : {}'.format(s.information)
+	print s.verbs.pop()

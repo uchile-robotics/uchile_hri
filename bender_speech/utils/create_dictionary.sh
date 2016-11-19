@@ -5,7 +5,7 @@ _jsgf_file="$1"
 _file_path="$(rospack find bender_speech)"/Grammar
 _utils_path="$(rospack find bender_speech)"/utils
 
-_fullname_noext="$_file_path/"/"$_jsgf_file"
+_fullname_noext="$_file_path"/"$_jsgf_file"
 
 sphinx_jsgf2fsg -jsgf "$_fullname_noext".jsgf -fsg "$_fullname_noext".fsg
 

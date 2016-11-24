@@ -8,39 +8,25 @@ RecognizerROS::RecognizerROS():
 {
     is_on_ = false;
 
-    
-    if(nh_.hasParam("hmmdir"))
-    {
-        nh_.getParam("hmmdir",hmmdir_);
-    }
-    if(nh_.hasParam("packagedir"))
-    {
-        nh_.getParam("packagedir",pkg_dir_);
-    }
-   
-    if(nh_.hasParam("mic_name"))
-    {
-        nh_.getParam("mic_name",mic_name_);
-    }
-
+    bender_utils::ParameterServerWrapper psw;
+    psw.getParameter("hmmdir", hmmdir_, hmmdir_);
+    psw.getParameter("mic_name", mic_name_, mic_name_);
+    pkg_dir_ = ros::package::getPath("bender_speech");
+  
+    // default dictionary
     updateDirectories("Stage1/Stage2gpsr");
 
     actionServer_.start();
     reconfigureCallback_ = boost::bind(&RecognizerROS::dynamicCallback,this, _1, _2);
     parameterServer_.setCallback(reconfigureCallback_);
-        
 }
 
 
-RecognizerROS::~RecognizerROS()
-{
-
-}
+RecognizerROS::~RecognizerROS() { }
 
 
 void RecognizerROS::executeCB(const bender_speech::DoRecognitionGoalConstPtr &goal)
 {
-    
     std::string dictionary_name;
     dictionary_name = goal->dictionary;
     updateDirectories(dictionary_name);
@@ -53,9 +39,7 @@ void RecognizerROS::executeCB(const bender_speech::DoRecognitionGoalConstPtr &go
 
 }
 void RecognizerROS::dynamicCallback(bender_speech::SpeechRecognitionConfig &config,uint32_t level)
-{
-    
-    
+{   
     // pkg_dir_= ros::package::getPath("bender_speech");
 
     // updateDirectories("Stage1/Stage2gpsr");
@@ -114,71 +98,50 @@ void RecognizerROS::recognize(double timeout)
     std::string search_name;
     ros::Time begin = ros::Time::now();
 
-
-
     is_on_ = true;
-    if (recognizer_->status() == false){return;}
+    if (recognizer_->status() == false) { return; }
 
-    try
-    {
+    try {
         recognizer_->initDevice(mic_name_);
     }
-    catch(exception& e)
-    {
+    catch(exception& e) {
         is_on_ = false;
         ROS_ERROR_STREAM(e.what());
         result_.final_result = "";
         actionServer_.setAborted(result_);
         return;
     }
-    recognizer_->startUtt();
-    
-    utt_started = FALSE;
 
+    recognizer_->startUtt();
+    utt_started = FALSE;
     search_name = recognizer_->getSearch() ;
 
     ROS_INFO_STREAM(search_name);
-
     ROS_INFO_STREAM("Ready....");
-
-
     
     while(ros::ok())
     {
-        
-
         recognizer_->readAudio();
         recognizer_->proccesRaw();
 
         feedback_.partial_result = recognizer_->getHyp();
-        actionServer_.publishFeedback(feedback_);
-
-       
+        actionServer_.publishFeedback(feedback_);  
 
         in_speech_ = recognizer_->inSpeech();
         
         if (in_speech_ && !utt_started) 
         {
             utt_started = TRUE;
-
             ROS_INFO_STREAM("Listening...");
-
         }
        
-        
-
         if (!in_speech_ && utt_started)
-        {
-            
+        {     
             recognizer_->endUtt();
-
             ROS_INFO_STREAM("Finishing");
-            
             
             result_.final_result = recognizer_->getHyp();
             ROS_INFO_STREAM(result_.final_result);
-
-
             break;
            /* if (final_result_ != NULL) 
             {

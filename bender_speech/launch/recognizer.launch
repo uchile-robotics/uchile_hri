@@ -1,17 +1,9 @@
 <launch>
-    <arg name="package"    default="bender_speech"/>
-    <arg name="mic_name"   default="alsa_input.usb-M-Audio_Producer_USB-00-USB.analog-stereo"/> <!-- Microfono de atras (m-audio)-->
-    <arg name="hmmdir"     default="/usr/local/share/pocketsphinx/model/en-us/en-us"/> <!-- en-us-adapt -->
-    <arg name="packagedir" default="$(find bender_speech)"/>
 
-    <!-- Recognizer -->
-   <group ns="bender">
-        <node name="recognizer" pkg="$(arg package)" type="RecognizerROS"  respawn="false" output="screen">
-            <rosparam file="$(find bender_speech)/config/recognition_params.yaml" command="load"/>
-            <param name="mic_name"    value="$(arg mic_name)"/>
-            <param name="hmmdir"      value="$(arg hmmdir)"/>
-            <param name="packagedir"  value="$(arg packagedir)"/>
-        </node>
-    </group>
+    <node 
+        name="recognizer" pkg="bender_speech" type="recognizer_ros" ns="/bender/speech"
+        respawn="false" output="screen">
+        <rosparam file="$(find bender_speech)/config/recognizer.yaml" command="load"/>
+    </node>
 
 </launch>

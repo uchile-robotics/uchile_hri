@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib_msgs
   actionlib
   dynamic_reconfigure
+  bender_utils
 )
 
 ## System dependencies are found with CMake's conventions
@@ -113,7 +114,7 @@ generate_dynamic_reconfigure_options(
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES pocketsphinx_ros
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime actionlib_msgs actionlib dynamic_reconfigure
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime actionlib_msgs actionlib dynamic_reconfigure bender_utils
 #  DEPENDS system_lib
 )
 
@@ -129,26 +130,21 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${SphinxBase_INCLUDE_DIRS}
   ${PocketSphinx_INCLUDE_DIRS}
+  ${bender_utils_INCLUDE_DIRS}
 )
 
 
 ## - - - RecognizerROS- - - 
-add_executable(RecognizerROS
+add_executable(recognizer_ros
   src/RecognizerROS.cpp
   src/Recognizer.cpp
   src/AudioSource.cpp
   src/Exceptions.cpp
 )
-add_dependencies(RecognizerROS ${${PROJECT_NAME}_EXPORTED_TARGETS})
-target_link_libraries(RecognizerROS ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${PocketSphinx_LIBRARIES} ${SphinxBase_LIBRARIES} ${SphinxAD_LIBRARIES})
-
-
-
+add_dependencies(recognizer_ros ${${PROJECT_NAME}_EXPORTED_TARGETS})
+target_link_libraries(recognizer_ros ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${PocketSphinx_LIBRARIES} ${SphinxBase_LIBRARIES} ${SphinxAD_LIBRARIES})
 
 
 install(DIRECTORY include/${PROJECT_NAME}/
     DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
-
-
-

@@ -3,6 +3,7 @@
 
 
 #include <ros/ros.h>
+#include <ros/package.h>
 
 #include <boost/thread/thread.hpp>
 
@@ -15,6 +16,7 @@
 #include <sstream>
 
 #include "bender_speech/Recognizer.h"
+#include <bender_utils/ParameterServerWrapper.h>
 
 typedef boost::shared_ptr<Recognizer> RecognizerPtr;
 

@@ -15,7 +15,7 @@ public <sentence> = GO TO THE <location> |<fetch_object_from_place> | <noise> [<
 
 
 
-<location> = LIVINGROOM | KITCHEN | HALLWAY ;
+<location> = LIVING ROOM | KITCHEN | HALLWAY | DINNER TABLE | TV;
 
 <place> = KITCHEN TABLE | KITCHEN COUNTER | CUPBOARD | BAR | COUCHTABLE | DINNERTABLE | SOFA | (LEFT|RIGHT) BEDSIDE TABLE | DESK | BED | BOOKCASE ;
 

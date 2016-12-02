@@ -6,7 +6,7 @@ public <confirmation> = (<robot> (<yes_or_no>| <abort>) | <noise> [<noise>] [<no
 
 <robot> = (BENDER);
 
-// Se usan variantes para cada confirmaciÃ³n, asÃ­ se tiene un modelo mÃ¡s robusto.
+// Se usan variantes para cada confirmacion, asi se tiene un modelo mas robusto.
 
 <yes_or_no> = (<yes> | <no> );
 <yes> = (YES | YEP | YIS | YAS );

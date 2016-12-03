@@ -20,7 +20,7 @@ def tester_client():
     client.wait_for_server()
 
     # Creates a goal to send to the action server.
-    goal = bender_speech.msg.DoRecognitionGoal(dictionary="Stage1/gpsr_lite")
+    goal = bender_speech.msg.DoRecognitionGoal(dictionary="Stage1/gpsr_very_lite")
 
     # Sends the goal to the action server.
     client.send_goal(goal)

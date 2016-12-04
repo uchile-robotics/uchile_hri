@@ -4,6 +4,9 @@
 # > sudo apt-get update
 # > cdb bender_tts
 # > bash install/install.sh
+#
+# IF SOMETHING FAILED, DELETE THE FOLLOWING DIR, AND REPEAT
+# install_space="$BENDER_WS"/install/soft/hri/speech
 
 
 ## ----------------------------------------------------------------------------
@@ -32,9 +35,7 @@ install_token="$install_space"/INSTALLED
 ## Dependencies
 ## ----------------------------------------------------------------------------
 
-# speech recognizer (pocketsphinx)
-#sudo apt-get install gcc automake autoconf libtool bison swig unzip
-#sudo apt-get install bison
+sudo apt-get install gcc automake autoconf libtool bison swig unzip
 
 
 ## ----------------------------------------------------------------------------

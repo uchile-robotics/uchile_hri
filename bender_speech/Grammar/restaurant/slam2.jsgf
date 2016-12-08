@@ -1,0 +1,44 @@
+#JSGF V1.0;
+grammar sentence;
+
+
+public <sentence> = (<robot> <command>) | <noise> [<noise>] [<noise>] | <position_answer> ;
+
+<robot> = (BENDER);
+
+// Se usan variantes para cada confirmaci, así se tiene un modelo ms robusto.
+
+<command> = (<action> );
+<action> = (<save_sentence> | <delete_sentence> | <navigate_sentence>| <follow_sentence> | <finish> | <abort>);
+
+<finish> = (FINISH [THE] [TEST | PHASE | STAGE]);
+
+
+<follow_sentence> = ( FOLLOW | FOLLOWME | FOLLOW ME | GO ON | CONTINUE | STOP );
+<navigate_sentence> = (<go> [TO | TO THE | TOTHE] (<place> |<location>| <object>));
+<delete_sentence> = ( <delete>  [THE] [ OBJECT | <position> ] (<place> | <location> | <object>));
+
+<save_sentence> = ( <save1> | <save2> );
+<save1> =  (SAVE | REMEMBER) [(<object>| <position>| <location>) [<located>]];
+<save2> =  (THIS | THERE ) [IS | ARE] [THE | THA | A | AN] (<object>| <position>| <location>) [<located>];
+
+
+<abort> = (ABORT | ABORTED | CANCEL);
+
+<go> = (GO | NAVIGATE | REACH | ARRIVE | MOVE | DRIVE | ENTER | GET INTO | VISIT | ACCESS | APROACH) ;
+<located> = [ON | IN | TO | AT ] [YOUR | THE ] (LEFT | RIGHT | FRONT OF YOU ) ;
+<position> = (POSITION | LOCATION | POINT);
+<delete> = (DELETE | REMOVE | FORGET) ;
+
+
+<place> = HALLWAY | BEDROOM | KITCHEN | LIVINGROOM | DOOR ;
+<location> = KITCHENTABLE | KITCHENCOUNTER | CUPBOARD | BAR | COUCHTABLE | DINNERTABLE | SOFA | LEFT-BEDSIDE-TABLE | RIGHT-BEDSIDE-TABLE | DESK | BED | BOOKCASE ;
+<object> = GREENTEA |  PAPAYAMILK |  PUREMILK |  WATER | ORANGEJUICE | BEER | BISCUITS | BUBBLEGUM | CHOCOLATES | TOMATOCHIPS | BARBECUECHIPS | HONEYCHIP | COCONUTCEREALS | COCOBALLS | EGGSTARS | GRAMSOUP | BEANSAUCE | APPLE | LEMON | PEAR | SPONGE | TOILETPAPER | SOAP | LOTION | TOOTHPASTE | CLOTH | BOWL | PLATE | TRAY;
+
+<position_answer> = ( <object> | <place> | <position> ) [<located>];
+//-->> key="<go>" value="go"
+//-->> key="<delete>" value="delete"
+
+
+<noise> = ( HUM | WA | SH | CH | S | MM | PU | TU | SS | HUH | NAA  );
+

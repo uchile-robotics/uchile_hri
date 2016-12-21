@@ -31,6 +31,7 @@ public:
     void resetRecognizer();
     void updateDirectories(std::string dictionary);
     void recognize(double timeout=15.0);
+    void recognizeFile(double timeout, std::string fname);
 
 private:
 

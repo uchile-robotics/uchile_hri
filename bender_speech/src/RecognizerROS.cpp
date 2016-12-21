@@ -33,10 +33,15 @@ void RecognizerROS::executeCB(const bender_speech::DoRecognitionGoalConstPtr &go
     //recognizer_->setDict(dictdir_);
     //recognizer_->setGrammar(grammardir_);
     resetRecognizer();
-
     //recognizer_->update();
-    recognize();
-
+    if(goal->file != "")
+    {
+        recognizeFile(10,goal->file);
+    }
+    else
+    {
+        recognize();
+    }    
 }
 void RecognizerROS::dynamicCallback(bender_speech::SpeechRecognitionConfig &config,uint32_t level)
 {   
@@ -171,6 +176,94 @@ void RecognizerROS::recognize(double timeout)
     actionServer_.setSucceeded(result_);
     is_on_=false;
  
+}
+
+void RecognizerROS::recognizeFile(double timeout, std::string fname)
+{
+    ROS_INFO_STREAM("Recognize file");
+    uint8 utt_started;
+    std::string search_name;
+    ros::Time begin = ros::Time::now();
+
+    is_on_ = true;
+    if (recognizer_->status() == false) { return; }
+
+    try {
+        recognizer_->initFile(fname);
+    }
+    catch(exception& e) {
+        is_on_ = false;
+        ROS_ERROR_STREAM(e.what());
+        result_.final_result = "";
+        actionServer_.setAborted(result_);
+        return;
+    }
+
+    recognizer_->startUtt();
+    utt_started = FALSE;
+    search_name = recognizer_->getSearch() ;
+
+    ROS_INFO_STREAM(search_name);
+    ROS_INFO_STREAM("Ready....");
+    
+    while(ros::ok() and recognizer_->readAudioFromFile())
+    {
+    
+        recognizer_->proccesRaw();
+
+        feedback_.partial_result = recognizer_->getHyp();
+        actionServer_.publishFeedback(feedback_);  
+
+        in_speech_ = recognizer_->inSpeech();
+        
+        if (in_speech_ && !utt_started) 
+        {
+            utt_started = TRUE;
+            ROS_INFO_STREAM("Listening...");
+        }
+       
+        if (!in_speech_ && utt_started)
+        {     
+            recognizer_->endUtt();
+            ROS_INFO_STREAM("Finishing");
+            
+            result_.final_result = recognizer_->getHyp();
+            ROS_INFO_STREAM(result_.final_result);
+            break;
+           /* if (final_result_ != NULL) 
+            {
+                
+                is_on_ = false;
+                
+                break ;
+            }*/
+        }
+
+        if ((ros::Time::now()-begin).toSec() > timeout)
+        {
+            if (utt_started){recognizer_->endUtt();}
+            recognizer_->terminateDevice();
+            ROS_INFO_STREAM("Timeout");
+            result_.final_result = "";
+            actionServer_.setAborted();
+            is_on_=false;
+            return;
+        }
+        
+        loop_rate_.sleep();
+    }
+    
+    
+    recognizer_->endUtt();
+    if (utt_started) 
+    {
+        result_.final_result = recognizer_->getHyp();
+        ROS_INFO_STREAM("Finishing");
+        ROS_INFO_STREAM(result_.final_result);
+    }
+    actionServer_.setSucceeded(result_);
+    is_on_=false;
+    recognizer_->terminateFile();
 }
 
 int main(int argc, char *argv[])

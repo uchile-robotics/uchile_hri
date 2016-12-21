@@ -108,14 +108,29 @@ void Recognizer::initDevice(std::string device)
     as_->startRec();
 }
 
+void Recognizer::initFile(std::string fname)
+{
+    as_->openFile(fname);
+    as_->checkFile(fname);
+}
+
 void Recognizer::readAudio()
 {
     as_->read();
 }
 
+bool Recognizer::readAudioFromFile()
+{
+    as_->readFile();
+}
+
 void Recognizer::terminateDevice()
 {
     as_->closeDevice();
+}
+void Recognizer::terminateFile()
+{
+    as_->closeFile();
 }
 
 void Recognizer::setDict(const std::string& dictdir)

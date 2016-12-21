@@ -34,6 +34,10 @@ public:
     void update();
     std::string getSearch();
     int getProb();
+    void initFile(std::string fname);
+    bool readAudioFromFile();
+    void terminateFile();
+    
      
 private:
     AudioSource *as_;

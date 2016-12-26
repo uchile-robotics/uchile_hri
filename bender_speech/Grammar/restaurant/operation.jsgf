@@ -3,11 +3,9 @@ grammar sentence;
 
 // Operation Phase : Hearing order
 
-public <sentence> = <robot> <command> | <noise> [<noise>] [<noise>] ;
+public <sentence> = (<robot> <command>) | <noise> [<noise>] [<noise>];
 
 <robot> = (BENDER);
-
-// Se usan variantes para cada confirmación, así se tiene un modelo más robusto.
 
 <command> = ( <go_sentence> | <follow_sentence> | <finish> | <abort>);
 

@@ -3,7 +3,7 @@ grammar sentence;
 
 //Guide Phase : Hearing order
 
-public <sentence> = (<robot> <command> | <noise> [<noise>] [<noise>]);
+public <sentence> = <robot> <command> | <noise> [<noise>] [<noise>];
 
 <robot> = (BENDER);
 
@@ -17,21 +17,21 @@ public <sentence> = (<robot> <command> | <noise> [<noise>] [<noise>]);
 
 <save_sentence> = ( <save1> | <save2> );
 
-<save1> =  ((THIS | THERE ) [IS | ARE] [THE | THA | A | AN] ( <position> ) [<located>]);
-<save2> =  ((SAVE | REMEMBER) [<point>] [ <position> [<located>] | <save1> ]);
+<save1> =  ((THIS | THERE ) (IS) [THE | THA | A | AN] ( <position> ) [<located>]);
+<save2> =  (SAVE ) [<point>] [ <position> [<located>] | <save1> ];
 
 <abort> = (ABORT | ABORTED | CANCEL);
 
-<delete> = (DELETE | REMOVE | FORGET) ;
+<delete> = (FORGET);
 
-<located> = ([ON | IN | TO | AT ] [YOUR | THE ] (LEFT | RIGHT | FRONT OF YOU | FRONTOF YOU | FRONT OFYOU));
+<located> = ([ON | IN | TO | AT ] [YOUR | THE ] (LEFT | RIGHT | FRONT OF YOU | FRONTOF YOU | FRONT OFYOU)) ;
 <point> = (POSITION | LOCATION | POINT);
-<delete> = (DELETE | REMOVE | FORGET) ;
 
-<position> =  (<place> | <location> [<number>] | <object>) ;
-<place> = (HALLWAY | BEDROOM | KITCHEN | LIVINGROOM | DOOR | OFFICE | HOME);
-<location> = (KITCHENTABLE | CUPBOARD | BAR | DINNERTABLE | SOFA | DESK | BED | BOOKCASE | LAB | LABORATORY | TABLE | TELEVISION | TV | COMPUTER);
-<object> =  (WATER | BEER | CHOCOLATES  | APPLE | LEMON | SPONGE | TOILETPAPER  | LOTION | TOOTHPASTE | CLOTH | BOWL | PLATE | TRAY);
+<position> =  (<place> | <location> [<number>] | <object>);
+
+<place> = (HALLWAY | BEDROOM | KITCHEN | LIVINGROOM | DOOR | OFFICE | HOME | LAB | LABORATORY);
+<location> = (KITCHENTABLE | CUPBOARD | BAR | DINNERTABLE | SOFA | DESK | BED | BOOKCASE |  TABLE | TELEVISION | TV | COMPUTER);
+<object> =  (WATER | BOWL | PLATE | TRAY);
 <number> = (ONE | TWO | THREE | FOUR | FIVE); 
 
 

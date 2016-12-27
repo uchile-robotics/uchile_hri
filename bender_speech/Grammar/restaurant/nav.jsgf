@@ -3,12 +3,12 @@ grammar sentence;
 
 //Guide Phase : Hearing order
 
-public <sentence> = [<robot>]<command> | <noise> [<noise>] [<noise>] ;
+public <sentence> = [<robot>]<command> | <noise> [<noise>] [<noise>];
 
 <robot> = (BENDER);
 
 <command> =( <stop> | <abort>);
 <stop> = STOP;
 <abort> = (ABORT | ABORTED | CANCEL);
-<noise> = ( HUM | WA | SH | CH | S | MM | PU | TU | SS | HUH | NAA  );
+<noise> = ( HUM | WA | SH | CH | S | MM | PU | TU | SS | HUH | NAA);
 

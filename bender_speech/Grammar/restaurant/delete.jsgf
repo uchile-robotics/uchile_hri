@@ -9,21 +9,20 @@ public <sentence> = (<robot> <command> | <noise> [<noise>] [<noise>] |  [<robot>
 
 <command> = (<delete_sentence> | <abort>);
 
-
 <delete_sentence> = <delete>  [THE] [ OBJECT | <point> ] [ <position>];
 
 <abort> = (ABORT | ABORTED | CANCEL);
 
-<delete> = (DELETE | REMOVE | FORGET) ;
+<delete> = (FORGET) ;
 
-<located> = ([ON | IN | TO | AT ] [YOUR | THE ] (LEFT | RIGHT | FRONT OF YOU | FRONTOF YOU | FRONT OFYOU)) ;
 <point> = (POSITION | LOCATION | POINT);
 
 
 <position> =  (<place> | <location> [<number>] | <object>) ;
-<place> = (HALLWAY | BEDROOM | KITCHEN | LIVINGROOM | DOOR | OFFICE | HOME);
-<location> = (KITCHENTABLE | CUPBOARD | BAR | DINNERTABLE | SOFA | DESK | BED | BOOKCASE | LAB | LABORATORY | TABLE | TELEVISION | TV | COMPUTER);
-<object> =  (WATER | BEER | CHOCOLATES  | APPLE | LEMON | SPONGE | TOILETPAPER  | LOTION | TOOTHPASTE | CLOTH | BOWL | PLATE | TRAY);
+
+<place> = (HALLWAY | BEDROOM | KITCHEN | LIVINGROOM | DOOR | OFFICE | HOME | LAB | LABORATORY);
+<location> = (KITCHENTABLE | CUPBOARD | BAR | DINNERTABLE | SOFA | DESK | BED | BOOKCASE |  TABLE | TELEVISION | TV | COMPUTER);
+<object> =  (WATER | BOWL | PLATE | TRAY);
 <number> = (ONE | TWO | THREE | FOUR | FIVE); 
 
 

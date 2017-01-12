@@ -132,7 +132,7 @@ make clean all
 make check
 sudo make install
 
-# used meanwhile... see also: bash/setup.sh
+# used meanwhile... see also: shell/setup.sh
 export LD_LIBRARY_PATH=/usr/local/lib
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 

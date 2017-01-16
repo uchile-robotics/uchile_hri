@@ -5,7 +5,7 @@
 # > cdb bender_tts
 # > bash install/install.sh
 #
-# IF SOMETHING FAILED, DELETE THE FOLLOWING DIR, AND REPEAT
+# IF SOMETHING FAILS, DELETE THE FOLLOWING DIR, AND REPEAT
 # install_space="$BENDER_WS"/install/soft/hri/speech
 
 

@@ -122,7 +122,7 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 
 <person> = ETHAN | AVA | MASON | ALEXANDER | EMMA | LIAM | CHARLOTTE | SOPHIA | DANIEL | <gesture_person> | ISABELLA | NOAH | ANGEL | JAMES;
 
-<gesture_person> = <gesture> PERSON ;
+<gesture_person> = THE <gesture> PERSON ;
 
 <gesture> = WAVING | RISING (RIGHT|LEFT) ARM | POINTING (RIGHT|LEFT);
 

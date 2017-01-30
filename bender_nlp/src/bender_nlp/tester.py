@@ -6,7 +6,7 @@ from bender_nlp import GenerateOrder
 
 
 while True:
-	sens = input('Write your sentence')
+	sens = raw_input('Write your sentence: ')
 	# Analize sentence and obtain orders
 	if sens=='q':
 		break

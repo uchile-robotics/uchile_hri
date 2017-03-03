@@ -49,17 +49,17 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 <vocative> = ROBOT | BENDER ;
 
 <find_person> = <find> <person> ;
-<find_person_in_place> = <find_person> IN [THE] <location> ;
+<find_person_in_place> = <find_person> IN [THE] <place> ;
 <find_object> = <find> <object> ;
-<find_object_in_place> = <find_object> IN [THE] <location> ;
+<find_object_in_place> = <find_object> IN [THE] <place> ;
 
 <go_place_and_find> = <go_place> <find_person> ;
 
 
-<go_place> = <go> TO THE (<place> | <location>);
+<go_place> = <go> TO THE <place>;
 
 <grasp_object> = <grasp> [THE] <object>;
-<grasp_object_from_place> = <grasp_object> FROM [THE] <location> ; 
+<grasp_object_from_place> = <grasp_object> FROM [THE] <place> ; 
 
 <give_object> = <give> <object> ;
 <give_it> = <give> IT ;
@@ -73,8 +73,8 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 <follow_person_from_place> = <follow_person> (FROM | WHO IS (IN | AT)) [THE] <place> ;
 
 <put_object> = <put> [A] <object>;
-<put_it_in_place> = <put> IT ON [THE] (<location> | <place>);
-<put_object_in_place> = <put_object> ON [THE] (<location> | <place>);
+<put_it_in_place> = <put> IT ON [THE] <place>;
+<put_object_in_place> = <put_object> ON [THE] <place>;
 
 <answer_question> = <answer> [A] <question> ;
 <tell_something> = <tell> <something_to_tell>;
@@ -92,27 +92,28 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 
 
 
-<location> = KITCHEN TABLE | DINING TABLE | TV STAND |SHELF ;
+<place> = KITCHEN TABLE | KITCHEN COUNTER | CUPBOARD | BAR | COUCHTABLE | DINING TABLE | SOFA | (LEFT|RIGHT) BEDSIDE TABLE | DESK | BED | BOOKCASE |
+		  DRAWER | TV STAND | BOOKCASE | SINK | BEDSIDE | LIVING SHELF | LIVING TABLE | SIDESHELF | CABINET | <location>;
 
-<place> = KITCHEN | HALL | LIVING ROOM | CORRIDOR | BEDROOM;
+<location> = KITCHEN | EXIT | DINING ROOM | CORRIDOR | OFFICE;
 
 
-<object> =  WATER | BEER |SPONGE | TOILET PAPER | PRINGLES | TEA ;
+<object> =  WATER | BEER | BISQUITS | BUBBLEGUM | CHOCOLATES  | COCONUT CEREALS | APPLE | LEMON | PEAR | SPONGE | TOILET PAPER | SOAP | LOTION | TOOTHPASTE | CLOTH | BOWL | PLATE | TRAY | PRINGLES | CHIPS | TEA | BABY SWEETS | PRETZELS | COCONUT MILK | PAPRIKA | SHAMPOO;
 
 
 <category_object> =  DRINK | FOOD | OBJECTS;
 
-<go> = (GO | NAVIGATE) ;
+<go> = (GO | NAVIGATE | REACH | MOVE | DRIVE | ENTER | GET INTO | ACCES | APPROACH) ;
 
-<grasp> = (GRASP | GET | GRAB | TAKE | PICK UP) ;
+<grasp> = (GRASP | GET | GRAB | GRIP | GRAPPLE | HOLD | HOOK | TAKE | PICK UP) ;
 
-<give> = (BRING | CARRY | DELIVER | RETURN | TRANSPORT | GIVE) ;
+<give> = (BRING | CARRY | DELIVER | RETURN | TRANSPORT | GIVE | FETCH) ;
 
-<find> = (FIND | LOOK FOR| SEARCH) ;
+<find> = (FIND | LOOK FOR| SEARCH | LOCATE | SIGHT) ;
 
-<put> = (PUT | LEAVE | PLACE) ;
+<put> = (PUT | LEAVE | LAY | PLACE | DEPOSIT | LOCATE | STOW) ;
 
-<tell> = (SAY | TELL) ;
+<tell> = (SAY | SPEAK | TELL | TALK) ;
 
 <ask> = (ASK | REQUEST) ;
 
@@ -120,17 +121,17 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 
 <question> = QUESTION ;
 
-<person> = SOPHIA | DANIEL | <gesture_person> | ISABELLA | JAMES;
+<person> = ETHAN | AVA | MASON | ALEXANDER | EMMA | LIAM | CHARLOTTE | SOPHIA | DANIEL | <gesture_person> | ISABELLA | NOAH | ANGEL | JAMES;
 
 <gesture_person> = THE <gesture> PERSON ;
 
-<gesture> = WAVING ;
+<gesture> = WAVING | RISING (RIGHT|LEFT) ARM | POINTING (RIGHT|LEFT);
 
 <something_to_tell> = THE DAY OF THE WEEK | THE TIME | SOMETHING ABOUT YOURSELF | YOUR NAME | A JOKE | WHAT DAY IS TOMORROW;
 
 <follow> = FOLLOW ;
 
-<guide> = GUIDE | TAKE ;
+<guide> = GUIDE | TAKE | ESCORT ;
 
 
 //-->> key="<go>" value="GO"

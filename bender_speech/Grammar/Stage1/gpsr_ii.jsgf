@@ -49,7 +49,7 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 <vocative> = ROBOT | BENDER ;
 
 <find_person> = <find> <person> ;
-<find_person_in_place> = <find_person> IN [THE] <location> ;
+<find_person_in_place> = <find_person> IN [THE] <place> ;
 <find_object> = <find> <object> ;
 <find_object_in_place> = <find_object> IN [THE] <location> ;
 

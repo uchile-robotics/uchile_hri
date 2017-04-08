@@ -12,8 +12,8 @@ public <sentence> = (<robot> <command>) | <noise> [<noise>] [<noise>];
 
 // Se usan variantes para cada confirmación, así se tiene un modelo más robusto.
 <command> = (<action> | <question> );
-<action> = (DANCE | MOVE <direction> | SING | GO TO THE KITCHEN );
-<question> = (TELL ME <subject> | ARE WE HUMAN );
+<action> = (DANCE | MOVE <direction> | SING | GO TO THE KITCHEN | SHOW ME FILTERS | UPLOAD | TAKE A PICTURE);
+<question> = (TELL ME <subject> | ARE WE HUMAN);
 <direction> = (FORWARD | BACKWARD | LEFT | RIGHT);
 <subject> = (YOUR NAME | WHAT DAY IS TODAY | A JOKE);
 

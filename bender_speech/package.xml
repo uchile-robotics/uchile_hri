@@ -48,12 +48,6 @@
 
     <!--  build system tool to build this package -->
     <buildtool_depend>catkin</buildtool_depend>
-    <buildtool_depend>gcc</buildtool_depend> 
-    <buildtool_depend>automake</buildtool_depend> 
-    <buildtool_depend>autoconf</buildtool_depend> 
-    <buildtool_depend>libtool</buildtool_depend> 
-    <buildtool_depend>bison</buildtool_depend> 
-    <buildtool_depend>swig</buildtool_depend>
 
     <!-- common ROS depends -->
     <depend>roscpp</depend>

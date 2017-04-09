@@ -54,5 +54,12 @@ class start_utt_error: public exception
   }
 };
 
+class read_file_error: public exception
+{
+  virtual const char* what() const throw()
+  {
+    return "Failed to read file in pocketsphinx recognizer. There is no file";
+  }
+};
 
 #endif /* EXCEPTIONS_HPP_ */

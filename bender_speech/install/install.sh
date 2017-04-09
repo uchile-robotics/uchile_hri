@@ -5,7 +5,7 @@
 # > cdb bender_tts
 # > bash install/install.sh
 #
-# IF SOMETHING FAILED, DELETE THE FOLLOWING DIR, AND REPEAT
+# IF SOMETHING FAILS, DELETE THE FOLLOWING DIR, AND REPEAT
 # install_space="$BENDER_WS"/install/soft/hri/speech
 
 
@@ -132,7 +132,7 @@ make clean all
 make check
 sudo make install
 
-# used meanwhile... see also: bash/setup.sh
+# used meanwhile... see also: shell/setup.sh
 export LD_LIBRARY_PATH=/usr/local/lib
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 

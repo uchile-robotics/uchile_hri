@@ -48,7 +48,6 @@
 
     <!--  build system tool to build this package -->
     <buildtool_depend>catkin</buildtool_depend>
-
     <!-- common ROS depends -->
     <depend>roscpp</depend>
     <depend>rospy</depend>

@@ -9,6 +9,7 @@ rospack=RosPack()
 
 config_path = rospack.get_path('bender_nlp')+ '/config/'
 
+
 class GenerateOrder:
     cparser = SafeConfigParser()
 
@@ -18,9 +19,10 @@ class GenerateOrder:
         self.people = []
         self.objects = []
         self.places = []
-        self.information = []
+        self.information = []        
         self.filter_sentences(sentence)
-
+            
+        
     #add_order
     def add_order(self,verb,info,data):
         sameMove = False
@@ -95,8 +97,6 @@ class GenerateOrder:
                     ss_aux.append(ss[i])
                 else:
                     isJoin = False
-                print ss_aux
-                print type(ss_aux)
         return ss_aux
 
     #obtain_information
@@ -183,9 +183,10 @@ class GenerateOrder:
             data = []
             sen = parse(s)
             sen = split(sen)
+            #print 'split: {}'.format(sen)
             chunk = sen[0].chunk
             oi = self.obtain_information(chunk)
-            print 'oi: {}'.format(oi)
+            #print 'oi: {}'.format(oi)
             v = chunk[0]
             aux = []
             if v.string == 'go' or v.string=='move' or v.string == 'navigate': #Go #Move #Navigate
@@ -255,16 +256,24 @@ class GenerateOrder:
                 self.generate_list(tag,oi)
             elif v.string == 'bring': #Bring
                 if oi[3] != []:
-                    if len(oi[1]) == 1 and oi[1][0].tag == 'PRP':
-                        tag = 'bring_2'
+                    if oi[1][0].tag == 'PRP':
+                        if oi[1][0].string == 'me':
+                            ll = oi[1]
+                            aux_list = [[ll[:ll.index(elem)],ll[ll.index(elem)+1:]] for elem in ll if elem.tag == 'DT'][0]
+                            oi = (oi[0],aux_list[0],aux_list[1],oi[3])
+                            tag = 'bring_6'
+                        else:
+                            tag = 'bring_2'
                     else:
                         tag = 'bring_1'
                 else:
-
                     if len(oi[1]) == 1 and oi[1][0].tag == 'PRP':
-                        tag = 'bring_3'
-                    else:
-                        tag = 'bring_4'
+                        if oi[2][0].tag == 'PRP':
+                            tag = 'bring_3'
+                        elif oi[2][0].tag == 'NNP':
+                            tag = 'bring_5'
+                        else:
+                            tag = 'bring_4'
                 self.generate_list(tag,oi)
             elif v.string == 'place': #Place 
                 self.generate_list('place_1',oi)
@@ -294,7 +303,10 @@ class GenerateOrder:
                 self.generate_list(tag,oi)
             elif v.string == 'deliver': #Deliver
                 if oi[2] != [] and oi[3] == []:
-                    tag = 'deliver_1'
+                    if oi[2][0].tag == 'NNP':
+                        tag = 'deliver_1'
+                    elif oi[2][0].tag == 'PRP':
+                        tag = 'deliver_3'
                 elif oi[2] == [] and oi[3] != []:
                     tag = 'deliver_2'
                 self.generate_list(tag,oi)
@@ -306,7 +318,7 @@ class GenerateOrder:
                 self.generate_list(tag,oi)
             else:
                 print 'Verb {} not found'.format(v.string)
-                self.replacePRP()
+        self.replacePRP()
 
     # replacePRP
     def replacePRP(self):
@@ -330,7 +342,7 @@ if __name__=='__main__':
     # Analize sentence and obtain orders
     s = GenerateOrder(sens)
         
-        # Uncomment for view results
+    # Uncomment for view results
     print sens
     print '==========================='
     print 'Verbs  : {}'.format(s.verbs)

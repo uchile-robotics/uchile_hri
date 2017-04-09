@@ -30,6 +30,7 @@ public:
     void openFile(std::string fname);
     void checkFile(std::string fname);
     bool readFile();
+    void closeFile();
 };
 
 #endif /* AUDIOSOURCE_HPP_ */

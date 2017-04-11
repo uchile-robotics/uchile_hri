@@ -11,13 +11,14 @@ Para ello, es necesario tener ciertas consideraciones previo al tratamiento de l
 1. Se asume que el texto llegará en minúsculas (salvo algunos casos) y sin puntuación
 2. Los nombres propios de personas deben ir en mayúsculas (por ejemplo: Mia, Jason, Madison, etc.)
 
+
 ## Requerimientos
 
 Es necesario instalar la versión 1.4 del módulo `MBSP` que se puede descargar [aquí](http://www.clips.ua.ac.be/media/MBSP_1.4.zip). Para ello, es necesario ejecutar la siguiente instrucción:
 
+
 ```
-$ cd mbsp/
-$ sudo python setup.py install
+$ bash install/install.sh
 ```
 
 ## Utilización

@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib_msgs
   actionlib
   dynamic_reconfigure
-  bender_utils
+  uchile_util
 )
 
 ## System dependencies are found with CMake's conventions
@@ -114,7 +114,7 @@ generate_dynamic_reconfigure_options(
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES pocketsphinx_ros
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime actionlib_msgs actionlib dynamic_reconfigure bender_utils
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime actionlib_msgs actionlib dynamic_reconfigure uchile_util
 #  DEPENDS system_lib
 )
 
@@ -130,7 +130,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${SphinxBase_INCLUDE_DIRS}
   ${PocketSphinx_INCLUDE_DIRS}
-  ${bender_utils_INCLUDE_DIRS}
+  ${uchile_util_INCLUDE_DIRS}
 )
 
 

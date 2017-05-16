@@ -8,7 +8,7 @@ RecognizerROS::RecognizerROS():
 {
     is_on_ = false;
 
-    bender_utils::ParameterServerWrapper psw;
+    uchile_util::ParameterServerWrapper psw;
     psw.getParameter("hmmdir", hmmdir_, hmmdir_);
     psw.getParameter("mic_name", mic_name_, mic_name_);
     pkg_dir_ = ros::package::getPath("bender_speech");

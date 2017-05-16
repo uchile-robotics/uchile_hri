@@ -7,7 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_srvs
   uchile_msgs
   uchile_srvs
-  bender_utils
+  uchile_util
 )
 
 catkin_python_setup()

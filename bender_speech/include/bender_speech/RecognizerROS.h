@@ -16,7 +16,7 @@
 #include <sstream>
 
 #include "bender_speech/Recognizer.h"
-#include <bender_utils/ParameterServerWrapper.h>
+#include <uchile_util/ParameterServerWrapper.h>
 
 typedef boost::shared_ptr<Recognizer> RecognizerPtr;
 

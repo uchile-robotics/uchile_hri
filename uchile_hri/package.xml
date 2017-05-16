@@ -4,10 +4,10 @@
     <!-- PACKAGE INFORMATION -->
     <!-- - - - - - - - - - - -->
 
-    <name>bender_hri</name>
+    <name>uchile_hri</name>
     <version>2.0.0</version>
 
-    <description>The bender_hri (human robot interaction) package</description>
+    <description>The uchile_hri (human robot interaction) package</description>
     <maintainer email="bender.devel@gmail.com">
       Bender Team - UChile Homebreakers</maintainer>
     <author     email="bender.devel@gmail.com">

@@ -1,6 +1,6 @@
-#include "bender_speech/Recognizer.h"
+#include "uchile_speech_pocketsphinx/Recognizer.h"
 #include <boost/lexical_cast.hpp>
-#include "bender_speech/Exceptions.h"
+#include "uchile_speech_pocketsphinx/Exceptions.h"
 
 Recognizer::Recognizer(AudioSource *as, 
            std::string modeldir, 

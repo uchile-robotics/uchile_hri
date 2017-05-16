@@ -14,7 +14,7 @@
 ## ----------------------------------------------------------------------------
 
 # package name
-pkg_name="bender_speech"
+pkg_name="uchile_speech_pocketsphinx"
 
 # package path
 pkg_path=$(rospack find "$pkg_name")

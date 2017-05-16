@@ -17,9 +17,9 @@
     <!-- PACKAGE INFORMATION -->
     <!-- - - - - - - - - - - -->
 
-    <name>bender_speech</name>
+    <name>uchile_speech_pocketsphinx</name>
     <version>2.0.0</version>
-    <description>bender_speech package</description>
+    <description>uchile_speech_pocketsphinx package</description>
 
 
     <!-- team -->

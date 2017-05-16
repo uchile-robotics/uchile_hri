@@ -3,7 +3,7 @@
 
 #include <sphinxbase/ad.h>
 #include <sphinxbase/err.h>
-#include "bender_speech/Exceptions.h"
+#include "uchile_speech_pocketsphinx/Exceptions.h"
 
 #include <string>
 #include <string.h>

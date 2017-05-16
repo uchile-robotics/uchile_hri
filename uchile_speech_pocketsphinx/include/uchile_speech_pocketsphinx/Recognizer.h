@@ -4,8 +4,8 @@
 
 #include <sphinxbase/err.h>
 #include "pocketsphinx.h"
-#include "bender_speech/AudioSource.h"
-#include "bender_speech/Exceptions.h"
+#include "uchile_speech_pocketsphinx/AudioSource.h"
+#include "uchile_speech_pocketsphinx/Exceptions.h"
 
 class Recognizer
 {

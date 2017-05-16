@@ -14,4 +14,4 @@
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 
-alias bender_hwcheck_mic="rosrun bender_speech hwcheck_mic.py"
+alias bender_hwcheck_mic="rosrun uchile_speech_pocketsphinx hwcheck_mic.py"

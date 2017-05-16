@@ -1,4 +1,4 @@
-#include "bender_speech/RecognizerROS.h"
+#include "uchile_speech_pocketsphinx/RecognizerROS.h"
 
 
 RecognizerROS::RecognizerROS():
@@ -11,7 +11,7 @@ RecognizerROS::RecognizerROS():
     uchile_util::ParameterServerWrapper psw;
     psw.getParameter("hmmdir", hmmdir_, hmmdir_);
     psw.getParameter("mic_name", mic_name_, mic_name_);
-    pkg_dir_ = ros::package::getPath("bender_speech");
+    pkg_dir_ = ros::package::getPath("uchile_speech_pocketsphinx");
   
     // default dictionary
     updateDirectories("Stage1/Stage2gpsr");
@@ -25,7 +25,7 @@ RecognizerROS::RecognizerROS():
 RecognizerROS::~RecognizerROS() { }
 
 
-void RecognizerROS::executeCB(const bender_speech::DoRecognitionGoalConstPtr &goal)
+void RecognizerROS::executeCB(const uchile_speech_pocketsphinx::DoRecognitionGoalConstPtr &goal)
 {
     std::string dictionary_name;
     dictionary_name = goal->dictionary;
@@ -43,9 +43,9 @@ void RecognizerROS::executeCB(const bender_speech::DoRecognitionGoalConstPtr &go
         recognize();
     }    
 }
-void RecognizerROS::dynamicCallback(bender_speech::SpeechRecognitionConfig &config,uint32_t level)
+void RecognizerROS::dynamicCallback(uchile_speech_pocketsphinx::SpeechRecognitionConfig &config,uint32_t level)
 {   
-    // pkg_dir_= ros::package::getPath("bender_speech");
+    // pkg_dir_= ros::package::getPath("uchile_speech_pocketsphinx");
 
     // updateDirectories("Stage1/Stage2gpsr");
     

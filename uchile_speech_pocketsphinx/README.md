@@ -1,4 +1,4 @@
-# bender_speech
+# uchile_speech_pocketsphinx
 
 ## Overview
 
@@ -8,7 +8,7 @@ TODO
 ## Installation
 
 ```bash
-$ cdb bender_speech
+$ cdb uchile_speech_pocketsphinx
 $ bash install/install.sh
 ```
 

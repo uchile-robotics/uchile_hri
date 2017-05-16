@@ -8,14 +8,14 @@
 #include <boost/thread/thread.hpp>
 
 #include <actionlib/server/simple_action_server.h>
-#include <bender_speech/DoRecognitionAction.h>
-#include <bender_speech/SpeechRecognitionConfig.h>
+#include <uchile_speech_pocketsphinx/DoRecognitionAction.h>
+#include <uchile_speech_pocketsphinx/SpeechRecognitionConfig.h>
 
 #include <dynamic_reconfigure/server.h>
 
 #include <sstream>
 
-#include "bender_speech/Recognizer.h"
+#include "uchile_speech_pocketsphinx/Recognizer.h"
 #include <uchile_util/ParameterServerWrapper.h>
 
 typedef boost::shared_ptr<Recognizer> RecognizerPtr;
@@ -26,8 +26,8 @@ public:
 
     RecognizerROS();
     ~RecognizerROS();
-    void executeCB(const bender_speech::DoRecognitionGoalConstPtr &goal);
-    void dynamicCallback(bender_speech::SpeechRecognitionConfig &config,uint32_t level);
+    void executeCB(const uchile_speech_pocketsphinx::DoRecognitionGoalConstPtr &goal);
+    void dynamicCallback(uchile_speech_pocketsphinx::SpeechRecognitionConfig &config,uint32_t level);
     void resetRecognizer();
     void updateDirectories(std::string dictionary);
     void recognize(double timeout=15.0);
@@ -39,13 +39,13 @@ private:
     ros::Rate loop_rate_;
     AudioSource as_;
 
-    actionlib::SimpleActionServer<bender_speech::DoRecognitionAction> actionServer_;
+    actionlib::SimpleActionServer<uchile_speech_pocketsphinx::DoRecognitionAction> actionServer_;
 
-    bender_speech::DoRecognitionFeedback feedback_;
-    bender_speech::DoRecognitionResult result_;
+    uchile_speech_pocketsphinx::DoRecognitionFeedback feedback_;
+    uchile_speech_pocketsphinx::DoRecognitionResult result_;
 
-    dynamic_reconfigure::Server<bender_speech::SpeechRecognitionConfig> parameterServer_;
-    dynamic_reconfigure::Server<bender_speech::SpeechRecognitionConfig>::CallbackType reconfigureCallback_;
+    dynamic_reconfigure::Server<uchile_speech_pocketsphinx::SpeechRecognitionConfig> parameterServer_;
+    dynamic_reconfigure::Server<uchile_speech_pocketsphinx::SpeechRecognitionConfig>::CallbackType reconfigureCallback_;
 
 
     std::string pkg_dir_;

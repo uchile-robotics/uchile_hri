@@ -2,8 +2,8 @@
 _jsgf_file="$1"
 
 
-_file_path="$(rospack find bender_speech)"/Grammar
-_utils_path="$(rospack find bender_speech)"/utils
+_file_path="$(rospack find uchile_speech_pocketsphinx)"/Grammar
+_utils_path="$(rospack find uchile_speech_pocketsphinx)"/utils
 
 _fullname_noext="$_file_path"/"$_jsgf_file"
 

@@ -27,8 +27,8 @@ Para ejecutar, basta con realizar un import de la clase, para luego ser utilizad
 
 ```
 $ python
->>> import bender_nlp
->>> orders = bender_nlp.GenerateOrder("go to the bedroom find a person and tell the time")
+>>> import uchile_nlp
+>>> orders = uchile_nlp.GenerateOrder("go to the bedroom find a person and tell the time")
 >>> orders.verbs
 ['go', 'find', 'tell']
 >>> orders.people
@@ -39,4 +39,4 @@ $ python
 ['', '', u'time']
 ```
 
-También es posible realizar el comando `from bender_nlp import GenerateOrder` para llamar a la función directamente.
+También es posible realizar el comando `from uchile_nlp import GenerateOrder` para llamar a la función directamente.

@@ -17,10 +17,10 @@
     <!-- PACKAGE INFORMATION -->
     <!-- - - - - - - - - - - -->
 
-    <name>bender_nlp</name>
+    <name>uchile_nlp</name>
     <version>1.0.0</version>
     
-    <description>The bender_nlp package</description>
+    <description>The uchile_nlp package</description>
 
     <!-- team -->
     <maintainer email="bender.devel@gmail.com">

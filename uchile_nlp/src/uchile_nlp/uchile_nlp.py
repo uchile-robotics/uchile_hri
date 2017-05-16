@@ -7,7 +7,7 @@ from rospkg import RosPack
 
 rospack=RosPack()
 
-config_path = rospack.get_path('bender_nlp')+ '/config/'
+config_path = rospack.get_path('uchile_nlp')+ '/config/'
 
 
 class GenerateOrder:

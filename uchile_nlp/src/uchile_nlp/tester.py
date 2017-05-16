@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import rospy
-from bender_nlp import GenerateOrder
+from uchile_nlp import GenerateOrder
 
 
 while True:

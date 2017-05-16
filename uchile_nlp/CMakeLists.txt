@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(bender_nlp)
+project(uchile_nlp)
 
 find_package(catkin REQUIRED COMPONENTS
   rospy

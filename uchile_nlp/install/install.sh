@@ -5,7 +5,7 @@
 # # # # # # # # # # # # # # # # # # # #
 
 # Useful Variables
-pkg_name="bender_nlp"
+pkg_name="uchile_nlp"
 install_path="$BENDER_WS/install/soft/hri/nlp"
 
 # - - - - - - I N S T A L L - - - - - -

@@ -25,7 +25,7 @@
 ## ----------------------------------------------------------------------------
 
 # where download and mantain the files
-install_space="$UCHILE_WS"/dep/bender/hri/speech
+install_space="$UCHILE_WS"/deps/bender/hri/speech
 
 # mark as installed 
 install_token="$install_space"/INSTALLED

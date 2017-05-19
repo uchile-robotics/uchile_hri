@@ -25,7 +25,7 @@ pkg_path=$(rospack find "$pkg_name")
 ## ----------------------------------------------------------------------------
 
 # where download and mantain the files
-install_space="$BENDER_WS"/install/soft/hri/speech
+install_space="$UCHILE_WS"/dep/bender/hri/speech
 
 # mark as installed 
 install_token="$install_space"/INSTALLED

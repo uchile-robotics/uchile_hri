@@ -76,8 +76,8 @@ TO WICH CATEGORY BELONG THE BEER
 <OQ6> = <how> MANY  ARE THEY  ;
 <OQ7> = <do> THEY BELONG TO <the> SAME CATEGORY ;
 <OQ8> = <what> OBJECT <are> STORES IN <the> SAME CATEGORY;
-<OQ9> = TO WICH CATEGORY BELONG <the> <smallobject>
-<OQ10> =<do> <the> <smallobject> AND <smallobject> BELONG TO THE SAME CATEGORY
+<OQ9> = TO WICH CATEGORY BELONG <the> <smallobject>;
+<OQ10> =<do> <the> <smallobject> AND <smallobject> BELONG TO THE SAME CATEGORY;
 <object_description> = SMALLEST | LIGHTEST ;
 
 /*    -------------  Predefined Questions ---------------

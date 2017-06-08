@@ -59,8 +59,13 @@ What's the color of the sponge?
 What objects are in the closet?
 How many are they?
 Do they belong to the same category?
+
+NEW QUESTIONS
+
+What objects are stored in the kitchencounter?
+TO WICH CATEGORY BELONG THE BEER
 */
-<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7>;
+<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>;
 
 <OQ1> = <what> <is> <the> <object_description> <category_object> ;
 <OQ2> = <where> CAN I FIND <the> <smallobject> ;
@@ -70,7 +75,9 @@ Do they belong to the same category?
 
 <OQ6> = <how> MANY  ARE THEY  ;
 <OQ7> = <do> THEY BELONG TO <the> SAME CATEGORY ;
-
+<OQ8> = <what> OBJECT <are> STORES IN <the> SAME CATEGORY;
+<OQ9> = TO WICH CATEGORY BELONG <the> <smallobject>
+<OQ10> =<do> <the> <smallobject> AND <smallobject> BELONG TO THE SAME CATEGORY
 <object_description> = SMALLEST | LIGHTEST ;
 
 /*    -------------  Predefined Questions ---------------
@@ -103,6 +110,7 @@ What was the last question?
 
 <category_object> =  DRINK | FOOD | OBJECTS;
 
+/* -------------------Last question ---------------*/
 
 
 /*    -------------  GRAMMAR --------------- */
@@ -115,6 +123,7 @@ What was the last question?
 <do> = DO ;
 <is> = IS ;
 <the> = THE ;
+<are> = ARE ;
 
 <noise> = ( HUM | WA | SH | CH | S | MM ) ;
 

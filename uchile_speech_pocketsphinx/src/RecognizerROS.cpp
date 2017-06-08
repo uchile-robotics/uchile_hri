@@ -14,7 +14,7 @@ RecognizerROS::RecognizerROS():
     pkg_dir_ = ros::package::getPath("uchile_speech_pocketsphinx");
   
     // default dictionary
-    updateDirectories("Stage1/Stage2gpsr");
+    updateDirectories("Stage1/GPSR/Stage2gpsr");
 
     actionServer_.start();
     reconfigureCallback_ = boost::bind(&RecognizerROS::dynamicCallback,this, _1, _2);

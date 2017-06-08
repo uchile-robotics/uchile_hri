@@ -5,9 +5,12 @@ import wave
 from std_msgs.msg import Empty, String
 
 class Recorder:
+
+    _type = "recorder_audio"
+
     def __init__(self):
-        self.record_sub = rospy.Subscriber("record", String, self.recordCallback)
-        self.stop_sub= rospy.Subscriber("stop",Empty,self.stopCallback)
+        self.record_sub = rospy.Subscriber(Recorder._type+"/start_record", String, self.recordCallback)
+        self.stop_sub= rospy.Subscriber(Recorder._type+"/stop_record", Empty, self.stopCallback)
         self.stoped = False
     def recordCallback(self,msg):
         rospy.loginfo("Recording...")
@@ -26,9 +29,11 @@ class Recorder:
             w.writeframes(data)
         w.close()
         rospy.loginfo("Finished")
+
     def stopCallback(self,data):
         self.stoped = True
+
 if __name__ == '__main__':
-    rospy.init_node('recorder', anonymous=True)
+    rospy.init_node('recorder_audio')
     r=Recorder()
     rospy.spin()

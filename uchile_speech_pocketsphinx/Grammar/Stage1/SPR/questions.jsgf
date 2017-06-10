@@ -30,9 +30,13 @@ How many people  standing | sitting | lying are in the crowd
  How old do you think I am?
 The sitting person was a man or woman?
 Am I a man or a woman?
+
+New questions 
+TELL ME THE NUMBER OF MALES IN THE CROWD
+TELL ME THE NUMBER OF ADULTS IN THE CROWD
 */
 
-<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> ;
+<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> | <COQ9> | <COQ10>;
 
 <COQ1> = <how> MANY PEOPLE ARE IN THE CROWD ;
 <COQ2> = <how> MANY <person_phase> ARE IN THE CROWD ;
@@ -43,6 +47,9 @@ Am I a man or a woman?
 <COQ6> = <how> OLD DO YOU THINK I AM ;
 <COQ7> = <the> <person_postures>  PERSON WAS A MAN OR WOMAN ;
 <COQ8> = AM I A MAN OR A WOMAN  ;
+
+<COQ9> = TELL ME THE NUMBER OF <person_gender> IN THE CROWD ;
+<COQ10> = TELL ME THE NUMBER OF <person_phase> IN THE CROWD ;
 
 <person_phase> = CHILDREN | ADULTS ;
 <person_gender> = WOMEN | MEN ;
@@ -87,8 +94,10 @@ What is your team's name?
 What time is it?
 In which year was RoboCup@Home founded?
 What was the last question?
+
+What is the capital of japan
 */
-<PQ> = <PQ1> | <PQ2> | <PQ3> | <PQ4> | <PQ5>;
+<PQ> = <PQ1> | <PQ2> | <PQ3> | <PQ4> | <PQ5> |<PQ6>;
 
 <PQ1> = <what> DAY <is> TODAY ;
 <PQ2> = <what> <is> YOUR NAME ;
@@ -96,6 +105,7 @@ What was the last question?
 <PQ2> = <what> TIME <is> IT ;
 <PQ4> = IN <which> YEAR WAS ROBOCUP FOUNDED ;
 <PQ5> = <what> WAS <the> LAST QUESTION ;
+<PQ6> = <what> <is> THE CAPITAL OF JAPAN;
 
 
 /*    -------------  ARENA INFORMATION --------------- */

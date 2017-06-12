@@ -34,9 +34,14 @@ Am I a man or a woman?
 New questions 
 TELL ME THE NUMBER OF MALES IN THE CROWD
 TELL ME THE NUMBER OF ADULTS IN THE CROWD
+
+WHAT IS THE NUMBER OF MALE AND WOMEN PEOPLE
+
+WHAT IS THE NUMBER OF WOMEN PEOPLE
+WHAT IS THE NUMBER OF CHILDREN PEOPLE
 */
 
-<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> | <COQ9> | <COQ10>;
+<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> | <COQ9> | <COQ10> | <COQ11> | <COQ12> | <COQ13>;
 
 <COQ1> = <how> MANY PEOPLE ARE IN THE CROWD ;
 <COQ2> = <how> MANY <person_phase> ARE IN THE CROWD ;
@@ -50,9 +55,12 @@ TELL ME THE NUMBER OF ADULTS IN THE CROWD
 
 <COQ9> = TELL ME THE NUMBER OF <person_gender> IN THE CROWD ;
 <COQ10> = TELL ME THE NUMBER OF <person_phase> IN THE CROWD ;
+<COQ11> = WHAT IS THE NUMBER OF <person_gender> AND <person_gender> PEOPLE ;
+<COQ12> = WHAT IS THE NUMBER OF <person_gender> PEOPLE ;
+<COQ13> = WHAT IS THE NUMBER OF <person_phase> PEOPLE ;
 
 <person_phase> = CHILDREN | ADULTS ;
-<person_gender> = WOMEN | MEN ;
+<person_gender> = WOMEN | MEN | MALE | MALES ;
 <person_moves> = WAVING | RAISING ;
 <person_postures> = STANDING | SITTING | LYING ;
 

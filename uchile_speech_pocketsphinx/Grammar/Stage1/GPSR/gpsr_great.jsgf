@@ -1,0 +1,15 @@
+#JSGF V1.0;
+
+grammar sentence;
+
+public <sentence> =  <sentence1> | <sentence2> | <sentence3> | <noise> [<noise>] [<noise>];
+
+
+
+<sentence1> = GO TO THE <place> ;
+<sentence2> = GO TO THE TV GRASP THE <object> AND BRING IT TO ME ;
+<sentence3> = GO TO THE <place> find a person and tell him <subject> ;
+
+<place> = KITCHEN | HALL | CORRIDOR ;
+<object> = PRINGLES | BEER ;
+<subject> = YOUR NAME | A JOKE;

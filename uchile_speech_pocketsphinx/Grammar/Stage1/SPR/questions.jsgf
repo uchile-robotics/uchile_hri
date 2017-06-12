@@ -52,7 +52,7 @@ TELL ME THE NUMBER OF ADULTS IN THE CROWD
 <COQ10> = TELL ME THE NUMBER OF <person_phase> IN THE CROWD ;
 
 <person_phase> = CHILDREN | ADULTS ;
-<person_gender> = WOMEN | MEN ;
+<person_gender> = WOMEN | MEN | MALE;
 <person_moves> = WAVING | RAISING ;
 <person_postures> = STANDING | SITTING | LYING ;
 

@@ -39,9 +39,10 @@ WHAT IS THE NUMBER OF MALE AND WOMEN PEOPLE
 
 WHAT IS THE NUMBER OF WOMEN PEOPLE
 WHAT IS THE NUMBER OF CHILDREN PEOPLE
+what is the size of the crowd
 */
 
-<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> | <COQ9> | <COQ10> | <COQ11> | <COQ12> | <COQ13>;
+<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> | <COQ9> | <COQ10> | <COQ11> | <COQ12> | <COQ13>| <COQ14>;
 
 <COQ1> = <how> MANY PEOPLE ARE IN THE CROWD ;
 <COQ2> = <how> MANY <person_phase> ARE IN THE CROWD ;
@@ -53,11 +54,12 @@ WHAT IS THE NUMBER OF CHILDREN PEOPLE
 <COQ7> = <the> <person_postures>  PERSON WAS A MAN OR WOMAN ;
 <COQ8> = AM I A MAN OR A WOMAN  ;
 
-<COQ9> = TELL ME THE NUMBER OF <person_gender> IN THE CROWD ;
-<COQ10> = TELL ME THE NUMBER OF <person_phase> IN THE CROWD ;
-<COQ11> = WHAT IS THE NUMBER OF <person_gender> AND <person_gender> PEOPLE ;
-<COQ12> = WHAT IS THE NUMBER OF <person_gender> PEOPLE ;
-<COQ13> = WHAT IS THE NUMBER OF <person_phase> PEOPLE ;
+<COQ9> = TELL ME THE NUMBER OF <person_gender> IN <the> CROWD ;
+<COQ10> = TELL ME THE NUMBER OF <person_phase> IN <the> CROWD ;
+<COQ11> = <what> <is> <the> <number> <of> <person_gender> AND <person_gender> PEOPLE ;
+<COQ12> = <what> <is> <the> <number> <of> <person_gender> PEOPLE ;
+<COQ13> = <what> <is> <the> <number> <of> <person_gender> PEOPLE ;
+<COQ14> = <what> <is> <the> SIZE <of> THE CROWD ;
 
 <person_phase> = CHILDREN | ADULTS ;
 <person_gender> = WOMEN | MEN | MALE | MALES ;
@@ -79,8 +81,9 @@ NEW QUESTIONS
 
 What objects are stored in the kitchencounter?
 TO WICH CATEGORY BELONG THE BEER
+where is the beer?
 */
-<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>;
+<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>| <OQ11>;
 
 <OQ1> = <what> <is> <the> <object_description> <category_object> ;
 <OQ2> = <where> CAN I FIND <the> <smallobject> ;
@@ -93,6 +96,7 @@ TO WICH CATEGORY BELONG THE BEER
 <OQ8> = <what> OBJECT <are> STORES IN <the> SAME CATEGORY;
 <OQ9> = TO WICH CATEGORY BELONG <the> <smallobject>;
 <OQ10> =<do> <the> <smallobject> AND <smallobject> BELONG TO THE SAME CATEGORY;
+<OQ11> =<where> <is> <the> <smallobject>;
 <object_description> = SMALLEST | LIGHTEST ;
 
 /*    -------------  Predefined Questions ---------------
@@ -142,6 +146,8 @@ What is the capital of japan
 <is> = IS ;
 <the> = THE ;
 <are> = ARE ;
+<number>= NUMBER ;
+<of>= OF ;
 
 <noise> = ( HUM | WA | SH | CH | S | MM ) ;
 

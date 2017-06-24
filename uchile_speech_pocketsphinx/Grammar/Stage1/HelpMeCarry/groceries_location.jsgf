@@ -1,0 +1,26 @@
+#JSGF V1.0;
+
+grammar sentence;
+
+
+public <sentence> = <I1> | <noise> [<noise>] [<noise>];
+
+
+<I1> = TAKE THIS <bag>  TO THE <place>;
+
+
+
+<bag> = BAG | OBJECT;
+<place> = <bedrooms> | <manipulationplace>;
+
+/*    -------------  ARENA INFORMATION --------------- */
+
+<bedrooms> = KITCHEN | DINING ROOM  ;
+<manipulationplace> = KITCHEN TABLE| KITCHEN COUNTER | CUPBOARD | BAR | COUCHTABLE | DINNERTABLE  ;
+
+
+
+/*    -------------  GRAMMAR --------------- */
+
+<noise> = ( HUM | WA | SH | CH | S | MM ) ;
+

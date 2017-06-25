@@ -1,7 +1,7 @@
 #JSGF V1.0;
+ 
 
 grammar sentence;
-
 
 public <sentence> = <I1> | <noise> [<noise>] [<noise>];
 
@@ -9,9 +9,9 @@ public <sentence> = <I1> | <noise> [<noise>] [<noise>];
 <I1> = TAKE THIS <bag>  TO THE <place>;
 
 
-
 <bag> = BAG | OBJECT;
 <place> = <bedrooms> | <manipulationplace>;
+
 
 /*    -------------  ARENA INFORMATION --------------- */
 
@@ -23,4 +23,5 @@ public <sentence> = <I1> | <noise> [<noise>] [<noise>];
 /*    -------------  GRAMMAR --------------- */
 
 <noise> = ( HUM | WA | SH | CH | S | MM ) ;
+
 

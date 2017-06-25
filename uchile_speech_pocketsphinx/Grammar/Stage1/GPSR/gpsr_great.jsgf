@@ -8,7 +8,7 @@ public <sentence> =  <sentence1> | <sentence2> | <sentence3> | <noise> [<noise>]
 
 <sentence1> = GO TO THE <place> ;
 <sentence2> = GO TO THE TV GRASP THE <object> AND BRING IT TO ME ;
-<sentence3> = GO TO THE <place> FIND A PERSON AND TELL <subject> ;
+<sentence3> = GO TO THE <place> FIND A PERSON AND (TELL <subject> | ANSWER A QUESTION) ;
 <sentence4> = TELL <subject> ;
 
 <place> = KITCHEN | HALL | CORRIDOR ;

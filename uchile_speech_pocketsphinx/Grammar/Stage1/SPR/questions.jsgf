@@ -61,7 +61,7 @@ what is the size of the crowd
 <COQ13> = <what> <is> <the> <number> <of> <person_gender> PEOPLE ;
 <COQ14> = <what> <is> <the> SIZE <of> THE CROWD ;
 <COQ15> = TELL ME <how> MANY <person> <were> WEARING <person_colors>;
-<COQ16> =  WAS <the> <person_postures> a <person_gender> [OR] [A] [<person_gender>];
+<COQ16> =  WAS <the> <person_postures> A <person_gender> [OR] [A] [<person_gender>];
 <person>= PERSON | PEOPLE ;	
 <person_phase> = CHILDREN | ADULTS | ELDERS;
 <person_gender> = WOMEN | MEN | MALE | MALES ;

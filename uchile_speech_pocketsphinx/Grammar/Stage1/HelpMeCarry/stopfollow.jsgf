@@ -1,0 +1,13 @@
+#JSGF V1.0;
+ 
+
+grammar sentence;
+
+public <sentence> = (BENDER) STOP FOLLOW (ME) | <noise> [<noise>] [<noise>];
+
+
+/*    -------------  GRAMMAR --------------- */
+
+<noise> = ( HUM | WA | SH | CH | S | MM ) ;
+
+

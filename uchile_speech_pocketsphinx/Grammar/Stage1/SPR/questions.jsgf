@@ -42,7 +42,7 @@ WHAT IS THE NUMBER OF CHILDREN PEOPLE
 what is the size of the crowd
 */
 
-<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> | <COQ9> | <COQ10> | <COQ11> | <COQ12> | <COQ13>| <COQ14>;
+<COQ> = <COQ1> | <COQ2> | <COQ3> | <COQ4> | <COQ5> | <COQ6> | <COQ7> | <COQ8> | <COQ9> | <COQ10> | <COQ11> | <COQ12> | <COQ13>| <COQ14> | <COQ15> | <COQ16> ;
 
 <COQ1> = <how> MANY PEOPLE ARE IN THE CROWD ;
 <COQ2> = <how> MANY <person_phase> ARE IN THE CROWD ;
@@ -60,11 +60,14 @@ what is the size of the crowd
 <COQ12> = <what> <is> <the> <number> <of> <person_gender> PEOPLE ;
 <COQ13> = <what> <is> <the> <number> <of> <person_gender> PEOPLE ;
 <COQ14> = <what> <is> <the> SIZE <of> THE CROWD ;
-
-<person_phase> = CHILDREN | ADULTS ;
+<COQ15> = TELL ME <how> MANY <person> <were> WEARING <person_colors>;
+<COQ16> =  WAS <the> <person_postures> a <person_gender> [OR] [A] [<person_gender>];
+<person>= PERSON | PEOPLE ;	
+<person_phase> = CHILDREN | ADULTS | ELDERS;
 <person_gender> = WOMEN | MEN | MALE | MALES ;
 <person_moves> = WAVING | RAISING ;
 <person_postures> = STANDING | SITTING | LYING ;
+<person_colors>= BLUE | BLACK | RED | GREEN | YELLOW ;
 
 /*    -------------   Object Questions  ---------------
 What's the smallest food?
@@ -82,22 +85,24 @@ NEW QUESTIONS
 What objects are stored in the kitchencounter?
 TO WICH CATEGORY BELONG THE BEER
 where is the beer?
+Between the beer and the water wich one is ligthte
 */
-<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>| <OQ11>;
+<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>| <OQ11> | <OQ12> ;
 
 <OQ1> = <what> <is> <the> <object_description> <category_object> ;
 <OQ2> = <where> CAN I FIND <the> <smallobject> ;
 <OQ3> = <where> [CAN] <is> <smallobject> ;
-<OQ4> = <what> <is> <the> COLOR OF <the> <smallobject>  ;
+<OQ4> = <what> <is> <the> COLOR OF [THE] <smallobject>  ;
 <OQ5> = <what> OBJECTS ARE IN <the> <manipulationplace> ;
 
 <OQ6> = <how> MANY  ARE THEY  ;
 <OQ7> = <do> THEY BELONG TO <the> SAME CATEGORY ;
 <OQ8> = <what> OBJECT <are> STORES IN <the> SAME CATEGORY;
 <OQ9> = TO WICH CATEGORY BELONG <the> <smallobject>;
-<OQ10> =<do> <the> <smallobject> AND <smallobject> BELONG TO THE SAME CATEGORY;
+<OQ10> =<do> <the> <smallobject> AND [THE] <smallobject> BELONG TO THE SAME CATEGORY;
 <OQ11> =<where> <is> <the> <smallobject>;
-<object_description> = SMALLEST | LIGHTEST ;
+<OQ12> =BETWEEN <the> <smallobject> AND [THE] <smallobject> WICH ONE <is> [THE] <object_description>;  
+<object_description> = SMALLEST | LIGHTEST | HEAVIEST | BIGGEST;
 
 /*    -------------  Predefined Questions ---------------
 What day is today?
@@ -109,15 +114,16 @@ What was the last question?
 
 What is the capital of japan
 */
-<PQ> = <PQ1> | <PQ2> | <PQ3> | <PQ4> | <PQ5> |<PQ6>;
+<PQ> = <PQ1> | <PQ2> | <PQ3> | <PQ4> | <PQ5> | <PQ6> | <PQ7> | <PQ8> ;
 
 <PQ1> = <what> DAY <is> TODAY ;
 <PQ2> = <what> <is> YOUR NAME ;
 <PQ3> = <what> <is> YOUR TEAM NAME;
-<PQ2> = <what> TIME <is> IT ;
-<PQ4> = IN <which> YEAR WAS ROBOCUP FOUNDED ;
-<PQ5> = <what> WAS <the> LAST QUESTION ;
-<PQ6> = <what> <is> THE CAPITAL OF JAPAN;
+<PQ4> = <what> TIME <is> IT ;
+<PQ5> = IN <which> YEAR WAS ROBOCUP FOUNDED ;
+<PQ6> = <what> WAS <the> LAST QUESTION ;
+<PQ7> = <what> <is> THE CAPITAL OF JAPAN;
+<PQ8> = IN <which> YEAR <the> ROBOCUP WAS FOUNDED ;
 
 
 /*    -------------  ARENA INFORMATION --------------- */
@@ -146,8 +152,9 @@ What is the capital of japan
 <is> = IS ;
 <the> = THE ;
 <are> = ARE ;
-<number>= NUMBER ;
-<of>= OF ;
+<number> = NUMBER ;
+<of> = OF ;
+<were> = WERE ;
 
 <noise> = ( HUM | WA | SH | CH | S | MM ) ;
 

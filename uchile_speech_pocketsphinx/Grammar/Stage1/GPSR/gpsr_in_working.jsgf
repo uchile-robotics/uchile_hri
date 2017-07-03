@@ -2,25 +2,25 @@
 
 grammar sentence;
 
-public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <complex_3> | <complex_4>) | <noise> [<noise>] [<noise>];
+public <sentence> =  (<action_with_objects> | <action_with_persons> | <mixed_actions>) | (<noise> [<noise>] [<noise>]);
 
-<action_with_objects> = <find_object_in_place> | <tell_me_how_many_objects> | <move_object_from_place_to_place> | <go_place_find_object_put_on_place> | <put_object_in_place> | <grasp_and_deliver>;
-<action_with_persons> = <go_place_find_person_and_interact> | <tell_me_name_of_person_in_place> | <tell_something_to_person_at_place>
-<mixed_actions> = <give_object_to_person_in_place> | <go_place_look_object_deliver_to_person_at_place>
+<action_with_objects> = <find_object_in_place> | <tell_me_how_many_objects> | <move_object_from_place_to_place> | <go_place_find_object_put_on_place> | <put_object_in_place> | <grasp_and_deliver> | <find_object>;
+<action_with_persons> = <go_place_find_person_and_interact> | <tell_me_name_of_person_in_place> | <tell_something_to_person_at_place> ;
+<mixed_actions> = <give_object_to_person_in_place> | <go_place_look_object_deliver_to_person_at_place> ;
 
 
 
 <bring_me_object> = <bring> ME [THE] <object>;
-<tell_me_how_many_objects> = <tell> ME HOW MANY <object> there are [AT | ON | IN] THE <place> ;
+<tell_me_how_many_objects> = <tell> ME HOW MANY <object> THERE ARE [AT | ON | IN] THE <location> ;
 <go_place_find_person_and_interact> = <go_place_find_person> AND (<tell_something> | <answer_question>);
-<tell_me_name_of_person_in_place> = <tell> ME THE NAME OF THE PERSON (IN | AT) [THE] <place>;
-<go_place_look_object_deliver_to_person_at_place> = <go_place_find_object> AND <give> IT TO <person> [AT] [THE] <place>;
+<tell_me_name_of_person_in_place> = <tell> ME THE NAME OF THE PERSON (IN | AT) [THE] <location>;
+<go_place_look_object_deliver_to_person_at_place> = <go_place_find_object> AND <give> IT TO <person> [AT] [THE] <location>;
 <go_place_look_object_deliver_to_me> = <go_place_find_object> AND <give> IT TO ME; 
 <go_place_find_object_put_on_place> = <go_place_find_object> AND <put_it_in_place>;
 <go_place_find_object> = <go_place> <find_object> ;
-<tell_something_to_person_at_place> = <tell_something> TO <person> (IN | AT) [THE] <place> ;
+<tell_something_to_person_at_place> = <tell_something> TO <person> (IN | AT) [THE] <location> ;
 <find_person_in_place_and_answer_question> = <find_person_in_place> AND <answer_question> ;
-<move_object_from_place_to_place> = <grasp_object_from_place> TO [THE] <place>;
+<move_object_from_place_to_place> = <grasp_object_from_place> TO [THE] <location>;
 
 
 
@@ -33,7 +33,7 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 
 <go_place_find_person> = <go_place> <find_person> ;
 <find_person> = <find> <person> ;
-<find_person_in_place> = <find_person> IN [THE] <place> ;
+<find_person_in_place> = <find_person> IN [THE] <location> ;
 <find_object> = <find> [THE] <object> ;
 <find_object_in_place> = <find_object> IN [THE] <location> ;
 
@@ -44,9 +44,9 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 <give_object> = <give> [THE] <object> ;
 <give_it> = <give> IT ;
 <give_it_to_person> = <give_it> TO <person>;
-<give_it_to_person_in_place> = <give_it_to_person> IN [THE] <place> ;
+<give_it_to_person_in_place> = <give_it_to_person> IN [THE] <location> ;
 <give_object_to_person> = <give_object> TO <person> ;
-<give_object_to_person_in_place> = <give_object_to_person> [IN|AT] [THE] <place>;
+<give_object_to_person_in_place> = <give_object_to_person> [IN|AT] [THE] <location>;
 
 
 
@@ -65,12 +65,12 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 
 
 
-<location> = BAR | DRAWER | LIVING ROOM;
+<location> = BAR | BED | BEDROOM | BOOKSHELF | CABINET | CLOSET | COUCH TABLE | DESK | DINING ROOM | DINNER TABLE | KITCHEN | KITCHEN COUNTER | LIVING ROOM | DOOR | STOVE | SOFA | SIDE TABLE;
 
-<place> = OFFICE | BED | FRIDGE | TV STAND | KITCHEN;
+<place> = BAR ;
 
 
-<object> =  COKE | MANJU | BEER;
+<object> =  COKE | FANTA | BEER | PRINGLES;
 
 
 <category_object> =  DRINK | FOOD | OBJECTS;
@@ -85,7 +85,7 @@ public <sentence> =  [<vocative>] [<courtesy>] (<complex_1> | <complex_2> | <com
 
 <put> = (PUT | LEAVE | PLACE) ;
 
-<tell> = (SAY | TELL) ;
+<tell> = (TELL) ;
 
 <ask> = (ASK | REQUEST) ;
 

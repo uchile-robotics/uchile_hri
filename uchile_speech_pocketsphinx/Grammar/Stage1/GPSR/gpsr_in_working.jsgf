@@ -85,7 +85,7 @@ public <sentence> =  (<action_with_objects> | <action_with_persons> | <mixed_act
 
 <put> = (PUT | LEAVE | PLACE) ;
 
-<tell> = (SAY | TELL) ;
+<tell> = (TELL) ;
 
 <ask> = (ASK | REQUEST) ;
 

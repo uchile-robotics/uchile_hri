@@ -22,9 +22,11 @@ class SpeechRecognitionServer:
 
 	def execute(self, goal):
 		self.is_recognizing = True
+		if goal.timeout:
+			timeout = goal.timeout
 		with sr.Microphone() as source:
 			rospy.loginfo('Reconociendo')
-			audio = self.recognizer.listen(source)
+			audio = self.recognizer.listen(source,timeout=timeout)
 			rospy.loginfo('Listoco, I am sending the audio to google. It might take a while')
 		try:
 			recognized_sentence=self.recognizer.recognize_google(audio)

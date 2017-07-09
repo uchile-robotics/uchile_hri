@@ -39,6 +39,7 @@ class SpeechRecognitionServer:
 			self.is_recognizing = False
 		except sr.RequestError as e:
 			rospy.loginfo("Could not request results from Google Speech Recognition service; {0}".format(e))
+			self.recognition_server.set_aborted()
 			self.is_recognizing = False
 
 

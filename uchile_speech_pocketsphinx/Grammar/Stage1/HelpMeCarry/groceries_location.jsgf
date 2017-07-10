@@ -6,7 +6,7 @@ grammar sentence;
 public <sentence> = <I1> | <noise> [<noise>] [<noise>];
 
 
-<I1> = TAKE THIS <bag>  TO THE <place>;
+<I1> = (BENDER) TAKE THIS <bag>  TO THE <place>;
 
 
 <bag> = BAG | OBJECT;
@@ -15,8 +15,8 @@ public <sentence> = <I1> | <noise> [<noise>] [<noise>];
 
 /*    -------------  ARENA INFORMATION --------------- */
 
-<bedrooms> = KITCHEN | DINING ROOM  ;
-<manipulationplace> = KITCHEN TABLE| KITCHEN COUNTER | CUPBOARD | BAR | COUCHTABLE | DINNERTABLE  ;
+<bedrooms> = LIVING ROOM | KITCHEN | DINING ROOM | BEDROOM;
+<manipulationplace> =  KITCHEN COUNTER | BAR | DINNER TABLE | CABINET | BOOKSHELF | SOFA | COUCH TABLE | SIDE TABLE | STOVE | BED | CLOSET | DESK ;
 
 
 

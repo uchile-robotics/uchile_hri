@@ -3,7 +3,7 @@
 
 grammar sentence;
 
-public <sentence> = (BENDER) START THE TEST | <noise> [<noise>] [<noise>];
+public <sentence> = BENDER START THE TEST | <noise> [<noise>] [<noise>];
 
 
 /*    -------------  GRAMMAR --------------- */

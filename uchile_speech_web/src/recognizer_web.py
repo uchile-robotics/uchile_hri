@@ -24,9 +24,13 @@ class SpeechRecognitionServer:
 		self.is_recognizing = True
 		if goal.timeout:
 			timeout = goal.timeout
+			rospy.loginfo("I have received a goal with timeout = "+str(timeout))
 		with sr.Microphone() as source:
 			rospy.loginfo('Reconociendo')
-			audio = self.recognizer.listen(source,timeout=timeout)
+			try:
+				audio = self.recognizer.listen(source,timeout=timeout)
+			except:
+				rospy.logerr("Timeout of listening. I recommend to calibrate the recognizer (run uchile_speech_web calibrate.py)")
 			rospy.loginfo('Listoco, I am sending the audio to google. It might take a while')
 		try:
 			recognized_sentence=self.recognizer.recognize_google(audio)
@@ -36,11 +40,11 @@ class SpeechRecognitionServer:
 			self.is_recognizing = False
 			return
 		except sr.UnknownValueError:
-			rospy.loginfo("Google Speech Recognition could not understand audio")
+			rospy.logwarn("Google Speech Recognition could not understand audio")
 			self.recognition_server.set_aborted()
 			self.is_recognizing = False
 		except sr.RequestError as e:
-			rospy.loginfo("Could not request results from Google Speech Recognition service; {0}".format(e))
+			rospy.logerr("Could not request results from Google Speech Recognition service; {0}".format(e))
 			self.recognition_server.set_aborted()
 			self.is_recognizing = False
 

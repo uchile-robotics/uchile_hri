@@ -5,7 +5,6 @@ grammar sentence;
 
 public <sentence> = (BENDER) FOLLOW (ME) | <noise> [<noise>] [<noise>];
 
-
 /*    -------------  GRAMMAR --------------- */
 
 <noise> = ( HUM | WA | SH | CH | S | MM ) ;

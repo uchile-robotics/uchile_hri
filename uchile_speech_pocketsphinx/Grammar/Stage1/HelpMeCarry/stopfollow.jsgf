@@ -3,7 +3,9 @@
 
 grammar sentence;
 
-public <sentence> = (BENDER) STOP FOLLOW (ME) | <noise> [<noise>] [<noise>];
+public <sentence> = (BENDER) STOP <following> (ME) | <noise> [<noise>] [<noise>];
+
+<following> = FOLLOWING | FOLLOW;
 
 
 /*    -------------  GRAMMAR --------------- */

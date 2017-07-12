@@ -22,6 +22,7 @@ class SpeechRecognitionServer:
 
 	def execute(self, goal):
 		self.is_recognizing = True
+		timeout = 20
 		if goal.timeout:
 			timeout = goal.timeout
 			rospy.loginfo("I have received a goal with timeout = "+str(timeout))

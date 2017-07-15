@@ -1,0 +1,10 @@
+#JSGF V1.0;
+
+grammar sentence;
+
+
+public <sentence> = BENDER WAIT | BENDER STOP THE TEST | <noise> [<noise>] [<noise>];
+
+
+<noise> = ( HUM | WA | SH | CH | S | MM ) ;
+

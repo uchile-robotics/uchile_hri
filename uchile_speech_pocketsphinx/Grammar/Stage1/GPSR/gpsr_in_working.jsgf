@@ -6,7 +6,7 @@ public <sentence> =  (<action_with_objects> | <action_with_persons> | <mixed_act
 
 <action_with_objects> = <find_object_in_place> | <tell_me_how_many_objects> | <move_object_from_place_to_place> | <go_place_find_object_put_on_place> | <put_object_in_place> | <grasp_and_deliver> | <find_object>;
 <action_with_persons> = <go_place_find_person_and_interact> | <tell_me_name_of_person_in_place> | <tell_something_to_person_at_place> ;
-<mixed_actions> = <give_object_to_person_in_place> | <go_place_look_object_deliver_to_person_at_place> ;
+<mixed_actions> = <give_object_to_person_in_place> | <go_place_look_object_deliver_to_person_at_place> | <give_to_person_at_place_the_object_from_place> ;
 
 
 
@@ -47,7 +47,7 @@ public <sentence> =  (<action_with_objects> | <action_with_persons> | <mixed_act
 <give_it_to_person_in_place> = <give_it_to_person> IN [THE] <location> ;
 <give_object_to_person> = <give_object> TO <person> ;
 <give_object_to_person_in_place> = <give_object_to_person> [IN|AT] [THE] <location>;
-
+<give_to_person_at_place_the_object_from_place> = <give> TO <person> AT THE <place> THE <object> FROM THE <place> ;
 
 
 <put_object> = <put> [A] <object>;

@@ -1,0 +1,23 @@
+#JSGF V1.0;
+
+grammar sentence;
+
+
+public <sentence> = <order> | <noise> [<noise>] [<noise>];
+
+<order> = ( <combo> | <beverage>);
+
+<combo> = (BENDER) (<intro>) (some | an | a ) <smallobject> <conj> <smallobject> ;
+
+<intro> = I LIKE (A) | I WOULD LIKE | I WANT | I LOVE | I WANNA;
+<conj> = AND | WITH;
+
+/*    -------------  ARENA INFORMATION --------------- */
+
+<smallobject> = BISCUITS | BUBBLEGUM | CHOCOLATES | TOMATOCHIPS | BARBECUECHIPS | HONEYCHIP | COCONUTCEREALS | COCOBALLS | EGGSTARS | GRAMSOUP | BEANSAUCE | APPLE | LEMON | PEAR;
+
+<beverage> = GREENTEA |  PAPAYAMILK |  PUREMILK |  WATER | ORANGEJUICE | BEER ;
+
+
+<noise> = ( HUM | WA | SH | CH | S | MM ) ;
+

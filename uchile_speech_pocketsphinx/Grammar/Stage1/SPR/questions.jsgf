@@ -67,11 +67,11 @@ what is the size of the crowd
 <COQ15> = TELL ME <how> MANY <person> <were> WEARING <person_colors>;
 <COQ16> =  WAS <the> <person_postures> A <person_gender> [OR] [A] [<person_gender>];
 <person>= PERSON | PEOPLE ;	
-<person_phase> = CHILDREN | ADULTS | ELDERS;
+<person_phase> = CHILDREN | ADULTS | ELDERS ;
 <person_gender> = WOMEN | MEN | MALE | MALES ;
 <person_moves> = WAVING | RAISING ;
 <person_postures> = STANDING | SITTING | LYING ;
-<person_colors>= BLUE | BLACK | RED | GREEN | YELLOW | WHITE;
+<person_colors>= BLUE | BLACK | RED | GREEN | YELLOW | WHITE ;
 
 /*    -------------   Object Questions  ---------------
 What's the smallest food?
@@ -99,7 +99,7 @@ Between the beer and the water wich one is ligthte
 <OQ4> = <what> <is> <the> COLOUR OF [THE] <smallobject>  ;
 <OQ5> = HOW MANY <category_object> ARE IN THE <bigobject> ;
 <OQ6> = HOW MANY <smallobject> ARE IN THE <bigobject> ;
-<OQ7> = WHAT OBJECTS ARE STORED in the <bigobject>;
+<OQ7> = WHAT OBJECTS ARE STORED IN THE <bigobject>;
 <OQ8> = WHERE CAN I FIND A <bigobject> ;
 <OQ9> = <where> CAN I FIND A <smallobject> ;
 <OQ10> = <where> CAN I FIND A <category_object> ;

@@ -71,7 +71,7 @@ what is the size of the crowd
 <person_gender> = WOMEN | MEN | MALE | MALES ;
 <person_moves> = WAVING | RAISING ;
 <person_postures> = STANDING | SITTING | LYING ;
-<person_colors>= BLUE | BLACK | RED | GREEN | YELLOW ;
+<person_colors>= BLUE | BLACK | RED | GREEN | YELLOW | WHITE;
 
 /*    -------------   Object Questions  ---------------
 What's the smallest food?

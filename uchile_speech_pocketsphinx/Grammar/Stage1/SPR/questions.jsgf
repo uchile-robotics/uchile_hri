@@ -14,11 +14,15 @@ Where is the plant?
 How many chairs are in the dining room?
 */
 
-<AQ> = <AQ1> | <AQ2> ;
+<AQ> = <AQ1> | <AQ2> | <AQ3> | <AQ4> | <AQ5> ;
 
-<AQ1> = <where> IS THE <bigobject>  ;
-<AQ2> = <how> MANY <category_bigobject>  ARE IN THE <bedrooms> ;
+<AQ1> = <where> IS LOCATED THE <bigobject>  ;
+<AQ2> = WHERE IS LOCATED THE <bigobject> ;
+<AQ3> = IN WICH ROOM IS THE <bigobject> ;
+<AQ4> = HOW MANY <predifined_objects> HAS THE <rooms> ;
+<AQ5> = <how> MANY <bigobject> ARE IN THE <rooms> ;
 
+<predifined_objects> = DOORS | CHAIRS | TABLE | TABLES ; 
 
 /*   ------------- Crowd - Operator Questions   -------------
 How many people are in the crowd?
@@ -87,22 +91,25 @@ TO WICH CATEGORY BELONG THE BEER
 where is the beer?
 Between the beer and the water wich one is ligthte
 */
-<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>| <OQ11> | <OQ12> ;
+<OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>| <OQ11> | <OQ12> | <OQ13> | <OQ14> ;
 
-<OQ1> = <what> <is> <the> <object_description> <category_object> ;
-<OQ2> = <where> CAN I FIND <the> <smallobject> ;
-<OQ3> = <where> [CAN] <is> <smallobject> ;
-<OQ4> = <what> <is> <the> COLOR OF [THE] <smallobject>  ;
-<OQ5> = <what> OBJECTS ARE IN <the> <manipulationplace> ;
+<OQ1> = <what> <is> <the> <object_description1> <category_object> ;
+<OQ2> = <where> CAN I FIND A <smallobject> ;
+<OQ3> = HOW MANY <category_object> THERE ARE ;
+<OQ4> = <what> <is> <the> COLOUR OF [THE] <smallobject>  ;
+<OQ5> = HOW MANY <category_object> ARE IN THE <bigobject> ;
+<OQ6> = HOW MANY <smallobject> ARE IN THE <bigobject> ;
+<OQ7> = WHAT OBJECTS ARE STORED in the <bigobject>;
+<OQ8> = WHERE CAN I FIND A <bigobject> ;
+<OQ9> = <where> CAN I FIND A <smallobject> ;
+<OQ10> = <where> CAN I FIND A <category_object> ;
+<OQ11> = TO WICH CATEGORY BELONG <the> <smallobject>;
+<OQ12> = <do> <the> <smallobject> AND [THE] <smallobject> BELONG TO THE SAME CATEGORY;
+<OQ13> = WHICH IS THE <object_description1> ;
+<OQ14> = BETWEEN THE <smallobject> AND [THE] <smallobject> WHICH ONE IS <object_description2> ;
 
-<OQ6> = <how> MANY  ARE THEY  ;
-<OQ7> = <do> THEY BELONG TO <the> SAME CATEGORY ;
-<OQ8> = <what> OBJECT <are> STORES IN <the> SAME CATEGORY;
-<OQ9> = TO WICH CATEGORY BELONG <the> <smallobject>;
-<OQ10> =<do> <the> <smallobject> AND [THE] <smallobject> BELONG TO THE SAME CATEGORY;
-<OQ11> =<where> <is> <the> <smallobject>;
-<OQ12> =BETWEEN <the> <smallobject> AND [THE] <smallobject> WICH ONE <is> [THE] <object_description>;  
-<object_description> = SMALLEST | LIGHTEST | HEAVIEST | BIGGEST;
+<object_description1> = SMALLEST | LIGHTEST | HEAVIEST | BIGGEST ;
+<object_description2> =  BIGGER | SMALLER | LIGHTER | HEAVIER ;
 
 /*    -------------  Predefined Questions ---------------
 What day is today?
@@ -114,7 +121,7 @@ What was the last question?
 
 What is the capital of japan
 */
-<PQ> = <PQ1> | <PQ2> | <PQ3> | <PQ4> | <PQ5> | <PQ6> | <PQ7> | <PQ8> ;
+<PQ> = <PQ1> | <PQ2> | <PQ3> | <PQ4> | <PQ5> | <PQ6> | <PQ7> | <PQ8> | <PQ9> | <PQ10> | <PQ11> | <PQ12> | <PQ13> | <PQ14> | <PQ15> | <PQ16> | <PQ17> | <PQ18> | <PQ19> | <PQ20> | <PQ21> | <PQ22> | <PQ23> | <PQ24> ;
 
 <PQ1> = <what> DAY <is> TODAY ;
 <PQ2> = <what> <is> YOUR NAME ;
@@ -124,19 +131,34 @@ What is the capital of japan
 <PQ6> = <what> WAS <the> LAST QUESTION ;
 <PQ7> = <what> <is> THE CAPITAL OF JAPAN;
 <PQ8> = IN <which> YEAR <the> ROBOCUP WAS FOUNDED ;
+<PQ9> = WHO INVENTED THE C PROGRAMING LANGUAGE;
+<PQ10> = WHEN WAS INVENTED THE C PROGRAMING LANGUAGE;
+<PQ11> = WHEN WAS INVETED THE B PROGRAMING LANGUAGE;
+<PQ12> = WHERE DOES THE TERM COMPUTER BUG COME FROM;
+<PQ13> = WHO INVETED THE FIRST COMPILER;
+<PQ14> = WHICH ROBOT IS USED IN THE OPEN PLATFORM LEAGUE;
+<PQ15> = WHICH ROBOT IS USED IN THE DOMESTIC STANDAR PLATFORM;
+<PQ16> = WHICH ROBOT IS USED IN THE SOCIAL STANDARD PLATFORM LEAGUE;
+<PQ17> = HOW MANY PEOPLE LIVE IN THE JAPAN;
+<PQ18> = WHAT ARE THE COLOURS OF THE JAPANESE FLAG;
+<PQ19> = WHAT CITY IS THE CAPITAL OF THE JAPAN;
+<PQ20> = WHAT IS THE HIGHEST POINT IN JAPAN;
+<PQ21> = WHAT IS A SAKURA;
+<PQ22> = WHO IS THE EMPEROR OF JAPAN;
+<PQ23> = DO YOU HAVE DREAMS;
+<PQ24> = IN WHICH CITY WILL NEXT YEAR ROBOCUP BE HOSTED;
 
 
 /*    -------------  ARENA INFORMATION --------------- */
-<bedrooms> = KITCHEN | DINING ROOM  ;
+<rooms> = KITCHEN | DINING ROOM  | BEDROOM | LIVING ROOM | OFFICE | CORRIDOR | BATHROOM ;
 
-<manipulationplace> = KITCHEN TABLE| KITCHEN COUNTER | CUPBOARD | BAR | COUCHTABLE | DINNERTABLE  ;
+<manipulationplace> = BAR | FRIDGE | DESK | CUPBOARD | COUNTER | CENTER TABLE | LIVING SHELF | BEDSIDE | TV STAND | LIVING TABLE | DRAWER | SINK | SIDESHELF | BOOKCASE | DINING TABLE | FRIDGE | CABINET | COUCH TABLE | DINNER TABLE | KITCHEN TABLE | KITCHEN COUNTER ;
 
-<bigobject> = SOFA | (LEFT|RIGHT) BEDSIDE TABLE | DESK | BED | BOOKCASE | SHELF| PLANT | <manipulationplace>;
-<category_bigobject>  = CHAIRS | TABLE ;
+<bigobject> = SOFA | BED | CHAIRS | PLANT | BAR | FRIDGE | DESK | CUPBOARD | COUNTER | CENTER TABLE | LIVING SHELF | BEDSIDE | TV STAND | LIVING TABLE | DRAWER | SINK | SIDESHELF | BOOKCASE | DINING TABLE | FRIDGE | CABINET | COUCH TABLE | DINNER TABLE | KITCHEN TABLE | KITCHEN COUNTER ;
 
-<smallobject> = GREENTEA |  PAPAYAMILK |  PUREMILK |  WATER | ORANGEJUICE | BEER | BISCUITS | BUBBLEGUM | CHOCOLATES | TOMATOCHIPS | BARBECUECHIPS | HONEYCHIP | COCONUTCEREALS | COCOBALLS | EGGSTARS | GRAMSOUP | BEANSAUCE | APPLE | LEMON | PEAR | SPONGE | TOILETPAPER | SOAP | LOTION | TOOTHPASTE | CLOTH | BOWL | PLATE | BEER | TRAY;
+<smallobject> = CHIPS | SENBEI | PRINGLES | PEANUTS | CHOCOLATE BAR | MANJU | MINTS | CHOCOLATE EGG | NOODLES | APPLE | PAPRIKA | MELON | SUSHI | FLAKES | OAT | TEA | BEER | COKE | SAKE | SHAMPOO | SOAP | CLOTH | SPONGE | BOWL | MUG | GLASS | TRAY | PLATE | BOX | BAG ;
 
-<category_object> =  DRINK | FOOD | OBJECTS;
+<category_object> =  DRINK | FOOD | SNACKS | TOILETRIES | CONTAINERS | CANDIES | OBJECTS ;
 
 /* -------------------Last question ---------------*/
 

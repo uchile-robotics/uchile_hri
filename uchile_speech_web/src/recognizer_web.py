@@ -14,7 +14,9 @@ class SpeechRecognitionServer:
 		self.recognition_server.start()
 		self.threshold_server.start()
 		self.recognizer = sr.Recognizer()
-		self.recognizer.operation_timeout = 12.0
+		self.recognizer.operation_timeout = 15.0
+		self.recognizer.energy_threshold = 4000
+		self.recognizer.dynamic_energy_threshold = True
 		self.is_recognizing = False
 
 		self.recognition_response = DoRecognitionResult()
@@ -22,7 +24,7 @@ class SpeechRecognitionServer:
 
 	def execute(self, goal):
 		self.is_recognizing = True
-		timeout = 20
+		timeout = 15
 		if goal.timeout:
 			timeout = goal.timeout
 			rospy.loginfo("I have received a goal with timeout = "+str(timeout))

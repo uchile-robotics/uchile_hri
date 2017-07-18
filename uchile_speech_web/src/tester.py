@@ -13,7 +13,7 @@ import uchile_speech_web.msg
 def tester_client():
     # Creates the SimpleActionClient, passing the type of the action
     # (FibonacciAction) to the constructor.
-    client = actionlib.SimpleActionClient('/recognizer/recognizer_action', uchile_speech_web.msg.DoRecognitionAction)
+    client = actionlib.SimpleActionClient('/bender/speech/recognizer/recognizer_action', uchile_speech_web.msg.DoRecognitionAction)
 
     # Waits until the action server has started up and started
     # listening for goals.

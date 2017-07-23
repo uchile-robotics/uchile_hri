@@ -1,7 +1,12 @@
 <launch>
+	<arg name="recorder_audio" default="true"/>
+
     <node
         name="recognizer" pkg="uchile_speech_web" type="recognizer_web.py" ns="/bender/speech"
         respawn="false" output="screen">
     </node>
+
+	<node if="$(arg recorder_audio)" name="recorder_audio" pkg="uchile_speech_pocketsphinx" type="recorder.py" ns="/bender/speech" />
+
 
 </launch>

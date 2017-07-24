@@ -3,7 +3,7 @@
 
 grammar sentence;
 
-public <sentence> = (BENDER) STOP <following> (ME) | <noise> [<noise>] [<noise>];
+public <sentence> = (BENDER) STOP <following> (ME) | (BENDER) HERE IS THE CAR | <noise> [<noise>] [<noise>];
 
 <following> = FOLLOWING | FOLLOW;
 

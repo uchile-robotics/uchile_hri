@@ -3,7 +3,7 @@
 	<arg name="recorder_audio" default="true"/>
 
     <node 
-        name="recognizer" pkg="uchile_speech_pocketsphinx" type="recognizer_ros" ns="/bender/speech"
+        name="recognizer" pkg="uchile_speech_pocketsphinx" type="recognizer_ros" ns="/bender/speech_pocketsphinx"
         respawn="false" output="screen">
         <param name="mic_name" value="$(arg mic_name)"/>
         <rosparam file="$(find uchile_speech_pocketsphinx)/config/recognizer.yaml" command="load"/>

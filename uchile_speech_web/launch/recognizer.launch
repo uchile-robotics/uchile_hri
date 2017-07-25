@@ -2,7 +2,7 @@
 	<arg name="recorder_audio" default="true"/>
 
     <node
-        name="recognizer" pkg="uchile_speech_web" type="recognizer_web.py" ns="/bender/speech"
+        name="recognizer" pkg="uchile_speech_web" type="recognizer_web.py" ns="/bender/speech_web"
         respawn="false" output="screen">
     </node>
 

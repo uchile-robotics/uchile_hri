@@ -3,10 +3,15 @@
 	<arg name="recorder_audio" default="true"/>
 
     <node 
-        name="recognizer" pkg="uchile_speech_pocketsphinx" type="recognizer_ros" ns="/bender/speech"
+        name="recognizer" pkg="uchile_speech_pocketsphinx" type="recognizer_ros" ns="/bender/speech_pocketsphinx"
         respawn="false" output="screen">
         <param name="mic_name" value="$(arg mic_name)"/>
         <rosparam file="$(find uchile_speech_pocketsphinx)/config/recognizer.yaml" command="load"/>
+    </node>
+
+    <node
+        name="recognizer" pkg="uchile_speech_web" type="recognizer_web.py" ns="/bender/speech_web"
+        respawn="false" output="screen">
     </node>
 
 	<node if="$(arg recorder_audio)" name="recorder_audio" pkg="uchile_speech_pocketsphinx" type="recorder.py" ns="/bender/speech" />

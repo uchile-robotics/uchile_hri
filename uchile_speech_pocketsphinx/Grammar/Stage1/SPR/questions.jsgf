@@ -5,7 +5,7 @@ grammar sentence;
 
 public <sentence> = <questions> | <noise> [<noise>] [<noise>];
 
-<questions> = ( <AQ> | <COQ> | <OQ> | <PQ>);
+<questions> =  <AQ> | <COQ> | <OQ> | <PQ>;
 
 
 /* ------------- Arena Questions   -------------

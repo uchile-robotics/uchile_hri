@@ -15,7 +15,7 @@ How many chairs are in the dining room?
 */
 
 <AQ> = <AQ1> | <AQ2> | <AQ3> | <AQ4> | <AQ5> ;
-
+r
 <AQ1> = <where> IS LOCATED THE <bigobject>  ;
 <AQ2> = WHERE IS LOCATED THE <bigobject> ;
 <AQ3> = IN WICH ROOM IS THE <bigobject> ;
@@ -94,19 +94,19 @@ Between the beer and the water wich one is ligthte
 <OQ> = <OQ1> | <OQ2> | <OQ3> | <OQ4> | <OQ5> | <OQ6> | <OQ7> | <OQ8> | <OQ9> | <OQ10>| <OQ11> | <OQ12> | <OQ13> | <OQ14> ;
 
 <OQ1> = <what> <is> <the> <object_description1> <category_object> ;
-<OQ2> = <where> CAN I FIND A <smallobject> ;
+<OQ2> = <where> CAN I FIND A <small_objects> ;
 <OQ3> = HOW MANY <category_object> THERE ARE ;
-<OQ4> = <what> <is> <the> COLOUR OF [THE] <smallobject>  ;
+<OQ4> = <what> <is> <the> COLOUR OF [THE] <small_objects>  ;
 <OQ5> = HOW MANY <category_object> ARE IN THE <bigobject> ;
-<OQ6> = HOW MANY <smallobject> ARE IN THE <bigobject> ;
+<OQ6> = HOW MANY <small_objects> ARE IN THE <bigobject> ;
 <OQ7> = WHAT OBJECTS ARE STORED IN THE <bigobject>;
 <OQ8> = WHERE CAN I FIND A <bigobject> ;
-<OQ9> = <where> CAN I FIND A <smallobject> ;
+<OQ9> = <where> CAN I FIND A <small_objects> ;
 <OQ10> = <where> CAN I FIND A <category_object> ;
-<OQ11> = TO WICH CATEGORY BELONG <the> <smallobject>;
-<OQ12> = <do> <the> <smallobject> AND [THE] <smallobject> BELONG TO THE SAME CATEGORY;
+<OQ11> = TO WICH CATEGORY BELONG <the> <small_objects>;
+<OQ12> = <do> <the> <small_objects> AND [THE] <small_objects> BELONG TO THE SAME CATEGORY;
 <OQ13> = WHICH IS THE <object_description1> ;
-<OQ14> = BETWEEN THE <smallobject> AND [THE] <smallobject> WHICH ONE IS <object_description2> ;
+<OQ14> = BETWEEN THE <small_objects> AND [THE] <small_objects> WHICH ONE IS <object_description2> ;
 
 <object_description1> = SMALLEST | LIGHTEST | HEAVIEST | BIGGEST ;
 <object_description2> =  BIGGER | SMALLER | LIGHTER | HEAVIER ;

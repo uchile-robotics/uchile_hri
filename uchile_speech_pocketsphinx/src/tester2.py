@@ -13,14 +13,14 @@ import uchile_speech_pocketsphinx.msg
 def tester_client():
     # Creates the SimpleActionClient, passing the type of the action
     # (FibonacciAction) to the constructor.
-    client = actionlib.SimpleActionClient('/bender/speech/recognizer/recognizer_action', uchile_speech_pocketsphinx.msg.DoRecognitionAction)
+    client = actionlib.SimpleActionClient('/bender/speech_pocketsphinx/recognizer/recognizer_action', uchile_speech_pocketsphinx.msg.DoRecognitionAction)
 
     # Waits until the action server has started up and started
     # listening for goals.
     client.wait_for_server()
 
     # Creates a goal to send to the action server.
-    goal = uchile_speech_pocketsphinx.msg.DoRecognitionGoal(dictionary="Stage1/gpsr_very_lite")
+    goal = uchile_speech_pocketsphinx.msg.DoRecognitionGoal(dictionary="Stage1/SPR/questions")
 
     # Sends the goal to the action server.
     client.send_goal(goal)

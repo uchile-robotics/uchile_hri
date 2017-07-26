@@ -20,7 +20,7 @@ def tester_client():
     client.wait_for_server()
 
     # Creates a goal to send to the action server.
-    goal = uchile_speech_pocketsphinx.msg.DoRecognitionGoal(dictionary="Stage1/SPR/questions")
+    goal = uchile_speech_pocketsphinx.msg.DoRecognitionGoal(dictionary="Stage1/continue")
 
     # Sends the goal to the action server.
     client.send_goal(goal)

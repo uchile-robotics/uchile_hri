@@ -3,7 +3,7 @@
 
 grammar sentence;
 
-public <sentence> = (BENDER) continue | <noise> [<noise>] [<noise>];
+public <sentence> = [BENDER] CONTINUE | <noise> [<noise>] [<noise>];
 
 
 /*    -------------  GRAMMAR --------------- */

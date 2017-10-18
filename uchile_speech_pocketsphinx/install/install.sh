@@ -2,7 +2,7 @@
 #
 # run me like this:
 # > sudo apt-get update
-# > cdb bender_tts
+# > cdb uchile_speech_pocketsphinx
 # > bash install/install.sh
 #
 # IF SOMETHING FAILS, DELETE THE FOLLOWING DIR, AND REPEAT: install_space

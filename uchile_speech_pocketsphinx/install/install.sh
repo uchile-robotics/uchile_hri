@@ -113,14 +113,23 @@ else
 	fi
 fi
 
-## exit if already installed
 cd "$install_space"
-if [ -e "$install_token" ]; then
-	echo ""
-	echo " - ---------------------------------------------------------------------"
-	echo " - sphinxbase and pocketsphinx are already installed and up to date. Bye"
-	echo " - ---------------------------------------------------------------------"
-	exit 0
+if [[ -n $CLIENT ]]
+then
+	if [ "$CLIENT" ==  false ]; then
+  		if [ -e "$install_token" ]; then
+			echo ""
+			echo " - ---------------------------------------------------------------------"
+			echo " - sphinxbase and pocketsphinx are already installed and up to date. Bye"
+			echo " - ---------------------------------------------------------------------"
+			exit 0
+		fi
+  	else
+    	echo ""
+		echo " - ---------------------------------------------------------------------"
+		echo " - ------------------------- SERVER ------------------------------------"
+		echo " - ---------------------------------------------------------------------"
+    fi
 fi
 
 ## Installing sphinxbase

@@ -1,5 +1,5 @@
 <launch>
-	<arg name="mic_name"         default="alsa_input.usb-M-Audio_Producer_USB-00-USB.analog-stereo" />
+	<arg name="mic_name"         default="alsa_input.usb-M-Audio_Producer_USB-00.analog-stereo" />
 	<arg name="recorder_audio" default="true"/>
 
     <node 

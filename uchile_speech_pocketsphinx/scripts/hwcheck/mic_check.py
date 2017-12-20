@@ -23,5 +23,5 @@ class MicCheckTask(SystemCheckTask):
 
 def check():
     mic = SystemCheck("Microphone")
-    mic.add_child(MicCheckTask("alsa_input.usb-M-Audio_Producer_USB-00-USB.analog-stereo"))
+    mic.add_child(MicCheckTask("alsa_input.usb-M-Audio_Producer_USB-00.analog-stereo"))
     return mic.check()

@@ -1,6 +1,6 @@
 <launch>
 	<arg name="recorder_audio" default="true"/>
-	<arg name="mic_name"         default="alsa_input.usb-M-Audio_Producer_USB-00-USB.analog-stereo" />
+	<arg name="mic_name"         default="alsa_input.usb-M-Audio_Producer_USB-00.analog-stereo" />
 
     <node 
         name="recognizer" pkg="uchile_speech_pocketsphinx" type="recognizer_ros" ns="/bender/speech_pocketsphinx"

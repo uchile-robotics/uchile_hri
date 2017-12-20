@@ -7,6 +7,7 @@
 
 # official microphone (m-audio)
 #mic_name: "alsa_input.usb-M-Audio_Producer_USB-00-USB.analog-stereo"
+#mic_name16.04 : "alsa_input.usb-M-Audio_Producer_USB-00-USB.analog-stereo"
 
 # sample logitech camera's microphone 
 #mic_name: "alsa_input.usb-046d_0825_1F95B220-02-U0x46d0x825.analog-mono"

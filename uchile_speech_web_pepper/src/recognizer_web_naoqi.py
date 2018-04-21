@@ -23,6 +23,7 @@ class SpeechRecognitionServer:
 		# Config naoqi
 		self.session=qi.Session()
 		self.connection_url = "tcp://" + environ["robot_ip"] + ":" + environ["robot_port"]
+		self.session.connect(self.connection_url)
 
 		#Audio record
 		self.record_delay = 2
@@ -51,6 +52,9 @@ class SpeechRecognitionServer:
 
 		self.recognition_response = DoRecognitionResult()
 		self.calibrate_response = CalibrateThresholdResult()
+
+	def get_audio(self,timeout):
+
 
 	def execute(self, goal):
 		self.is_recognizing = True

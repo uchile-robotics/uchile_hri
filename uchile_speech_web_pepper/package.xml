@@ -17,9 +17,9 @@
     <!-- PACKAGE INFORMATION -->
     <!-- - - - - - - - - - - -->
 
-    <name>uchile_speech_web</name>
+    <name>uchile_speech_web_pepper</name>
     <version>1.0.0</version>
-    <description>uchile_speech_web package</description>
+    <description>uchile_speech_web_pepper package</description>
 
 
     <!-- team -->

@@ -1,0 +1,7 @@
+string dictionary
+string file
+float32 timeout
+---
+string final_result
+---
+string partial_result

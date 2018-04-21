@@ -1,0 +1,16 @@
+inicio de qi.
+
+session=qi.Session()
+
+connection_url = "tcp://" + environ["robot_ip"] + ":" + environ["robot_port"]
+
+# Config naoqi
+		self.session=qi.Session()
+		self.connection_url = "tcp://" + environ["robot_ip"] + ":" + environ["robot_port"]
+		self.audio_recorder = self.session.service("ALAudioRecorder")
+		self.audio_recorder.stopMicrophonesRecording()
+
+
+
+audio_recorder.startMicrophonesRecording("/home/nao/record/"+fileidx+".wav", "wav", 48000, [0,0,1,0])
+audio_recorder.stopMicrophonesRecording()

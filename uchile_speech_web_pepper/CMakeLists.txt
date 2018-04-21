@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(uchile_speech_web)
+project(uchile_speech_web_pepper)
 
 find_package(catkin REQUIRED COMPONENTS
   roslib

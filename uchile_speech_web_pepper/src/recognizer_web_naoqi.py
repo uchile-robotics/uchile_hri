@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 import qi
-from os import environ
+import os
 
 import roslib
 import rospy
 import actionlib
 import uchile_speech_web.speech_recognizer as sr
 
-from uchile_speech_web.msg import DoRecognitionAction, DoRecognitionResult, CalibrateThresholdAction, CalibrateThresholdResult
+#from uchile_speech_web.msg import DoRecognitionAction, DoRecognitionResult, CalibrateThresholdAction, CalibrateThresholdResult
 
 
 #48000 es la tasa de refrezco
@@ -115,6 +115,12 @@ if __name__ == '__main__':
 	rospy.init_node('recognizer')
 	rospy.loginfo("I AM ALIVE!!!!!!!!!!!!")
 	rospy.loginfo("So master, I am expecting your command")
-	server = SpeechRecognitionServer()
+	#server = SpeechRecognitionServer()
+	s=sr.Recognizer()
+	audio=sr.AudioFile(os.environ['HOME']+"/record/recog.wav")
+	with audio as source: s.adjust_for_ambient_noise(source)
+	with audio as source: input_google = s.listen(source)
+	value = s.recognize_google(input_google)
+	print value
 	rospy.loginfo("Remember to calibrate me if you have trouble")
 	rospy.spin()

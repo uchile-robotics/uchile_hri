@@ -589,3 +589,43 @@ class Recognizer(AudioSource):
             best_hypothesis = actual_result["alternative"][0]
         if "transcript" not in best_hypothesis: raise UnknownValueError()
         return best_hypothesis["transcript"]
+
+def get_flac_converter():
+    """Returns the absolute path of a FLAC converter executable, or raises an OSError if none can be found."""
+    flac_converter = shutil_which("flac")  # check for installed version first
+    if flac_converter is None:  # flac utility is not installed
+        base_path = os.path.dirname(os.environ['HOME']+'/flac/')  # directory of the current module file, where all the FLAC bundled binaries are stored
+        system, machine = platform.system(), platform.machine()
+        if system == "Windows" and machine in {"i686", "i786", "x86", "x86_64", "AMD64"}:
+            flac_converter = os.path.join(base_path, "flac-win32.exe")
+        elif system == "Darwin" and machine in {"i686", "i786", "x86", "x86_64", "AMD64"}:
+            flac_converter = os.path.join(base_path, "flac-mac")
+        elif system == "Linux" and machine in {"i686", "i786", "x86"}:
+            flac_converter = os.path.join(base_path, "flac-linux-x86")
+        elif system == "Linux" and machine in {"x86_64", "AMD64"}:
+            flac_converter = os.path.join(base_path, "flac-linux-x86_64")
+        else:  # no FLAC converter available
+            raise OSError("FLAC conversion utility not available - consider installing the FLAC command line application by running `apt-get install flac` or your operating system's equivalent")
+
+    # mark FLAC converter as executable if possible
+    try:
+        # handle known issue when running on docker:
+        # run executable right after chmod() may result in OSError "Text file busy"
+        # fix: flush FS with sync
+        if not os.access(flac_converter, os.X_OK):
+            stat_info = os.stat(flac_converter)
+            os.chmod(flac_converter, stat_info.st_mode | stat.S_IEXEC)
+            if 'Linux' in platform.system():
+                os.sync() if sys.version_info >= (3, 3) else os.system('sync')
+
+    except OSError: pass
+
+    return flac_converter
+
+def shutil_which(pgm):
+    """Python 2 compatibility: backport of ``shutil.which()`` from Python 3"""
+    path = os.getenv('PATH')
+    for p in path.split(os.path.pathsep):
+        p = os.path.join(p, pgm)
+        if os.path.exists(p) and os.access(p, os.X_OK):
+            return p

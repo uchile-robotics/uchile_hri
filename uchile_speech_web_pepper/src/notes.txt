@@ -14,3 +14,4 @@ connection_url = "tcp://" + environ["robot_ip"] + ":" + environ["robot_port"]
 
 audio_recorder.startMicrophonesRecording("/home/nao/record/"+fileidx+".wav", "wav", 48000, [0,0,1,0])
 audio_recorder.stopMicrophonesRecording()
+:snake:

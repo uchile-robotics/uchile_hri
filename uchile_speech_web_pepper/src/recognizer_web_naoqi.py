@@ -36,6 +36,7 @@ class SpeechRecognitionServer:
 
 		self.audio_player = self.session.service("ALAudioPlayer")
 		self.audio_recorder = self.session.service("ALAudioRecorder")
+		self.leds = self.session.service("ALLeds")
 		self.audio_recorder.stopMicrophonesRecording()
 
 		
@@ -81,13 +82,15 @@ class SpeechRecognitionServer:
 		rospy.loginfo("Call back sound")
 		ox = 0		
 		for i in range(len(msg)):
-			if msg[i][1] == 1 : ox = 1
+			if msg[i][1] == 1 :
+				ox = 1
 			rospy.loginfo(self.enable_speech_recog)
 		if ox == 1 and self.enable_speech_recog:
 			self.record_time = time.time()+self.record_delay
 			rospy.loginfo(self.record_time)
 
-			if not self.thread_recording.is_alive() : self.start_recording(reset=True)
+			if not self.thread_recording.is_alive() :
+				self.start_recording(reset=True)
 			
 		else : 
 			self.there_was_detection=1
@@ -103,7 +106,7 @@ class SpeechRecognitionServer:
 	def start_recording(self,reset=False,base_duration=3, withBeep=True):
 		if reset :
 			self.kill_recording_thread()
- 			self.audio_recorder.stopMicrophonesRecording()
+			self.audio_recorder.stopMicrophonesRecording()
 			self.record_time = time.time()+base_duration
 
 		if not self.thread_recording.is_alive():
@@ -135,9 +138,12 @@ class SpeechRecognitionServer:
 		rospy.sleep(3)
 		print time.time()
 		print str(self.record_time)+"record_time"
+		self.leds.rotateEyes(255,1,2)
 		while self.there_was_detection==0:
 			rospy.sleep(0.1)
+			self.leds.rotateEyes(255,1,0.1)
 		while time.time() < self.record_time :
+			self.leds.rotateEyes(255,1,0.1)
 			if self.audio_terminate :
 				self.audio_recorder.stopMicrophonesRecording()
 				print 'kill!!'
@@ -152,6 +158,7 @@ class SpeechRecognitionServer:
 
 		
 		rospy.loginfo("End recording")
+		self.leds.on("AllLeds")
 		#self.thread_concept = Thread(target=self.record_concepts,args=(stamp,spp,))
 		#self.thread_concept.daemon = False
 		#self.thread_concept.start()
@@ -243,11 +250,13 @@ class SpeechRecognitionServer:
 				self.is_recognizing = False
 			rospy.loginfo('Listoco, I am sending the audio to google. It might take a while')
 		try:
-			with audio as source: s.adjust_for_ambient_noise(source)
-			with audio as source: input_google = s.listen(source)
+			with audio as source: 
+				s.adjust_for_ambient_noise(source)
+			with audio as source: 
+				input_google = s.listen(source)
 			self.recognition_response.final_result = s.recognize_google(input_google)
 			self.recognition_server.set_succeeded(self.recognition_response)
-			print ('Recognized: ' + recognized_sentence)
+			print ('Recognized: ' + self.recognition_response.final_result)
 			self.is_recognizing = False
 			return
 		except sr.UnknownValueError:
@@ -290,8 +299,10 @@ if __name__ == '__main__':
 	rospy.loginfo("So master, I am expecting your command")
 	s=sr.Recognizer()
 	audio=sr.AudioFile(os.environ['HOME']+"/record/test.wav")
-	with audio as source: s.adjust_for_ambient_noise(source)
-	with audio as source: input_google = s.listen(source)
+	with audio as source: 
+		s.adjust_for_ambient_noise(source)
+	with audio as source: 
+		input_google = s.listen(source)
 	try:
 		result=s.recognize_google(input_google)
 		if result=='what is your name':

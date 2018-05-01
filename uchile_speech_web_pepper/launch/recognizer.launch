@@ -1,8 +1,8 @@
 <launch>
-	<arg name="recorder_audio" default="true"/>
+	<arg name="recorder_audio" default="false"/>
 
     <node
-        name="recognizer" pkg="uchile_speech_web" type="recognizer_web.py" ns="/bender/speech_web"
+        name="recognizer" pkg="uchile_speech_web_pepper" type="recognizer_web_naoqi.py" ns="/maqui/speech_web"
         respawn="false" output="screen">
     </node>
 

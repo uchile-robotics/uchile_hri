@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import qi
 import os
-from naoqi import ALProxy
 
 import roslib
 import rospy
@@ -12,14 +11,9 @@ from uchile_speech_web_pepper.msg import DoRecognitionAction, DoRecognitionResul
 from threading import Thread
 import thread
 import time
-
-#48000 es la tasa de refrezco
-
 import io
 
-#ocupado para google
-
-
+#48000 es la tasa de refrezco
 class SpeechRecognitionServer:
 	def __init__(self):
 		
@@ -37,10 +31,8 @@ class SpeechRecognitionServer:
 		self.audio_player = self.session.service("ALAudioPlayer")
 		self.audio_recorder = self.session.service("ALAudioRecorder")
 		self.leds = self.session.service("ALLeds")
-		self.audio_recorder.stopMicrophonesRecording()
 
-		
-		
+		self.audio_recorder.stopMicrophonesRecording()
 
 		self.recognition_server = actionlib.SimpleActionServer('~recognizer_action', DoRecognitionAction, self.execute,False)
 		self.threshold_server = actionlib.SimpleActionServer('~calibrate_threshold',CalibrateThresholdAction,self.calibrate,False)
@@ -51,7 +43,6 @@ class SpeechRecognitionServer:
 		self.ALMEM = self.session.service("ALMemory")
 		IP=os.environ["robot_ip"]
 		PORT=os.environ["robot_port"]
-		self.sd = ALProxy("ALSoundDetection", str(IP), int(PORT))
 		# Esto se debe modificar
 		#self.recognizer = sr.Recognizer()
 		#self.recognizer.operation_timeout = 15.0
@@ -232,7 +223,7 @@ class SpeechRecognitionServer:
 				self.audio_initial_time=time.time()
 				rospy.loginfo("Restart Audio because it was empty")
 		while time.time()<self.time_last_detection+delta:
-			while self.finish == False:
+			while not self.finish:
 				rospy.loginfo("AUN NO TERMINO DE GRABAAAAAAAAR")
 				rospy.sleep(0.1)
 		
@@ -257,6 +248,8 @@ class SpeechRecognitionServer:
 			self.recognition_response.final_result = s.recognize_google(input_google)
 			self.recognition_server.set_succeeded(self.recognition_response)
 			print ('Recognized: ' + self.recognition_response.final_result)
+			self.ALMEM.raiseEvent("WordRecognized", [str(self.recognition_response.final_result)])
+
 			self.is_recognizing = False
 			return
 		except sr.UnknownValueError:
@@ -288,10 +281,6 @@ class SpeechRecognitionServer:
 		self.threshold_server.set_succeeded()
 		rospy.loginfo('OK! the mic is calibrated')
 		return
-
-	
-
-	
 
 if __name__ == '__main__':
 	rospy.init_node('recognizer')

@@ -317,7 +317,7 @@ class GenerateOrder:
                     tag = 'escort_2'
                 self.generate_list(tag,oi)
             else:
-                print 'Verb {} not found'.format(v.string)
+                print 'Verb not found'.format(v.string)
         self.replacePRP()
 
     # replacePRP

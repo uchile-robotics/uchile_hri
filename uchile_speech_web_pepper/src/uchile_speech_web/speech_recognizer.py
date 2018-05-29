@@ -558,7 +558,11 @@ class Recognizer(AudioSource):
             "key": key,
         }))
         request = Request(url, data=flac_data, headers={"Content-Type": "audio/x-flac; rate={}".format(audio_data.sample_rate)})
-
+        
+        if os.environ("proxy_speech")=="True":
+            proxy_host = '172.17.40.9:8000'
+            request.set_proxy(proxy_host, 'http')
+        
         # obtain audio transcription results
         try:
             response = urlopen(request, timeout=self.operation_timeout)

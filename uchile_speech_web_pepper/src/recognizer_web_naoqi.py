@@ -101,7 +101,7 @@ class SpeechRecognitionServer:
 			self.record_time = time.time()+base_duration
 
 		if not self.thread_recording.is_alive():
-			self.thread_recording = Thread(target=self.record_audio,args=(withBeep))
+			self.thread_recording = Thread(target=self.record_audio,args=())
 			self.thread_recording.daemon = False
 			self.thread_recording.start()
 			self.thread_recording.join()
@@ -117,88 +117,95 @@ class SpeechRecognitionServer:
 	def record_audio(self, withBeep=False):
 		#while self.there_was_detection==0:
 			#rospy.sleep(0.1)
+		#init_time=time.time()
+		while time.time() < self.init_time + self.timeout:
+			if withBeep:
+				self.audio_player.playSine(1000,self.beep_volume,1,0.3)
+				time.sleep(0.5)
+			print 'Speech Detected : Start Recording'
+			rospy.loginfo("Speech detected State")
+			channels = [0,0,1,0] #left,right,front,rear
+			fileidx = "recog"
+			self.audio_recorder.startMicrophonesRecording("/home/nao/record/"+fileidx+".wav", "wav", 48000, channels)
+			rospy.sleep(3)
+			print time.time()
+			print str(self.record_time)+"record_time"
+			self.leds.rotateEyes(255,1,2)
+			while self.there_was_detection==0 and time.time() < self.init_time + self.timeout:
+				rospy.sleep(0.1)
+				self.leds.rotateEyes(255,1,0.1)
+			while time.time() < self.record_time and time.time() < self.init_time + self.timeout:
+				self.leds.rotateEyes(255,1,0.1)
+				if self.audio_terminate :
+					self.audio_recorder.stopMicrophonesRecording()
+					print 'kill!!'
+					return None
+				time.sleep(0.1)
+			
+			self.audio_recorder.stopMicrophonesRecording()
+			self.audio_recorder.recording_ended = True
+			self.finish = True
+			if not os.path.exists('./audio_record'):
+				os.mkdir('./audio_record', 0755)
 
-		if withBeep:
-			self.audio_player.playSine(1000,self.beep_volume,1,0.3)
-			time.sleep(0.5)
-		print 'Speech Detected : Start Recording'
-		rospy.loginfo("Speech detected State")
-		channels = [0,0,1,0] #left,right,front,rear
-		fileidx = "recog"
-		self.audio_recorder.startMicrophonesRecording("/home/nao/record/"+fileidx+".wav", "wav", 48000, channels)
-		rospy.sleep(3)
-		print time.time()
-		print str(self.record_time)+"record_time"
-		self.leds.rotateEyes(255,1,2)
-		while self.there_was_detection==0:
-			rospy.sleep(0.1)
-			self.leds.rotateEyes(255,1,0.1)
-		while time.time() < self.record_time :
-			self.leds.rotateEyes(255,1,0.1)
-			if self.audio_terminate :
-				self.audio_recorder.stopMicrophonesRecording()
-				print 'kill!!'
-				return None
-			time.sleep(0.1)
-		
+			
+			rospy.loginfo("End recording")
+			self.leds.on("AllLeds")
+			#self.thread_concept = Thread(target=self.record_concepts,args=(stamp,spp,))
+			#self.thread_concept.daemon = False
+			#self.thread_concept.start()
+			#self.speech_memory = self.stt2("audio_record/recog.wav",hints)
+			
+			# if self.enable_concept_map and self.speech_memory != '' : 
+			# 	stamp = str(time.time()).replace('.','')
+			# 	spp = self.speech_memory.split(' ')			
+			# 	self.text_concepts.append([int(stamp),self.speech_memory])
+			# 	if len(self.text_concepts) > 1000 : del self.text_concepts[0]
+			# 	for ww in spp : 
+			# 		self.text_corpus.append(ww)
+					
+					
+			# 	self.text_corpus = list(set(self.text_corpus))
+					
+			# 	f = open('concept_map/raw_data/'+stamp+'.txt','w')
+			# 	for iii in range( len(spp)-1 ) :
+			# 		f.write(spp[iii]+'\n')
+			# 	f.write(spp[-1])
+			# 	f.flush()
+			# 	f.close
+				
+				# self.thread_concept = Thread(target=self.record_concepts,args=(stamp,spp,))
+				# self.thread_concept.daemon = False
+				# self.thread_concept.start()
+
+					
+			#if self.data_recording and self.data_recording_dir != '' :
+				#now = datetime.datetime.now()
+				#strnow = now.strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
+				#shutil.copy2('audio_record/recog.wav' , self.data_recording_dir + '/audio/AUPAIR_AUDIO_'+ strnow + '.wav')
+			if withBeep:
+				self.audio_player.playSine(250,self.beep_volume,1,0.3)
+				time.sleep(1)
+				rospy.loginfo("Second beep")
+			return None
 		self.audio_recorder.stopMicrophonesRecording()
 		self.audio_recorder.recording_ended = True
 		self.finish = True
-		if not os.path.exists('./audio_record'):
-			os.mkdir('./audio_record', 0755)
-
-		
-		rospy.loginfo("End recording")
-		self.leds.on("AllLeds")
-		#self.thread_concept = Thread(target=self.record_concepts,args=(stamp,spp,))
-		#self.thread_concept.daemon = False
-		#self.thread_concept.start()
-		#self.speech_memory = self.stt2("audio_record/recog.wav",hints)
-		
-		# if self.enable_concept_map and self.speech_memory != '' : 
-		# 	stamp = str(time.time()).replace('.','')
-		# 	spp = self.speech_memory.split(' ')			
-		# 	self.text_concepts.append([int(stamp),self.speech_memory])
-		# 	if len(self.text_concepts) > 1000 : del self.text_concepts[0]
-		# 	for ww in spp : 
-		# 		self.text_corpus.append(ww)
-				
-				
-		# 	self.text_corpus = list(set(self.text_corpus))
-				
-		# 	f = open('concept_map/raw_data/'+stamp+'.txt','w')
-		# 	for iii in range( len(spp)-1 ) :
-		# 		f.write(spp[iii]+'\n')
-		# 	f.write(spp[-1])
-		# 	f.flush()
-		# 	f.close
-			
-			# self.thread_concept = Thread(target=self.record_concepts,args=(stamp,spp,))
-			# self.thread_concept.daemon = False
-			# self.thread_concept.start()
-
-				
-		#if self.data_recording and self.data_recording_dir != '' :
-			#now = datetime.datetime.now()
-			#strnow = now.strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
-			#shutil.copy2('audio_record/recog.wav' , self.data_recording_dir + '/audio/AUPAIR_AUDIO_'+ strnow + '.wav')
-		if withBeep:
-			self.audio_player.playSine(250,self.beep_volume,1,0.3)
-			time.sleep(1)
-			rospy.loginfo("Second beep")
 		return None
 
 	def execute(self, goal):
 		self.there_was_detection=0
 		self.finish = False
-		self.thread_recording = Thread(target=self.record_audio,args=(None,))
+		self.init_time=time.time()
+		if goal.timeout:
+			timeout = goal.timeout
+			self.timeout=goal.timeout
+			rospy.loginfo("I have received a goal with timeout = "+str(timeout))
+		self.time_last_detection=time.time()
+		self.thread_recording = Thread(target=self.record_audio,args=())
 		self.thread_recording.daemon = True
 		self.audio_terminate = False
 		self.thread_recording.start()
-		timeout = 15
-		if goal.timeout:
-			timeout = goal.timeout
-			rospy.loginfo("I have received a goal with timeout = "+str(timeout))
 		#self.audio_player.playSine(250,self.beep_volume,1,0.3)
 		time.sleep(0.5)
 		self.audio_initial_time=time.time()
@@ -211,10 +218,12 @@ class SpeechRecognitionServer:
 		#self.audio_recorder.stopMicrophonesRecording()
 		delta=0.5
 		
+		self.init_time=time.time()
+
 		#max len audio vacio
 		maxlen=3
-		
-		while self.there_was_detection==0:
+
+		while self.there_was_detection==0 and time.time() < self.init_time+timeout:
 			rospy.sleep(0.1)
 			if self.audio_initial_time+maxlen<time.time():
 				self.audio_recorder.stopMicrophonesRecording()
@@ -227,11 +236,21 @@ class SpeechRecognitionServer:
 				rospy.loginfo("AUN NO TERMINO DE GRABAAAAAAAAR")
 				rospy.sleep(0.1)
 		
+		self.leds.on("AllLeds")
+
 		audio=sr.AudioFile(os.environ['HOME']+"/record/recog.wav")
+		audio_blank=sr.AudioFile(os.environ['HOME']+"/record/blank.wav")
+
+		try:
+			with audio as source:
+				s.adjust_for_ambient_noise(source)
+				rospy.loginfo('Reconociendo')
+		except:
+			audio=audio_blank
 		
 		with audio as source:
 			s.adjust_for_ambient_noise(source)
-			rospy.loginfo('Reconociendo')
+			rospy.loginfo('Reconociendo')	
 			audio_wav = s.listen(source)
 			try:
 				audio_wav = s.listen(source)

@@ -1,5 +1,5 @@
 <launch>
 
-	<node  name="keyboard_interface" pkg="display_interface" type="keyboard_interface.py" ns="/bender/display" output="screen" />
+	<node name="keyboard_interface" pkg="display_interface" type="keyboard_interface.py" ns="/bender/display" output="screen" />
 
 </launch>

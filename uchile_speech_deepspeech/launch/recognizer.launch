@@ -1,0 +1,8 @@
+<launch>
+
+    <node
+        name="recognizer" pkg="uchile_speech_deepspeech" type="recognizer_deepspeech.py" ns="/bender/speech_deepspeech"
+        respawn="false" output="screen">
+    </node>
+
+</launch>

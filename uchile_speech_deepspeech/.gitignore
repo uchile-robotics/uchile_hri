@@ -1,0 +1,3 @@
+*.scorer
+*.tflite
+*.pbmm

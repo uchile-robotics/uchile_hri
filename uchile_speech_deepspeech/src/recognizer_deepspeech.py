@@ -54,13 +54,18 @@ class SpeechRecognitionServer:
             timeout = goal.timeout
             rospy.loginfo("I have received a goal with timeout = "+str(timeout))
 
+        recording_start_time = 0
+        if goal.start_time:
+            recording_start_time = goal.start_time
+            rospy.loginfo("Started recognition from {} seconds in the past".format(recording_start_time))
+
         # Set up state machine for VAD
         pre_buf = deque(maxlen=15)
         aud_buf = []
         sm_vad = vad_sm.VADsm(vad_agg=VAD_AGG, audio_rate = RATE)
 
-        # Set up connection
-        audio_in = self.mic_manager.connect(start=1)
+        # Set up connection to mic manager
+        audio_in = self.mic_manager.connect(start=recording_start_time)
 
         # Set up model
         asr_audio = queue.Queue()

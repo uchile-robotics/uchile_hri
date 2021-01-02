@@ -94,7 +94,7 @@ class VADsm(StateMachine):
     def __init__(self, vad_agg, audio_rate):
         states = [
             SilenceState(id=0, next_state=1, prev_state=0),
-            PossibleStartState(id=1, next_state=SPEECHSTATE, prev_state=0,th=6),
+            PossibleStartState(id=1, next_state=SPEECHSTATE, prev_state=0,th=10),
             SpeechState(id=SPEECHSTATE, next_state=3, prev_state=SPEECHSTATE),
             PossibleEndState(id=3, next_state=ENDSTATE, prev_state=SPEECHSTATE,th=10),
             EndState(id=ENDSTATE, prev_state=ENDSTATE, next_state=ENDSTATE)
@@ -107,7 +107,6 @@ class VADsm(StateMachine):
     def input_block(self, audio_block):
         det = self.vad.is_speech(audio_block, self.rate)
         self.run(det)
-        print("state: ", self.current_state_id)
 
     @property
     def current_state_id(self):

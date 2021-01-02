@@ -20,7 +20,7 @@ def tester_client():
     client.wait_for_server()
 
     # Creates a goal to send to the action server.
-    goal = uchile_speech_deepspeech.msg.DoRecognitionGoal(timeout=10)
+    goal = uchile_speech_deepspeech.msg.DoRecognitionGoal(timeout=10, start_time=1)
 
     # Sends the goal to the action server.
     client.send_goal(goal)

@@ -1,6 +1,6 @@
 import webrtcvad
 
-# SM
+
 class State(object):
     """
     Sate base class
@@ -14,16 +14,22 @@ class State(object):
         assert 0, "next not implemented"
 
 class StateMachine(object):
+    """
+    Simple state machine class
+    """
     def __init__(self, states_table):
         self.states = states_table
         self.current_state = states_table[0]
 
     def run(self, input):
+        """
+        Pass input to current state to update
+        """
         self.current_state = self.states[self.current_state.next(input)]
 
 class SilenceState(State):
     """
-    docstring
+    Initial state with no speech
     """
     def next(self, input):
         if input:
@@ -33,7 +39,7 @@ class SilenceState(State):
 
 class PossibleStartState(State):
     """
-    docstring
+    State to filter false short speech detections
     """
     def __init__(self,id, next_state, prev_state, th):
         super(PossibleStartState, self).__init__(id, next_state, prev_state)
@@ -52,7 +58,7 @@ class PossibleStartState(State):
 
 class SpeechState(State):
     """
-    docstring
+    State during speech
     """
     def next(self, input):
         if input:
@@ -62,7 +68,7 @@ class SpeechState(State):
 
 class PossibleEndState(State):
     """
-    docstring
+    State to remain in speech during short silence, changes state on long silence
     """
     def __init__(self,id, next_state, prev_state, th):
         super(PossibleEndState,self).__init__(id, next_state, prev_state)
@@ -81,7 +87,7 @@ class PossibleEndState(State):
 
 class EndState(State):
     """
-    docstring
+    Final state affter a long silence
     """
     def next(self, input):
         return self.id
@@ -90,7 +96,9 @@ class EndState(State):
 SPEECHSTATE = 2
 ENDSTATE = 4
 class VADsm(StateMachine):
-
+    """
+    State machine with the VAD states and webrtcvad VAD system
+    """
     def __init__(self, vad_agg, audio_rate):
         states = [
             SilenceState(id=0, next_state=1, prev_state=0),
@@ -105,6 +113,10 @@ class VADsm(StateMachine):
         self.rate = audio_rate
 
     def input_block(self, audio_block):
+        """
+        Recieves audio block as input, detects voice activity with webrtcvad and
+        runs the state machine
+        """
         det = self.vad.is_speech(audio_block, self.rate)
         self.run(det)
 

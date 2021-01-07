@@ -5,6 +5,9 @@ import queue
 from deepspeech import Model
 
 class AsrProcThread(threading.Thread):
+    """
+    Runs deepspeech recognition on a different thread, audio blocks are passed through a queue
+    """
     def __init__(self, aud_q, model, group=None, target=None, name=None):
         super(AsrProcThread,self).__init__()
         self.target = target

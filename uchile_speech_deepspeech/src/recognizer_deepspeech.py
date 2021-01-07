@@ -46,6 +46,9 @@ class SpeechRecognitionServer:
 
 
     def terminate(self):
+        """
+        Stops the microphone buffer thread
+        """
         self.mic_manager.close()
 
     def execute(self, goal):

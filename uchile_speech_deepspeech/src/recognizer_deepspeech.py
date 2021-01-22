@@ -71,10 +71,7 @@ class SpeechRecognitionServer:
         audio_in = self.mic_manager.connect(start=recording_start_time)
 
         # Set up model
-        asr_audio = queue.Queue()
-        asr_thread = AsrProcThread(name='audioASR',model=self.recognizer, aud_q=asr_audio)
-        asr_thread.start()
-
+        asr_stream = self.recognizer.createStream()
         
         rospy.loginfo('Listening ...')
         t_start = time.time()
@@ -96,32 +93,27 @@ class SpeechRecognitionServer:
             audio_block = audio_in.get()
             sm_vad.input_block(audio_block)
 
-            #det = vad.is_speech(audio_block, RATE)
-            #sm.run(det)
-
             if not start_speech:
                 if sm_vad.current_state_id == vad_sm.SPEECHSTATE:
                     start_speech = True
+                    # include past audio
                     for b in pre_buf:
                             aud_buf.append(b)
-                            asr_audio.put(np.frombuffer(b, dtype=np.int16))
+                            asr_stream.feedAudioContent(np.frombuffer(b, dtype=np.int16))
+
                     rospy.loginfo('Speech start')
                 else:
                     pre_buf.append(audio_block)
             else:
                 aud_buf.append(audio_block)
-                asr_audio.put(np.frombuffer(audio_block, dtype=np.int16))
+                asr_stream.feedAudioContent(np.frombuffer(audio_block, dtype=np.int16))
         rospy.loginfo('done')
 
         # End audio capture
         self.mic_manager.disconnect()
-        asr_audio.put(None)
-
-        # Wait for recognition
-        asr_thread.join()
 
         if success:
-            recognized_sentence = asr_thread.result
+            recognized_sentence = asr_stream.finishStream()
             #print recognized_sentence
             #rospy.loginfo("Result: ", recognized_sentence)
             self.recognition_response.final_result = recognized_sentence
